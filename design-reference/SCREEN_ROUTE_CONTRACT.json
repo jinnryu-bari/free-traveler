@@ -1,0 +1,187 @@
+{
+  "schema_version": "traveler-screen-route-v1",
+  "framework": "nextjs-app-router",
+  "source_docs": [
+    "docs/03_UI_COVERAGE_ANALYSIS.md",
+    "docs/04_UIUX_PLAN.md",
+    "docs/STITCH_VALIDATION_REPORT.md",
+    "design-reference/D-001/DESIGN.md",
+    "design-reference/DESIGN_MANIFEST.md",
+    "design-reference/UI_CONTRACT.md"
+  ],
+  "screens": [
+    {
+      "screen_id": "SCR-001",
+      "route": "/",
+      "page_entry": "src/app/page.tsx",
+      "tier": "core",
+      "title": "메인",
+      "page_owner_task_required": true,
+      "preview_required": true,
+      "starter_template_forbidden": true,
+      "mobile_variant_approved": true,
+      "approved_stitch_screen": {
+        "desktop": "screens/218b4cc3a3144ec8b86936fb7140a5ea",
+        "mobile": "screens/72dc8eb15eb44d2fbd4c6caf273cd765"
+      }
+    },
+    {
+      "screen_id": "SCR-002",
+      "route": "/about",
+      "page_entry": "src/app/about/page.tsx",
+      "tier": "secondary",
+      "title": "대표 소개",
+      "page_owner_task_required": true,
+      "preview_required": true,
+      "starter_template_forbidden": false,
+      "mobile_variant_approved": false,
+      "approved_stitch_screen": {
+        "desktop": "screens/26266b90d23d4f05ae2d4d4d2341554c",
+        "mobile": null
+      }
+    },
+    {
+      "screen_id": "SCR-003",
+      "route": "/travel-tools",
+      "page_entry": "src/app/travel-tools/page.tsx",
+      "tier": "core",
+      "title": "통합 여행 준비",
+      "page_owner_task_required": true,
+      "preview_required": true,
+      "starter_template_forbidden": false,
+      "mobile_variant_approved": true,
+      "approved_stitch_screen": {
+        "desktop": "screens/824f29d2716c4eb184ae2d3ad0b55b2f",
+        "mobile": "screens/990d6f5dc54b4edea1655799b7781460"
+      }
+    },
+    {
+      "screen_id": "SCR-004",
+      "route": "/mates",
+      "page_entry": "src/app/mates/page.tsx",
+      "tier": "core",
+      "title": "동행 조회",
+      "page_owner_task_required": true,
+      "preview_required": true,
+      "starter_template_forbidden": false,
+      "mobile_variant_approved": false,
+      "approved_stitch_screen": {
+        "desktop": "screens/248a4a5680a24703b22a46784b30bce2",
+        "mobile": null
+      }
+    },
+    {
+      "screen_id": "SCR-005",
+      "route": "/account",
+      "page_entry": "src/app/account/page.tsx",
+      "tier": "core",
+      "title": "계정·관리",
+      "page_owner_task_required": true,
+      "preview_required": true,
+      "starter_template_forbidden": false,
+      "mobile_variant_approved": false,
+      "approved_stitch_screen": {
+        "desktop": "screens/ca8d8d4d60d248dba4da52207de2609a",
+        "mobile": null
+      }
+    }
+  ],
+  "tier_summary": {
+    "core": ["SCR-001", "SCR-003", "SCR-004", "SCR-005"],
+    "secondary": ["SCR-002"],
+    "core_count": 4,
+    "secondary_count": 1
+  },
+  "technical_routes": {
+    "description": "Next.js App Router 상의 기술 Route. 5개 디자인 Screen 수에 포함하지 않는다.",
+    "auth_callback": [
+      {
+        "route": "/auth/callback",
+        "page_entry": "src/app/auth/callback/route.ts",
+        "purpose": "Supabase 인증 콜백 처리 (로그인/가입/재설정 리다이렉트)",
+        "related_requirements": ["REQ-FUNC-066"]
+      }
+    ],
+    "api_routes": [
+      {
+        "route": "/api/mates",
+        "page_entry": "src/app/api/mates/route.ts",
+        "purpose": "동행 모집글 목록 조회·생성",
+        "related_requirements": ["REQ-FUNC-030", "REQ-FUNC-031"]
+      },
+      {
+        "route": "/api/mates/[id]/requests",
+        "page_entry": "src/app/api/mates/[id]/requests/route.ts",
+        "purpose": "참가 요청 생성·승인·거절",
+        "related_requirements": ["REQ-FUNC-034", "REQ-FUNC-035", "REQ-FUNC-036"]
+      },
+      {
+        "route": "/api/mates/[id]/report",
+        "page_entry": "src/app/api/mates/[id]/report/route.ts",
+        "purpose": "신고 접수",
+        "related_requirements": ["REQ-FUNC-039", "REQ-NF-019"]
+      },
+      {
+        "route": "/api/account/blocklist",
+        "page_entry": "src/app/api/account/blocklist/route.ts",
+        "purpose": "차단 실행·해제",
+        "related_requirements": ["REQ-FUNC-040"]
+      },
+      {
+        "route": "/api/admin/reports",
+        "page_entry": "src/app/api/admin/reports/route.ts",
+        "purpose": "관리자 신고 상태 변경",
+        "related_requirements": ["REQ-FUNC-041"]
+      },
+      {
+        "route": "/api/admin/external-links",
+        "page_entry": "src/app/api/admin/external-links/route.ts",
+        "purpose": "관리자 항공/숙소 외부 URL 설정(HTTPS·허용목록 검증)",
+        "related_requirements": ["REQ-FUNC-077"]
+      }
+    ],
+    "error_boundaries": [
+      {
+        "route": "not_found",
+        "page_entry": "src/app/not-found.tsx",
+        "purpose": "404 오류 화면",
+        "related_requirements": ["REQ-FUNC-078"]
+      },
+      {
+        "route": "error_boundary",
+        "page_entry": "src/app/error.tsx",
+        "purpose": "500/런타임 오류 바운더리",
+        "related_requirements": ["REQ-FUNC-078"]
+      }
+    ]
+  },
+  "required_navigation": [
+    { "from": "SCR-001", "to": "SCR-003", "trigger": "Hero 보조 CTA '여행 조건 정리하기'" },
+    { "from": "SCR-001", "to": "SCR-002", "trigger": "Section 7 '대표 이야기 더 보기' CTA" },
+    { "from": "SCR-001", "to": "SCR-004", "trigger": "Header 상시 내비 링크" },
+    { "from": "SCR-001", "to": "SCR-005", "trigger": "Header 계정 진입점(비로그인 시 로그인 버튼)" },
+    { "from": "SCR-001", "to": "SCR-003", "trigger": "최근 동행글 Empty State '동행글 작성하기' CTA (동행 탭)" },
+    { "from": "SCR-002", "to": "SCR-001", "trigger": "기억에 남는 여행지 카드 클릭 / 방문 국가 Chip 클릭" },
+    { "from": "SCR-002", "to": "SCR-003", "trigger": "CTA Banner 버튼 1" },
+    { "from": "SCR-002", "to": "SCR-004", "trigger": "CTA Banner 버튼 2" },
+    { "from": "SCR-003", "to": "SCR-004", "trigger": "동행 모집글 작성 완료 → 작성된 글 상세로 이동" },
+    { "from": "SCR-003", "to": "SCR-005", "trigger": "동행 탭 미인증(비로그인/성인미확인) 시 로그인·성인확인 유도" },
+    { "from": "SCR-004", "to": "SCR-003", "trigger": "안전 안내 Section CTA '여행 조건 다시 정리하기' / 동행글 작성하기" },
+    { "from": "SCR-004", "to": "SCR-005", "trigger": "참가 요청/작성자 액션 Unauthorized 시 로그인 유도, 내 활동 이동" },
+    { "from": "SCR-005", "to": "SCR-004", "trigger": "내 모집글/참가 요청 상세 클릭, Empty State '동행글 둘러보기'" },
+    { "from": "SCR-005", "to": "SCR-003", "trigger": "'새 동행글 작성하기' CTA, 작성 이어가기" }
+  ],
+  "prohibited_features_global": [
+    "Airbnb 상표 요소(워드마크, 3-프로덕트 nav, NEW 배지, 별점 위젯, Cereal 폰트, Rausch 네이밍 토큰)",
+    "구매·예약·결제·체크아웃 UI 전체",
+    "Proprietary/licensed 폰트 파일 번들(Inter + 시스템 한글 폰트만 허용)",
+    "design-reference/D-001/DESIGN.md §2에 정의되지 않은 임의 색상 추가",
+    "행동분석 이벤트 파이프라인, CMS 편집 UI, 자동 모니터링/백업 대시보드 등 PROJECT_SCOPE EXCLUDED 항목"
+  ],
+  "completion_checks": {
+    "no_duplicate_routes": true,
+    "no_duplicate_page_entries": true,
+    "screen_count": 5,
+    "core_secondary_split_present": true
+  }
+}

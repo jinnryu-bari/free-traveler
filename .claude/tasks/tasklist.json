@@ -1,0 +1,1376 @@
+[
+  {
+    "id": "C-GLOBAL-HEADER",
+    "type": "COMPONENT",
+    "screen": "GLOBAL",
+    "title": "Global Header — 4-link nav + account entry point",
+    "route": "N/A",
+    "page_entry": "src/components/layout/header.tsx",
+    "expected_files": [
+      "src/components/layout/header.tsx"
+    ],
+    "depends_on": [],
+    "requirements": [
+      "REQ-FUNC-064",
+      "REQ-FUNC-065",
+      "REQ-FUNC-079"
+    ],
+    "db_tables": [],
+    "detail_file": ".claude/tasks/details/C-GLOBAL-HEADER.md"
+  },
+  {
+    "id": "C-GLOBAL-FOOTER",
+    "type": "COMPONENT",
+    "screen": "GLOBAL",
+    "title": "Global Footer — 3-column link groups + legal band",
+    "route": "N/A",
+    "page_entry": "src/components/layout/footer.tsx",
+    "expected_files": [
+      "src/components/layout/footer.tsx"
+    ],
+    "depends_on": [],
+    "requirements": [
+      "REQ-FUNC-064"
+    ],
+    "db_tables": [],
+    "detail_file": ".claude/tasks/details/C-GLOBAL-FOOTER.md"
+  },
+  {
+    "id": "C-GLOBAL-TOAST",
+    "type": "COMPONENT",
+    "screen": "GLOBAL",
+    "title": "Toast notification primitive (REQ-FUNC-043 alert replacement)",
+    "route": "N/A",
+    "page_entry": "src/components/ui/toast.tsx",
+    "expected_files": [
+      "src/components/ui/toast.tsx",
+      "src/components/ui/toast-provider.tsx"
+    ],
+    "depends_on": [],
+    "requirements": [
+      "REQ-FUNC-043",
+      "REQ-FUNC-079"
+    ],
+    "db_tables": [],
+    "detail_file": ".claude/tasks/details/C-GLOBAL-TOAST.md"
+  },
+  {
+    "id": "C-GLOBAL-EMPTY-STATE",
+    "type": "COMPONENT",
+    "screen": "GLOBAL",
+    "title": "Empty State primitive — situation + how-to + CTA (D-001 §14/§19)",
+    "route": "N/A",
+    "page_entry": "src/components/ui/empty-state.tsx",
+    "expected_files": [
+      "src/components/ui/empty-state.tsx"
+    ],
+    "depends_on": [],
+    "requirements": [],
+    "db_tables": [],
+    "detail_file": ".claude/tasks/details/C-GLOBAL-EMPTY-STATE.md"
+  },
+  {
+    "id": "C-GLOBAL-CTA-BANNER",
+    "type": "COMPONENT",
+    "screen": "GLOBAL",
+    "title": "CTA Banner primitive — reused on SCR-002/003/004/005",
+    "route": "N/A",
+    "page_entry": "src/components/ui/cta-banner.tsx",
+    "expected_files": [
+      "src/components/ui/cta-banner.tsx"
+    ],
+    "depends_on": [],
+    "requirements": [],
+    "db_tables": [],
+    "detail_file": ".claude/tasks/details/C-GLOBAL-CTA-BANNER.md"
+  },
+  {
+    "id": "C-GLOBAL-DEST-CARD",
+    "type": "COMPONENT",
+    "screen": "GLOBAL",
+    "title": "Destination Card — reused on SCR-001 grids and SCR-002 recommended destinations",
+    "route": "N/A",
+    "page_entry": "src/components/destinations/destination-card.tsx",
+    "expected_files": [
+      "src/components/destinations/destination-card.tsx"
+    ],
+    "depends_on": [
+      "D-DESTINATIONS"
+    ],
+    "requirements": [
+      "REQ-FUNC-009",
+      "REQ-FUNC-063"
+    ],
+    "db_tables": [],
+    "detail_file": ".claude/tasks/details/C-GLOBAL-DEST-CARD.md"
+  },
+  {
+    "id": "C-GLOBAL-AUTH-GATE",
+    "type": "COMPONENT",
+    "screen": "GLOBAL",
+    "title": "Auth/adult-verification gate — redirects unauthenticated users to /account",
+    "route": "N/A",
+    "page_entry": "src/components/auth/auth-gate.tsx",
+    "expected_files": [
+      "src/components/auth/auth-gate.tsx"
+    ],
+    "depends_on": [
+      "I-AUTH-WIRING"
+    ],
+    "requirements": [
+      "REQ-FUNC-027"
+    ],
+    "db_tables": [],
+    "detail_file": ".claude/tasks/details/C-GLOBAL-AUTH-GATE.md"
+  },
+  {
+    "id": "C-GLOBAL-ERROR-BOUNDARIES",
+    "type": "COMPONENT",
+    "screen": "GLOBAL",
+    "title": "404 not-found and 500 error boundary screens",
+    "route": "N/A",
+    "page_entry": "src/app/not-found.tsx",
+    "expected_files": [
+      "src/app/not-found.tsx",
+      "src/app/error.tsx"
+    ],
+    "depends_on": [],
+    "requirements": [
+      "REQ-FUNC-078"
+    ],
+    "db_tables": [],
+    "detail_file": ".claude/tasks/details/C-GLOBAL-ERROR-BOUNDARIES.md"
+  },
+  {
+    "id": "C-SCR-001-SEARCH-FILTER",
+    "type": "COMPONENT",
+    "screen": "SCR-001",
+    "title": "SCR-001 search input + domestic/overseas + filter bar (country/city/season/theme/period) + URL query sync",
+    "route": "/",
+    "page_entry": "src/app/page.tsx",
+    "expected_files": [
+      "src/components/destinations/search-filter-bar.tsx"
+    ],
+    "depends_on": [
+      "D-DESTINATIONS",
+      "C-GLOBAL-EMPTY-STATE"
+    ],
+    "requirements": [
+      "REQ-FUNC-001",
+      "REQ-FUNC-002",
+      "REQ-FUNC-003",
+      "REQ-FUNC-005",
+      "REQ-FUNC-010"
+    ],
+    "db_tables": [],
+    "detail_file": ".claude/tasks/details/C-SCR-001-SEARCH-FILTER.md"
+  },
+  {
+    "id": "C-SCR-001-SAFETY-PANEL",
+    "type": "COMPONENT",
+    "screen": "SCR-001",
+    "title": "SCR-001 country safety info card grid + detail panel (alert badge, source, last-checked, stale, MOFA link, emergency contacts)",
+    "route": "/",
+    "page_entry": "src/app/page.tsx",
+    "expected_files": [
+      "src/components/safety/safety-card.tsx",
+      "src/components/safety/safety-detail-panel.tsx"
+    ],
+    "depends_on": [
+      "D-SAFETY"
+    ],
+    "requirements": [
+      "REQ-FUNC-047",
+      "REQ-FUNC-048",
+      "REQ-FUNC-049",
+      "REQ-FUNC-050",
+      "REQ-FUNC-051",
+      "REQ-FUNC-053",
+      "REQ-FUNC-054",
+      "REQ-NF-028"
+    ],
+    "db_tables": [],
+    "detail_file": ".claude/tasks/details/C-SCR-001-SAFETY-PANEL.md"
+  },
+  {
+    "id": "C-SCR-001-THEME-CHIP",
+    "type": "COMPONENT",
+    "screen": "SCR-001",
+    "title": "SCR-001 travel theme chip list (6 chips) scrolling to filtered results",
+    "route": "/",
+    "page_entry": "src/app/page.tsx",
+    "expected_files": [
+      "src/components/destinations/theme-chip-list.tsx"
+    ],
+    "depends_on": [],
+    "requirements": [],
+    "db_tables": [],
+    "detail_file": ".claude/tasks/details/C-SCR-001-THEME-CHIP.md"
+  },
+  {
+    "id": "C-SCR-001-MATE-PREVIEW",
+    "type": "COMPONENT",
+    "screen": "SCR-001",
+    "title": "SCR-001 recent mate-post preview (max 3 cards) or full Empty State",
+    "route": "/",
+    "page_entry": "src/app/page.tsx",
+    "expected_files": [
+      "src/components/mates/mate-preview-section.tsx"
+    ],
+    "depends_on": [
+      "I-API-MATES",
+      "C-GLOBAL-EMPTY-STATE"
+    ],
+    "requirements": [],
+    "db_tables": [],
+    "detail_file": ".claude/tasks/details/C-SCR-001-MATE-PREVIEW.md"
+  },
+  {
+    "id": "C-SCR-001-DEST-DRAWER",
+    "type": "COMPONENT",
+    "screen": "SCR-001",
+    "title": "SCR-001 destination detail Drawer/Modal — intro/itinerary/budget/transport/food/etiquette/source + safety panel link",
+    "route": "/",
+    "page_entry": "src/app/page.tsx",
+    "expected_files": [
+      "src/components/destinations/destination-drawer.tsx"
+    ],
+    "depends_on": [
+      "D-DESTINATIONS",
+      "C-SCR-001-SAFETY-PANEL"
+    ],
+    "requirements": [
+      "REQ-FUNC-004",
+      "REQ-FUNC-006",
+      "REQ-FUNC-079"
+    ],
+    "db_tables": [],
+    "detail_file": ".claude/tasks/details/C-SCR-001-DEST-DRAWER.md"
+  },
+  {
+    "id": "C-SCR-001-FAVORITE-SHARE",
+    "type": "COMPONENT",
+    "screen": "SCR-001",
+    "title": "Favorite toggle (localStorage) + URL share button (Web Share API + copy fallback)",
+    "route": "/",
+    "page_entry": "src/app/page.tsx",
+    "expected_files": [
+      "src/components/destinations/favorite-share-button.tsx"
+    ],
+    "depends_on": [],
+    "requirements": [
+      "REQ-FUNC-068",
+      "REQ-FUNC-069"
+    ],
+    "db_tables": [],
+    "detail_file": ".claude/tasks/details/C-SCR-001-FAVORITE-SHARE.md"
+  },
+  {
+    "id": "C-SCR-002-METRIC-CARD",
+    "type": "COMPONENT",
+    "screen": "SCR-002",
+    "title": "SCR-002 travel metric cards (50+ Trips / 30+ Countries, single source)",
+    "route": "/about",
+    "page_entry": "src/app/about/page.tsx",
+    "expected_files": [
+      "src/components/about/metric-card.tsx"
+    ],
+    "depends_on": [
+      "D-ABOUT"
+    ],
+    "requirements": [
+      "REQ-FUNC-057"
+    ],
+    "db_tables": [],
+    "detail_file": ".claude/tasks/details/C-SCR-002-METRIC-CARD.md"
+  },
+  {
+    "id": "C-SCR-002-TIMELINE",
+    "type": "COMPONENT",
+    "screen": "SCR-002",
+    "title": "SCR-002 travel timeline (>=6 entries: year + place + summary)",
+    "route": "/about",
+    "page_entry": "src/app/about/page.tsx",
+    "expected_files": [
+      "src/components/about/travel-timeline.tsx"
+    ],
+    "depends_on": [
+      "D-ABOUT"
+    ],
+    "requirements": [
+      "REQ-FUNC-060"
+    ],
+    "db_tables": [],
+    "detail_file": ".claude/tasks/details/C-SCR-002-TIMELINE.md"
+  },
+  {
+    "id": "C-SCR-002-COUNTRY-CHIP",
+    "type": "COMPONENT",
+    "screen": "SCR-002",
+    "title": "SCR-002 visited-country chip list (>=30 chips, grouped by region)",
+    "route": "/about",
+    "page_entry": "src/app/about/page.tsx",
+    "expected_files": [
+      "src/components/about/country-chip-list.tsx"
+    ],
+    "depends_on": [
+      "D-ABOUT"
+    ],
+    "requirements": [
+      "REQ-FUNC-059"
+    ],
+    "db_tables": [],
+    "detail_file": ".claude/tasks/details/C-SCR-002-COUNTRY-CHIP.md"
+  },
+  {
+    "id": "C-SCR-002-GALLERY",
+    "type": "COMPONENT",
+    "screen": "SCR-002",
+    "title": "SCR-002 travel gallery grid (>=8 images, captioned, descriptive alt text)",
+    "route": "/about",
+    "page_entry": "src/app/about/page.tsx",
+    "expected_files": [
+      "src/components/about/gallery-grid.tsx"
+    ],
+    "depends_on": [
+      "D-ABOUT"
+    ],
+    "requirements": [
+      "REQ-FUNC-061"
+    ],
+    "db_tables": [],
+    "detail_file": ".claude/tasks/details/C-SCR-002-GALLERY.md"
+  },
+  {
+    "id": "C-SCR-002-CONTACT-LINKS",
+    "type": "COMPONENT",
+    "screen": "SCR-002",
+    "title": "SCR-002 inquiry/SNS links (empty values not rendered)",
+    "route": "/about",
+    "page_entry": "src/app/about/page.tsx",
+    "expected_files": [
+      "src/components/about/contact-links.tsx"
+    ],
+    "depends_on": [
+      "D-ABOUT"
+    ],
+    "requirements": [
+      "REQ-FUNC-062"
+    ],
+    "db_tables": [],
+    "detail_file": ".claude/tasks/details/C-SCR-002-CONTACT-LINKS.md"
+  },
+  {
+    "id": "C-SCR-003-TABS-SHELL",
+    "type": "COMPONENT",
+    "screen": "SCR-003",
+    "title": "SCR-003 underline Tabs shell — 항공편/숙소/동행 구하기, each with an independent session-scoped state machine",
+    "route": "/travel-tools",
+    "page_entry": "src/app/travel-tools/page.tsx",
+    "expected_files": [
+      "src/components/travel-tools/tabs-shell.tsx"
+    ],
+    "depends_on": [],
+    "requirements": [],
+    "db_tables": [],
+    "detail_file": ".claude/tasks/details/C-SCR-003-TABS-SHELL.md"
+  },
+  {
+    "id": "C-SCR-003-FLIGHT-FORM",
+    "type": "COMPONENT",
+    "screen": "SCR-003",
+    "title": "SCR-003 flight condition input form (country/region cascading select, date validation)",
+    "route": "/travel-tools",
+    "page_entry": "src/app/travel-tools/page.tsx",
+    "expected_files": [
+      "src/components/travel-tools/flight-form.tsx"
+    ],
+    "depends_on": [],
+    "requirements": [
+      "REQ-FUNC-011",
+      "REQ-FUNC-012",
+      "REQ-FUNC-013",
+      "REQ-FUNC-017",
+      "REQ-NF-017"
+    ],
+    "db_tables": [],
+    "detail_file": ".claude/tasks/details/C-SCR-003-FLIGHT-FORM.md"
+  },
+  {
+    "id": "C-SCR-003-FLIGHT-SUMMARY-ACTION",
+    "type": "COMPONENT",
+    "screen": "SCR-003",
+    "title": "SCR-003 flight summary + external link-out Action Card (non-transmission disclosure, noopener/noreferrer, no query params)",
+    "route": "/travel-tools",
+    "page_entry": "src/app/travel-tools/page.tsx",
+    "expected_files": [
+      "src/components/travel-tools/flight-summary-action.tsx"
+    ],
+    "depends_on": [
+      "C-SCR-003-FLIGHT-FORM",
+      "I-API-ADMIN-EXTERNAL-LINKS"
+    ],
+    "requirements": [
+      "REQ-FUNC-014",
+      "REQ-FUNC-015",
+      "REQ-FUNC-016",
+      "REQ-FUNC-018"
+    ],
+    "db_tables": [],
+    "detail_file": ".claude/tasks/details/C-SCR-003-FLIGHT-SUMMARY-ACTION.md"
+  },
+  {
+    "id": "C-SCR-003-HOTEL-FORM",
+    "type": "COMPONENT",
+    "screen": "SCR-003",
+    "title": "SCR-003 hotel condition input form (country/region cascading select, check-in/out validation)",
+    "route": "/travel-tools",
+    "page_entry": "src/app/travel-tools/page.tsx",
+    "expected_files": [
+      "src/components/travel-tools/hotel-form.tsx"
+    ],
+    "depends_on": [],
+    "requirements": [
+      "REQ-FUNC-019",
+      "REQ-FUNC-020",
+      "REQ-FUNC-021",
+      "REQ-FUNC-025",
+      "REQ-NF-017"
+    ],
+    "db_tables": [],
+    "detail_file": ".claude/tasks/details/C-SCR-003-HOTEL-FORM.md"
+  },
+  {
+    "id": "C-SCR-003-HOTEL-SUMMARY-ACTION",
+    "type": "COMPONENT",
+    "screen": "SCR-003",
+    "title": "SCR-003 hotel summary + external link-out Action Card",
+    "route": "/travel-tools",
+    "page_entry": "src/app/travel-tools/page.tsx",
+    "expected_files": [
+      "src/components/travel-tools/hotel-summary-action.tsx"
+    ],
+    "depends_on": [
+      "C-SCR-003-HOTEL-FORM",
+      "I-API-ADMIN-EXTERNAL-LINKS"
+    ],
+    "requirements": [
+      "REQ-FUNC-022",
+      "REQ-FUNC-023",
+      "REQ-FUNC-024",
+      "REQ-FUNC-026"
+    ],
+    "db_tables": [],
+    "detail_file": ".claude/tasks/details/C-SCR-003-HOTEL-SUMMARY-ACTION.md"
+  },
+  {
+    "id": "C-SCR-003-DISCLOSURE-TIPS",
+    "type": "COMPONENT",
+    "screen": "SCR-003",
+    "title": "SCR-003 non-transmission disclosure info banner + >=3 tip cards",
+    "route": "/travel-tools",
+    "page_entry": "src/app/travel-tools/page.tsx",
+    "expected_files": [
+      "src/components/travel-tools/disclosure-tips.tsx"
+    ],
+    "depends_on": [],
+    "requirements": [],
+    "db_tables": [],
+    "detail_file": ".claude/tasks/details/C-SCR-003-DISCLOSURE-TIPS.md"
+  },
+  {
+    "id": "C-SCR-003-MATE-COMPOSE-FORM",
+    "type": "COMPONENT",
+    "screen": "SCR-003",
+    "title": "SCR-003 mate-post composition form (title/country/period/headcount/style/description, contact-pattern block, safety-rule consent)",
+    "route": "/travel-tools",
+    "page_entry": "src/app/travel-tools/page.tsx",
+    "expected_files": [
+      "src/components/travel-tools/mate-compose-form.tsx"
+    ],
+    "depends_on": [
+      "C-GLOBAL-AUTH-GATE",
+      "I-API-MATES",
+      "D-LEGAL"
+    ],
+    "requirements": [
+      "REQ-FUNC-031",
+      "REQ-FUNC-032",
+      "REQ-FUNC-080"
+    ],
+    "db_tables": [],
+    "detail_file": ".claude/tasks/details/C-SCR-003-MATE-COMPOSE-FORM.md"
+  },
+  {
+    "id": "C-SCR-004-FILTER-BAR",
+    "type": "COMPONENT",
+    "screen": "SCR-004",
+    "title": "SCR-004 filter row (country/region/period/age/gender/style/status) + blocked-user exclusion",
+    "route": "/mates",
+    "page_entry": "src/app/mates/page.tsx",
+    "expected_files": [
+      "src/components/mates/mate-filter-bar.tsx"
+    ],
+    "depends_on": [
+      "I-API-MATES"
+    ],
+    "requirements": [
+      "REQ-FUNC-030"
+    ],
+    "db_tables": [],
+    "detail_file": ".claude/tasks/details/C-SCR-004-FILTER-BAR.md"
+  },
+  {
+    "id": "C-SCR-004-MATE-CARD",
+    "type": "COMPONENT",
+    "screen": "SCR-004",
+    "title": "SCR-004 mate post card (country/period/headcount/status badge, no contact info rendered, CLOSED computed at read time)",
+    "route": "/mates",
+    "page_entry": "src/app/mates/page.tsx",
+    "expected_files": [
+      "src/components/mates/mate-card.tsx"
+    ],
+    "depends_on": [
+      "I-API-MATES"
+    ],
+    "requirements": [
+      "REQ-FUNC-033",
+      "REQ-FUNC-037"
+    ],
+    "db_tables": [],
+    "detail_file": ".claude/tasks/details/C-SCR-004-MATE-CARD.md"
+  },
+  {
+    "id": "C-SCR-004-MATE-DETAIL-PANEL",
+    "type": "COMPONENT",
+    "screen": "SCR-004",
+    "title": "SCR-004 list+detail Split (desktop 40/60) / Drawer (mobile) — participation form, host approve/reject, close/edit/delete, share",
+    "route": "/mates",
+    "page_entry": "src/app/mates/page.tsx",
+    "expected_files": [
+      "src/components/mates/mate-detail-panel.tsx"
+    ],
+    "depends_on": [
+      "I-API-MATE-REQUESTS",
+      "C-GLOBAL-AUTH-GATE"
+    ],
+    "requirements": [
+      "REQ-FUNC-034",
+      "REQ-FUNC-035",
+      "REQ-FUNC-036",
+      "REQ-FUNC-038",
+      "REQ-FUNC-069"
+    ],
+    "db_tables": [],
+    "detail_file": ".claude/tasks/details/C-SCR-004-MATE-DETAIL-PANEL.md"
+  },
+  {
+    "id": "C-SCR-004-REPORT-BLOCK",
+    "type": "COMPONENT",
+    "screen": "SCR-004",
+    "title": "SCR-004 report modal + block action",
+    "route": "/mates",
+    "page_entry": "src/app/mates/page.tsx",
+    "expected_files": [
+      "src/components/mates/report-block-controls.tsx"
+    ],
+    "depends_on": [
+      "I-API-MATE-REPORT",
+      "I-API-BLOCKLIST"
+    ],
+    "requirements": [
+      "REQ-FUNC-039",
+      "REQ-FUNC-040",
+      "REQ-NF-019"
+    ],
+    "db_tables": [],
+    "detail_file": ".claude/tasks/details/C-SCR-004-REPORT-BLOCK.md"
+  },
+  {
+    "id": "C-SCR-004-GUIDE-STEPS",
+    "type": "COMPONENT",
+    "screen": "SCR-004",
+    "title": "SCR-004 3-step 'how to request a mate' guide cards",
+    "route": "/mates",
+    "page_entry": "src/app/mates/page.tsx",
+    "expected_files": [
+      "src/components/mates/guide-steps.tsx"
+    ],
+    "depends_on": [],
+    "requirements": [],
+    "db_tables": [],
+    "detail_file": ".claude/tasks/details/C-SCR-004-GUIDE-STEPS.md"
+  },
+  {
+    "id": "C-SCR-005-AUTH-FORMS",
+    "type": "COMPONENT",
+    "screen": "SCR-005",
+    "title": "SCR-005 Guest state — login/signup/password-reset cards (submits via /auth/callback)",
+    "route": "/account",
+    "page_entry": "src/app/account/page.tsx",
+    "expected_files": [
+      "src/components/account/auth-forms.tsx"
+    ],
+    "depends_on": [
+      "I-AUTH-WIRING"
+    ],
+    "requirements": [
+      "REQ-FUNC-066"
+    ],
+    "db_tables": [],
+    "detail_file": ".claude/tasks/details/C-SCR-005-AUTH-FORMS.md"
+  },
+  {
+    "id": "C-SCR-005-PROFILE-FORM",
+    "type": "COMPONENT",
+    "screen": "SCR-005",
+    "title": "SCR-005 Member profile form (nickname/age-range/style required, gender optional) + adult-verification badge",
+    "route": "/account",
+    "page_entry": "src/app/account/page.tsx",
+    "expected_files": [
+      "src/components/account/profile-form.tsx"
+    ],
+    "depends_on": [
+      "I-SUPABASE-SCHEMA"
+    ],
+    "requirements": [
+      "REQ-FUNC-028",
+      "REQ-FUNC-029"
+    ],
+    "db_tables": [],
+    "detail_file": ".claude/tasks/details/C-SCR-005-PROFILE-FORM.md"
+  },
+  {
+    "id": "C-SCR-005-MY-ACTIVITY",
+    "type": "COMPONENT",
+    "screen": "SCR-005",
+    "title": "SCR-005 Member activity lists — my posts / my requests / blocklist (Card Grid or Empty State each)",
+    "route": "/account",
+    "page_entry": "src/app/account/page.tsx",
+    "expected_files": [
+      "src/components/account/my-activity.tsx"
+    ],
+    "depends_on": [
+      "I-API-MATES",
+      "I-API-MATE-REQUESTS",
+      "I-API-BLOCKLIST",
+      "C-GLOBAL-EMPTY-STATE"
+    ],
+    "requirements": [
+      "REQ-FUNC-040"
+    ],
+    "db_tables": [],
+    "detail_file": ".claude/tasks/details/C-SCR-005-MY-ACTIVITY.md"
+  },
+  {
+    "id": "C-SCR-005-ADMIN-REPORTS",
+    "type": "COMPONENT",
+    "screen": "SCR-005",
+    "title": "SCR-005 Admin — report status filter + list + change (OPEN/RESOLVED/DISMISSED)",
+    "route": "/account",
+    "page_entry": "src/app/account/page.tsx",
+    "expected_files": [
+      "src/components/account/admin-reports.tsx"
+    ],
+    "depends_on": [
+      "I-API-ADMIN-REPORTS"
+    ],
+    "requirements": [
+      "REQ-FUNC-041"
+    ],
+    "db_tables": [],
+    "detail_file": ".claude/tasks/details/C-SCR-005-ADMIN-REPORTS.md"
+  },
+  {
+    "id": "C-SCR-005-ADMIN-EXTERNAL-LINKS",
+    "type": "COMPONENT",
+    "screen": "SCR-005",
+    "title": "SCR-005 Admin — flight/hotel external URL form (HTTPS + allow-list validation)",
+    "route": "/account",
+    "page_entry": "src/app/account/page.tsx",
+    "expected_files": [
+      "src/components/account/admin-external-links-form.tsx"
+    ],
+    "depends_on": [
+      "I-API-ADMIN-EXTERNAL-LINKS"
+    ],
+    "requirements": [
+      "REQ-FUNC-077"
+    ],
+    "db_tables": [],
+    "detail_file": ".claude/tasks/details/C-SCR-005-ADMIN-EXTERNAL-LINKS.md"
+  },
+  {
+    "id": "C-SCR-005-LEGAL-VIEWER",
+    "type": "COMPONENT",
+    "screen": "SCR-005",
+    "title": "SCR-005 terms / privacy / mate safety rules / content disclaimer viewer",
+    "route": "/account",
+    "page_entry": "src/app/account/page.tsx",
+    "expected_files": [
+      "src/components/account/legal-viewer.tsx"
+    ],
+    "depends_on": [
+      "D-LEGAL"
+    ],
+    "requirements": [
+      "REQ-FUNC-080"
+    ],
+    "db_tables": [],
+    "detail_file": ".claude/tasks/details/C-SCR-005-LEGAL-VIEWER.md"
+  },
+  {
+    "id": "D-DESTINATIONS",
+    "type": "DATA",
+    "screen": "N/A",
+    "title": "Static destination content dataset (domestic >=10, overseas >=15 countries/30 cities)",
+    "route": "N/A",
+    "page_entry": "src/data/destinations.ts",
+    "expected_files": [
+      "src/data/destinations.ts",
+      "src/data/destinations.schema.ts"
+    ],
+    "depends_on": [],
+    "requirements": [
+      "REQ-FUNC-007",
+      "REQ-FUNC-008",
+      "REQ-NF-026",
+      "REQ-NF-029"
+    ],
+    "db_tables": [],
+    "detail_file": ".claude/tasks/details/D-DESTINATIONS.md"
+  },
+  {
+    "id": "D-SAFETY",
+    "type": "DATA",
+    "screen": "N/A",
+    "title": "Static country safety dataset (8 required categories per country, scope_type/scope_text)",
+    "route": "N/A",
+    "page_entry": "src/data/safety.ts",
+    "expected_files": [
+      "src/data/safety.ts",
+      "src/data/safety.schema.ts"
+    ],
+    "depends_on": [],
+    "requirements": [
+      "REQ-FUNC-046",
+      "REQ-FUNC-052",
+      "REQ-NF-027",
+      "REQ-NF-029"
+    ],
+    "db_tables": [],
+    "detail_file": ".claude/tasks/details/D-SAFETY.md"
+  },
+  {
+    "id": "D-ABOUT",
+    "type": "DATA",
+    "screen": "N/A",
+    "title": "Static founder/about content dataset (profile, philosophy, timeline, visited countries, gallery, recommended destinations)",
+    "route": "N/A",
+    "page_entry": "src/data/about.ts",
+    "expected_files": [
+      "src/data/about.ts"
+    ],
+    "depends_on": [],
+    "requirements": [
+      "REQ-FUNC-057",
+      "REQ-FUNC-058",
+      "REQ-FUNC-059",
+      "REQ-FUNC-060",
+      "REQ-FUNC-061",
+      "REQ-FUNC-062",
+      "REQ-FUNC-063",
+      "REQ-NF-029"
+    ],
+    "db_tables": [],
+    "detail_file": ".claude/tasks/details/D-ABOUT.md"
+  },
+  {
+    "id": "D-LEGAL",
+    "type": "DATA",
+    "screen": "N/A",
+    "title": "Static legal copy dataset — terms, privacy policy, mate safety rules, content disclaimer (versioned)",
+    "route": "N/A",
+    "page_entry": "src/data/legal.ts",
+    "expected_files": [
+      "src/data/legal.ts"
+    ],
+    "depends_on": [],
+    "requirements": [
+      "REQ-FUNC-080"
+    ],
+    "db_tables": [],
+    "detail_file": ".claude/tasks/details/D-LEGAL.md"
+  },
+  {
+    "id": "I-SUPABASE-SCHEMA",
+    "type": "INFRA",
+    "screen": "N/A",
+    "title": "Supabase schema — the 6 canonical tables (profiles, mate_posts, mate_applications, blocks, reports, external_links)",
+    "route": "N/A",
+    "page_entry": "supabase/migrations/",
+    "expected_files": [
+      "supabase/migrations/0001_init_schema.sql"
+    ],
+    "depends_on": [],
+    "requirements": [
+      "REQ-FUNC-035",
+      "REQ-FUNC-077"
+    ],
+    "db_tables": [
+      "profiles",
+      "mate_posts",
+      "mate_applications",
+      "blocks",
+      "reports",
+      "external_links"
+    ],
+    "detail_file": ".claude/tasks/details/I-SUPABASE-SCHEMA.md"
+  },
+  {
+    "id": "I-SUPABASE-RLS",
+    "type": "INFRA",
+    "screen": "N/A",
+    "title": "Supabase Row Level Security policies for all 6 tables",
+    "route": "N/A",
+    "page_entry": "supabase/migrations/",
+    "expected_files": [
+      "supabase/migrations/0002_rls_policies.sql"
+    ],
+    "depends_on": [
+      "I-SUPABASE-SCHEMA"
+    ],
+    "requirements": [
+      "REQ-FUNC-044",
+      "REQ-NF-013"
+    ],
+    "db_tables": [
+      "profiles",
+      "mate_posts",
+      "mate_applications",
+      "blocks",
+      "reports",
+      "external_links"
+    ],
+    "detail_file": ".claude/tasks/details/I-SUPABASE-RLS.md"
+  },
+  {
+    "id": "I-AUTH-WIRING",
+    "type": "INFRA",
+    "screen": "N/A",
+    "title": "Supabase Auth wiring — email signup/login/logout/reset + auth callback route + session middleware",
+    "route": "/auth/callback",
+    "page_entry": "src/app/auth/callback/route.ts",
+    "expected_files": [
+      "src/app/auth/callback/route.ts",
+      "src/middleware.ts",
+      "src/lib/supabase/client.ts",
+      "src/lib/supabase/server.ts"
+    ],
+    "depends_on": [
+      "I-SUPABASE-SCHEMA"
+    ],
+    "requirements": [
+      "REQ-FUNC-066",
+      "REQ-NF-014"
+    ],
+    "db_tables": [
+      "profiles"
+    ],
+    "detail_file": ".claude/tasks/details/I-AUTH-WIRING.md"
+  },
+  {
+    "id": "I-API-MATES",
+    "type": "INFRA",
+    "screen": "N/A",
+    "title": "API Route — GET/POST /api/mates (list + create mate posts)",
+    "route": "/api/mates",
+    "page_entry": "src/app/api/mates/route.ts",
+    "expected_files": [
+      "src/app/api/mates/route.ts"
+    ],
+    "depends_on": [
+      "I-SUPABASE-SCHEMA",
+      "I-SUPABASE-RLS"
+    ],
+    "requirements": [
+      "REQ-FUNC-030",
+      "REQ-FUNC-031"
+    ],
+    "db_tables": [
+      "mate_posts"
+    ],
+    "detail_file": ".claude/tasks/details/I-API-MATES.md"
+  },
+  {
+    "id": "I-API-MATE-REQUESTS",
+    "type": "INFRA",
+    "screen": "N/A",
+    "title": "API Route — POST/PATCH /api/mates/[id]/requests (create/approve/reject participation requests)",
+    "route": "/api/mates/[id]/requests",
+    "page_entry": "src/app/api/mates/[id]/requests/route.ts",
+    "expected_files": [
+      "src/app/api/mates/[id]/requests/route.ts"
+    ],
+    "depends_on": [
+      "I-SUPABASE-SCHEMA",
+      "I-SUPABASE-RLS"
+    ],
+    "requirements": [
+      "REQ-FUNC-034",
+      "REQ-FUNC-035",
+      "REQ-FUNC-036"
+    ],
+    "db_tables": [
+      "mate_applications"
+    ],
+    "detail_file": ".claude/tasks/details/I-API-MATE-REQUESTS.md"
+  },
+  {
+    "id": "I-API-MATE-REPORT",
+    "type": "INFRA",
+    "screen": "N/A",
+    "title": "API Route — POST /api/mates/[id]/report (submit a report)",
+    "route": "/api/mates/[id]/report",
+    "page_entry": "src/app/api/mates/[id]/report/route.ts",
+    "expected_files": [
+      "src/app/api/mates/[id]/report/route.ts"
+    ],
+    "depends_on": [
+      "I-SUPABASE-SCHEMA",
+      "I-SUPABASE-RLS"
+    ],
+    "requirements": [
+      "REQ-FUNC-039",
+      "REQ-NF-019"
+    ],
+    "db_tables": [
+      "reports"
+    ],
+    "detail_file": ".claude/tasks/details/I-API-MATE-REPORT.md"
+  },
+  {
+    "id": "I-API-BLOCKLIST",
+    "type": "INFRA",
+    "screen": "N/A",
+    "title": "API Route — POST/DELETE /api/account/blocklist (block/unblock a user)",
+    "route": "/api/account/blocklist",
+    "page_entry": "src/app/api/account/blocklist/route.ts",
+    "expected_files": [
+      "src/app/api/account/blocklist/route.ts"
+    ],
+    "depends_on": [
+      "I-SUPABASE-SCHEMA",
+      "I-SUPABASE-RLS"
+    ],
+    "requirements": [
+      "REQ-FUNC-040"
+    ],
+    "db_tables": [
+      "blocks"
+    ],
+    "detail_file": ".claude/tasks/details/I-API-BLOCKLIST.md"
+  },
+  {
+    "id": "I-API-ADMIN-REPORTS",
+    "type": "INFRA",
+    "screen": "N/A",
+    "title": "API Route — PATCH /api/admin/reports (moderator report status change)",
+    "route": "/api/admin/reports",
+    "page_entry": "src/app/api/admin/reports/route.ts",
+    "expected_files": [
+      "src/app/api/admin/reports/route.ts"
+    ],
+    "depends_on": [
+      "I-SUPABASE-SCHEMA",
+      "I-SUPABASE-RLS"
+    ],
+    "requirements": [
+      "REQ-FUNC-041"
+    ],
+    "db_tables": [
+      "reports"
+    ],
+    "detail_file": ".claude/tasks/details/I-API-ADMIN-REPORTS.md"
+  },
+  {
+    "id": "I-API-ADMIN-EXTERNAL-LINKS",
+    "type": "INFRA",
+    "screen": "N/A",
+    "title": "API Route — PATCH /api/admin/external-links (HTTPS + allow-list validated flight/hotel URL config)",
+    "route": "/api/admin/external-links",
+    "page_entry": "src/app/api/admin/external-links/route.ts",
+    "expected_files": [
+      "src/app/api/admin/external-links/route.ts"
+    ],
+    "depends_on": [
+      "I-SUPABASE-SCHEMA",
+      "I-SUPABASE-RLS"
+    ],
+    "requirements": [
+      "REQ-FUNC-077"
+    ],
+    "db_tables": [
+      "external_links"
+    ],
+    "detail_file": ".claude/tasks/details/I-API-ADMIN-EXTERNAL-LINKS.md"
+  },
+  {
+    "id": "I-INPUT-VALIDATION",
+    "type": "INFRA",
+    "screen": "N/A",
+    "title": "Shared input validation/escaping baseline (zod schemas) for all forms and API routes",
+    "route": "N/A",
+    "page_entry": "src/lib/validation/",
+    "expected_files": [
+      "src/lib/validation/schemas.ts"
+    ],
+    "depends_on": [],
+    "requirements": [
+      "REQ-NF-015"
+    ],
+    "db_tables": [],
+    "detail_file": ".claude/tasks/details/I-INPUT-VALIDATION.md"
+  },
+  {
+    "id": "I-PERFORMANCE-BASELINE",
+    "type": "INFRA",
+    "screen": "N/A",
+    "title": "Performance baseline — next/image usage, static generation, layout-shift prevention",
+    "route": "N/A",
+    "page_entry": "next.config.ts",
+    "expected_files": [
+      "next.config.ts"
+    ],
+    "depends_on": [],
+    "requirements": [
+      "REQ-NF-001",
+      "REQ-NF-002",
+      "REQ-NF-003",
+      "REQ-NF-006"
+    ],
+    "db_tables": [],
+    "detail_file": ".claude/tasks/details/I-PERFORMANCE-BASELINE.md"
+  },
+  {
+    "id": "I-A11Y-PASS",
+    "type": "INFRA",
+    "screen": "N/A",
+    "title": "Manual accessibility pass — keyboard navigation + screen reader check on core flows across all 5 screens",
+    "route": "N/A",
+    "page_entry": "docs/A11Y_CHECK.md",
+    "expected_files": [
+      "docs/A11Y_CHECK.md"
+    ],
+    "depends_on": [
+      "PO-SCR-001",
+      "PO-SCR-002",
+      "PO-SCR-003",
+      "PO-SCR-004",
+      "PO-SCR-005"
+    ],
+    "requirements": [
+      "REQ-NF-023",
+      "REQ-NF-025"
+    ],
+    "db_tables": [],
+    "detail_file": ".claude/tasks/details/I-A11Y-PASS.md"
+  },
+  {
+    "id": "I-DEPLOY-VERCEL",
+    "type": "INFRA",
+    "screen": "N/A",
+    "title": "Vercel deployment config — env vars for secrets, TLS default, cost-tier reference",
+    "route": "N/A",
+    "page_entry": "vercel.json",
+    "expected_files": [
+      "vercel.json"
+    ],
+    "depends_on": [
+      "PO-SCR-001",
+      "PO-SCR-002",
+      "PO-SCR-003",
+      "PO-SCR-004",
+      "PO-SCR-005",
+      "I-SUPABASE-SCHEMA"
+    ],
+    "requirements": [
+      "REQ-NF-012",
+      "REQ-NF-016",
+      "REQ-NF-034"
+    ],
+    "db_tables": [],
+    "detail_file": ".claude/tasks/details/I-DEPLOY-VERCEL.md"
+  },
+  {
+    "id": "I-PLAYWRIGHT-SETUP",
+    "type": "INFRA",
+    "screen": "N/A",
+    "title": "Install and configure Playwright — Chromium project only, no Firefox/WebKit/visual/load-test projects",
+    "route": "N/A",
+    "page_entry": "playwright.config.ts",
+    "expected_files": [
+      "playwright.config.ts",
+      "package.json"
+    ],
+    "depends_on": [],
+    "requirements": [
+      "REQ-NF-031"
+    ],
+    "db_tables": [],
+    "detail_file": ".claude/tasks/details/I-PLAYWRIGHT-SETUP.md"
+  },
+  {
+    "id": "PO-SCR-001",
+    "type": "PAGE_OWNER",
+    "screen": "SCR-001",
+    "title": "SCR-001 `/` Page Owner — assemble Home (remove create-next-app starter markup)",
+    "route": "/",
+    "page_entry": "src/app/page.tsx",
+    "expected_files": [
+      "src/app/page.tsx"
+    ],
+    "depends_on": [
+      "C-GLOBAL-HEADER",
+      "C-GLOBAL-FOOTER",
+      "C-GLOBAL-DEST-CARD",
+      "C-GLOBAL-EMPTY-STATE",
+      "C-GLOBAL-CTA-BANNER",
+      "C-GLOBAL-TOAST",
+      "C-SCR-001-SEARCH-FILTER",
+      "C-SCR-001-SAFETY-PANEL",
+      "C-SCR-001-THEME-CHIP",
+      "C-SCR-001-MATE-PREVIEW",
+      "C-SCR-001-DEST-DRAWER",
+      "C-SCR-001-FAVORITE-SHARE",
+      "D-DESTINATIONS",
+      "D-SAFETY"
+    ],
+    "requirements": [
+      "REQ-FUNC-070",
+      "REQ-NF-030"
+    ],
+    "db_tables": [],
+    "detail_file": ".claude/tasks/details/PO-SCR-001.md"
+  },
+  {
+    "id": "PO-SCR-002",
+    "type": "PAGE_OWNER",
+    "screen": "SCR-002",
+    "title": "SCR-002 `/about` Page Owner — assemble founder About page",
+    "route": "/about",
+    "page_entry": "src/app/about/page.tsx",
+    "expected_files": [
+      "src/app/about/page.tsx"
+    ],
+    "depends_on": [
+      "C-GLOBAL-HEADER",
+      "C-GLOBAL-FOOTER",
+      "C-GLOBAL-DEST-CARD",
+      "C-GLOBAL-CTA-BANNER",
+      "C-SCR-002-METRIC-CARD",
+      "C-SCR-002-TIMELINE",
+      "C-SCR-002-COUNTRY-CHIP",
+      "C-SCR-002-GALLERY",
+      "C-SCR-002-CONTACT-LINKS",
+      "D-ABOUT"
+    ],
+    "requirements": [
+      "REQ-FUNC-070",
+      "REQ-NF-030"
+    ],
+    "db_tables": [],
+    "detail_file": ".claude/tasks/details/PO-SCR-002.md"
+  },
+  {
+    "id": "PO-SCR-003",
+    "type": "PAGE_OWNER",
+    "screen": "SCR-003",
+    "title": "SCR-003 `/travel-tools` Page Owner — assemble all 3 tabs (항공편/숙소/동행 구하기) in one page",
+    "route": "/travel-tools",
+    "page_entry": "src/app/travel-tools/page.tsx",
+    "expected_files": [
+      "src/app/travel-tools/page.tsx"
+    ],
+    "depends_on": [
+      "C-GLOBAL-HEADER",
+      "C-GLOBAL-FOOTER",
+      "C-GLOBAL-TOAST",
+      "C-GLOBAL-AUTH-GATE",
+      "C-GLOBAL-CTA-BANNER",
+      "C-SCR-003-TABS-SHELL",
+      "C-SCR-003-FLIGHT-FORM",
+      "C-SCR-003-FLIGHT-SUMMARY-ACTION",
+      "C-SCR-003-HOTEL-FORM",
+      "C-SCR-003-HOTEL-SUMMARY-ACTION",
+      "C-SCR-003-DISCLOSURE-TIPS",
+      "C-SCR-003-MATE-COMPOSE-FORM"
+    ],
+    "requirements": [
+      "REQ-FUNC-070",
+      "REQ-NF-030"
+    ],
+    "db_tables": [],
+    "detail_file": ".claude/tasks/details/PO-SCR-003.md"
+  },
+  {
+    "id": "PO-SCR-004",
+    "type": "PAGE_OWNER",
+    "screen": "SCR-004",
+    "title": "SCR-004 `/mates` Page Owner — assemble mate listing + detail Split/Drawer",
+    "route": "/mates",
+    "page_entry": "src/app/mates/page.tsx",
+    "expected_files": [
+      "src/app/mates/page.tsx"
+    ],
+    "depends_on": [
+      "C-GLOBAL-HEADER",
+      "C-GLOBAL-FOOTER",
+      "C-GLOBAL-TOAST",
+      "C-GLOBAL-AUTH-GATE",
+      "C-GLOBAL-CTA-BANNER",
+      "C-GLOBAL-EMPTY-STATE",
+      "C-SCR-004-FILTER-BAR",
+      "C-SCR-004-MATE-CARD",
+      "C-SCR-004-MATE-DETAIL-PANEL",
+      "C-SCR-004-REPORT-BLOCK",
+      "C-SCR-004-GUIDE-STEPS"
+    ],
+    "requirements": [
+      "REQ-FUNC-070",
+      "REQ-NF-030"
+    ],
+    "db_tables": [],
+    "detail_file": ".claude/tasks/details/PO-SCR-004.md"
+  },
+  {
+    "id": "PO-SCR-005",
+    "type": "PAGE_OWNER",
+    "screen": "SCR-005",
+    "title": "SCR-005 `/account` Page Owner — assemble Guest/Member/Admin role-scoped tabs",
+    "route": "/account",
+    "page_entry": "src/app/account/page.tsx",
+    "expected_files": [
+      "src/app/account/page.tsx"
+    ],
+    "depends_on": [
+      "C-GLOBAL-HEADER",
+      "C-GLOBAL-FOOTER",
+      "C-GLOBAL-CTA-BANNER",
+      "C-GLOBAL-EMPTY-STATE",
+      "C-SCR-005-AUTH-FORMS",
+      "C-SCR-005-PROFILE-FORM",
+      "C-SCR-005-MY-ACTIVITY",
+      "C-SCR-005-ADMIN-REPORTS",
+      "C-SCR-005-ADMIN-EXTERNAL-LINKS",
+      "C-SCR-005-LEGAL-VIEWER",
+      "D-LEGAL"
+    ],
+    "requirements": [
+      "REQ-FUNC-070",
+      "REQ-NF-030"
+    ],
+    "db_tables": [],
+    "detail_file": ".claude/tasks/details/PO-SCR-005.md"
+  },
+  {
+    "id": "T-SMOKE-SCR-001",
+    "type": "TEST",
+    "screen": "SCR-001",
+    "title": "Chromium smoke — destination search/filter/detail, safety panel, favorite/share (REQ-FUNC-001~010, 046~054, 068~069)",
+    "route": "/",
+    "page_entry": "tests/smoke/scr-001.spec.ts",
+    "expected_files": [
+      "tests/smoke/scr-001.spec.ts"
+    ],
+    "depends_on": [
+      "PO-SCR-001",
+      "I-PLAYWRIGHT-SETUP"
+    ],
+    "requirements": [
+      "REQ-NF-031"
+    ],
+    "db_tables": [],
+    "detail_file": ".claude/tasks/details/T-SMOKE-SCR-001.md"
+  },
+  {
+    "id": "T-SMOKE-SCR-002",
+    "type": "TEST",
+    "screen": "SCR-002",
+    "title": "Chromium smoke — about page metric/timeline/gallery/country-chip render and recommended-destination links",
+    "route": "/about",
+    "page_entry": "tests/smoke/scr-002.spec.ts",
+    "expected_files": [
+      "tests/smoke/scr-002.spec.ts"
+    ],
+    "depends_on": [
+      "PO-SCR-002",
+      "I-PLAYWRIGHT-SETUP"
+    ],
+    "requirements": [
+      "REQ-NF-031"
+    ],
+    "db_tables": [],
+    "detail_file": ".claude/tasks/details/T-SMOKE-SCR-002.md"
+  },
+  {
+    "id": "T-SMOKE-SCR-003",
+    "type": "TEST",
+    "screen": "SCR-003",
+    "title": "Chromium smoke — flight/hotel input->summary->external link-out (no query params), mate compose + contact block (REQ-FUNC-011~026, 031~032, 080)",
+    "route": "/travel-tools",
+    "page_entry": "tests/smoke/scr-003.spec.ts",
+    "expected_files": [
+      "tests/smoke/scr-003.spec.ts"
+    ],
+    "depends_on": [
+      "PO-SCR-003",
+      "I-PLAYWRIGHT-SETUP"
+    ],
+    "requirements": [
+      "REQ-NF-031"
+    ],
+    "db_tables": [],
+    "detail_file": ".claude/tasks/details/T-SMOKE-SCR-003.md"
+  },
+  {
+    "id": "T-SMOKE-SCR-004",
+    "type": "TEST",
+    "screen": "SCR-004",
+    "title": "Chromium smoke — mate filter/list/detail, participation request/approve/reject, report/block (REQ-FUNC-030~040)",
+    "route": "/mates",
+    "page_entry": "tests/smoke/scr-004.spec.ts",
+    "expected_files": [
+      "tests/smoke/scr-004.spec.ts"
+    ],
+    "depends_on": [
+      "PO-SCR-004",
+      "I-PLAYWRIGHT-SETUP"
+    ],
+    "requirements": [
+      "REQ-NF-031"
+    ],
+    "db_tables": [],
+    "detail_file": ".claude/tasks/details/T-SMOKE-SCR-004.md"
+  },
+  {
+    "id": "T-SMOKE-SCR-005",
+    "type": "TEST",
+    "screen": "SCR-005",
+    "title": "Chromium smoke — auth, profile/adult-verification, my-activity, admin report status + external URL config (REQ-FUNC-066, 028~029, 041, 077)",
+    "route": "/account",
+    "page_entry": "tests/smoke/scr-005.spec.ts",
+    "expected_files": [
+      "tests/smoke/scr-005.spec.ts"
+    ],
+    "depends_on": [
+      "PO-SCR-005",
+      "I-PLAYWRIGHT-SETUP"
+    ],
+    "requirements": [
+      "REQ-NF-031"
+    ],
+    "db_tables": [],
+    "detail_file": ".claude/tasks/details/T-SMOKE-SCR-005.md"
+  }
+]
