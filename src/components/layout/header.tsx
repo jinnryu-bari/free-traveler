@@ -2,8 +2,10 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { primaryNavLinks } from "@/lib/nav";
+
+const FOCUSABLE_SELECTOR = 'a[href], button:not([disabled])';
 
 function NavList({
   pathname,
@@ -42,6 +44,8 @@ function NavList({
 export function Header() {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const menuSheetRef = useRef<HTMLDivElement>(null);
 
   // 라우트가 바뀌면 모바일 메뉴를 자동으로 닫는다. Effect 대신 렌더 중 상태 조정
   // 패턴을 사용해 불필요한 추가 렌더(react-hooks/set-state-in-effect)를 피한다.
@@ -51,17 +55,36 @@ export function Header() {
     if (isMenuOpen) setIsMenuOpen(false);
   }
 
-  // Esc로 닫기 (design plan §3.5 포커스 트랩 원칙 준용)
+  // Esc로 닫기 + Tab 포커스 트랩 (design plan §3.5 포커스 트랩 원칙 준용)
   useEffect(() => {
     if (!isMenuOpen) return;
+    const sheet = menuSheetRef.current;
+    const triggerButton = menuButtonRef.current;
+    const focusable = sheet ? Array.from(sheet.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR)) : [];
+    focusable[0]?.focus();
+
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setIsMenuOpen(false);
+      if (event.key === "Escape") {
+        setIsMenuOpen(false);
+        return;
+      }
+      if (event.key !== "Tab" || focusable.length === 0) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
     };
     document.addEventListener("keydown", onKeyDown);
     document.body.style.overflow = "hidden";
     return () => {
       document.removeEventListener("keydown", onKeyDown);
       document.body.style.overflow = "";
+      triggerButton?.focus();
     };
   }, [isMenuOpen]);
 
@@ -89,6 +112,7 @@ export function Header() {
 
         {/* Mobile hamburger */}
         <button
+          ref={menuButtonRef}
           type="button"
           className="-mr-2 flex h-11 w-11 items-center justify-center lg:hidden"
           aria-expanded={isMenuOpen}
@@ -119,6 +143,7 @@ export function Header() {
       {/* Mobile full-screen sheet */}
       {isMenuOpen ? (
         <div
+          ref={menuSheetRef}
           id="mobile-nav-sheet"
           role="dialog"
           aria-modal="true"

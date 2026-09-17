@@ -36,7 +36,7 @@ export function Footer() {
   return (
     <footer className="bg-surface-soft">
       <div className="mx-auto max-w-[1240px] px-5 py-10 lg:px-10 lg:py-16">
-        <div className="grid grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-8">
+        <nav aria-label="Footer 링크" className="grid grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-8">
           {columns.map((column) => (
             <div key={column.title}>
               <h2 className="text-title-sm mb-4 text-ink">{column.title}</h2>
@@ -54,7 +54,7 @@ export function Footer() {
               </ul>
             </div>
           ))}
-        </div>
+        </nav>
 
         <div className="border-hairline mt-10 flex flex-col gap-2 border-t pt-6 lg:mt-16">
           <p className="text-caption text-muted">
