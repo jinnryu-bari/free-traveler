@@ -6,6 +6,8 @@ import { destinations, type Destination } from "@/data/destinations";
 
 const QUERY_PARAM = "q";
 const DESTINATION_PARAM = "destination";
+const THEME_PARAM = "theme";
+export const DESTINATION_GRIDS_SECTION_ID = "destination-grids";
 
 const ALL_SEASONS = ["봄", "여름", "가을", "겨울"] as const;
 
@@ -54,7 +56,27 @@ function DestinationGridsSection() {
   const [country, setCountry] = useState("");
   const [city, setCity] = useState("");
   const [season, setSeason] = useState("");
-  const [theme, setTheme] = useState("");
+
+  // theme만 URL(`?theme=`)과 동기화한다 — C-SCR001-THEME-CHIPS가 같은 화면의
+  // 별도 Component에서 이 필터를 원격으로 지정할 수 있어야 하기 때문이다.
+  const themeFromUrl = searchParams.get(THEME_PARAM) ?? "";
+  const [theme, setThemeState] = useState(themeFromUrl);
+  const [syncedTheme, setSyncedTheme] = useState(themeFromUrl);
+  if (themeFromUrl !== syncedTheme) {
+    setSyncedTheme(themeFromUrl);
+    setThemeState(themeFromUrl);
+  }
+
+  const setTheme = (value: string) => {
+    setThemeState(value);
+    const params = new URLSearchParams(searchParams.toString());
+    if (value) {
+      params.set(THEME_PARAM, value);
+    } else {
+      params.delete(THEME_PARAM);
+    }
+    router.replace(params.toString() ? `/?${params.toString()}` : "/", { scroll: false });
+  };
 
   const countries = useMemo(() => uniqueSorted(destinations.map((d) => d.country)), []);
   const cities = useMemo(() => uniqueSorted(destinations.map((d) => d.city)), []);
@@ -70,9 +92,10 @@ function DestinationGridsSection() {
     setCountry("");
     setCity("");
     setSeason("");
-    setTheme("");
     const params = new URLSearchParams(searchParams.toString());
     params.delete(QUERY_PARAM);
+    params.delete(THEME_PARAM);
+    setThemeState("");
     router.replace(params.toString() ? `/?${params.toString()}` : "/", { scroll: false });
   };
 
@@ -96,7 +119,7 @@ function DestinationGridsSection() {
   const isEmpty = filtered.length === 0;
 
   return (
-    <div className="flex flex-col gap-8">
+    <div id={DESTINATION_GRIDS_SECTION_ID} className="flex flex-col gap-8 scroll-mt-20">
       <div className="flex flex-wrap gap-3">
         <select
           aria-label="국가 필터"
