@@ -14,9 +14,12 @@
         "C-GLOBAL-POLICY-TERMS",
         "C-GLOBAL-POLICY-PRIVACY"
       ],
-      "status": "pending",
+      "status": "blocked_dirty_tree",
       "checkpoint_required": false,
-      "checkpoint_result": null
+      "checkpoint_result": null,
+      "tasks": {
+        "C-GLOBAL-TOAST": "blocked_dirty_tree"
+      }
     },
     {
       "wave_id": "W02",

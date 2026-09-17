@@ -60,8 +60,8 @@ Independently of check 1's aggregate pass (so a `WAVE_PLAN.md` that accidentally
 ## Verdict
 
 - **All 7 checks pass → `RELEASE_READY`.** Report a one-line confirmation per check plus: current commit SHA, which CI run was checked, and the count of Tasks/Waves confirmed `DONE`.
-- **Any check fails → `RELEASE_BLOCKED`.** Report every failing check (not just the first), each with the exact artifact/file/Task ID that needs to change, and what evidence would flip it to pass (e.g. "Wave `W04`는 `WAITING_FOR_PREVIEW` — 사용자가 Preview를 확인한 뒤 `/run-wave resume`으로 해제해야 한다", "`RELEASE-CI-GATES`에 대응하는 GitHub Actions 실행을 찾지 못했다 — `gh auth login` 또는 실행 자체가 없는지 확인 필요").
+- **Any check fails → `RELEASE_BLOCKED`.** Report every failing check (not just the first), each with the exact artifact/file/Task ID that needs to change, and what evidence would flip it to pass (e.g. "Wave `W04`는 `WAITING_FOR_PREVIEW` — 사용자가 Preview를 확인한 뒤 `/run-wave W04 --resume`으로 해제해야 한다", "`RELEASE-CI-GATES`에 대응하는 GitHub Actions 실행을 찾지 못했다 — `gh auth login` 또는 실행 자체가 없는지 확인 필요").
 
 Never round `RELEASE_BLOCKED` up to `RELEASE_READY` based on "close enough" or a partial re-check — re-run this command in full after every fix, the same way `/audit-tasks` insists on a fresh `AUDIT_PASS` rather than trusting memory of an earlier run.
 
-This command makes no code, Task, Wave, or git-state changes under any circumstance, including when asked to "fix" a `RELEASE_BLOCKED` finding — route that request to the specific fixing command instead (`/run-wave resume` for a Preview Checkpoint, `/implement-task` for an incomplete Task, a manual `gh`/Vercel dashboard action for CI/deploy config, etc.).
+This command makes no code, Task, Wave, or git-state changes under any circumstance, including when asked to "fix" a `RELEASE_BLOCKED` finding — route that request to the specific fixing command instead (`/run-wave <WAVE_ID> --resume` for a Preview Checkpoint, `/implement-task` for an incomplete Task, a manual `gh`/Vercel dashboard action for CI/deploy config, etc.).
