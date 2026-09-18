@@ -33,9 +33,9 @@
 
 | Checkpoint | Route | Status |
 |---|---|---|
-| SCR-001 | `/` | PENDING |
-| SCR-002 | `/about` | PENDING |
-| SCR-003 | `/travel-tools` | PENDING |
-| SCR-004 | `/mates` | PENDING |
-| SCR-005 | `/account` | PENDING |
+| SCR-001 | `/` | CONFIRMED (2026-09-18, `TASKS/WAVE_STATE.json` W05 checkpoint_result) |
+| SCR-002 | `/about` | PENDING — 미구현(`PAGE-SCR002`, W07 예정) |
+| SCR-003 | `/travel-tools` | PENDING — 미구현(`PAGE-SCR003`, W08 예정) |
+| SCR-004 | `/mates` | PENDING — 미구현(`PAGE-SCR004`, W10 예정) |
+| SCR-005 | `/account` | PENDING — 미구현(`PAGE-SCR005`, W12 예정) |
 | FINAL | (전체 통합 — `/release-check` `RELEASE_READY`) | PENDING |
