@@ -617,25 +617,25 @@
           "status": "blocked_environment",
           "commit": null,
           "updated": "2026-09-18",
-          "notes": "키보드만으로 핵심 흐름 완주, 포커스 링 가시성, Drawer/Modal 포커스 트랩은 실제 브라우저 조작이 필요하다 — 이 세션에 Chrome 확장이 연결되지 않아 미실행. docs/preview-checks/W14.md 참고."
+          "notes": "축소 확인(2026-09-18, Playwright로 직접): 홈 화면에서 Tab 3회 이동 시 포커스가 실제로 이동하고 outline이 보임(2px solid)을 확인. 전체 핵심 흐름(여행지 탐색/항공·숙소 입력/동행 참가/로그인) 완주와 Drawer/Modal 포커스 트랩은 확인하지 않음 — 전체 통과로 표시하지 않는다. docs/preview-checks/W14.md 참고."
         },
         "MANUAL-RESPONSIVE-VISUAL": {
           "status": "blocked_environment",
           "commit": null,
           "updated": "2026-09-18",
-          "notes": "1440px/390px 육안 확인이 필요하다 — 브라우저 확장 미연결로 미실행. docs/preview-checks/W14.md 참고."
+          "notes": "축소 확인(2026-09-18, Playwright로 직접): /mates, /account를 390px에서 열어 가로 스크롤(overflow) 없음만 확인(scrollWidth-clientWidth=0). Hero 높이 규칙, Section 리듬, 1440px 확인, 카드 그리드 세부 배치 등은 확인하지 않음 — 전체 통과로 표시하지 않는다. docs/preview-checks/W14.md 참고."
         },
         "MANUAL-PERF-LIGHTHOUSE": {
           "status": "blocked_environment",
           "commit": null,
           "updated": "2026-09-18",
-          "notes": "best-effort 성능 측정, 자동 CI 게이트 아님 — 브라우저/Lighthouse 실행 환경 없어 미실행. docs/preview-checks/W14.md 참고."
+          "notes": "미실행 유지 — 사용자 지시로 Lighthouse 설정에 시간을 쓰지 않음. docs/preview-checks/W14.md 참고."
         },
         "MANUAL-EXTERNAL-LINKS": {
           "status": "blocked_environment",
           "commit": null,
           "updated": "2026-09-18",
-          "notes": "href/target/rel/미전송 assert는 기존 E2E-003/004(public-smoke.spec.ts)로 이미 코드 레벨 확인됨(PASS). 실제 클릭해 외부 사이트가 여는지 육안 확인은 브라우저 확장 미연결로 미실행. docs/preview-checks/W14.md 참고."
+          "notes": "축소 확인(2026-09-18, Playwright로 직접): 대표 1개(항공 '보러 가기')만 href(https://www.google.com/travel/flights, 목적지·날짜 query 없음)/target(_blank)/rel(noopener noreferrer) 확인. 숙소·외교부 링크, 나머지 항목은 확인하지 않음 — 전체 통과로 표시하지 않는다. docs/preview-checks/W14.md 참고."
         }
       }
     },
