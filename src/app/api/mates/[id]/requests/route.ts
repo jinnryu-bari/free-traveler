@@ -16,9 +16,12 @@ import {
  * PATCH: 글 작성자만 승인/거절 가능(비작성자 403) — 클라이언트 판단을 신뢰하지 않고 서버에서 author_id를 재확인한다.
  */
 
-const UNIQUE_VIOLATION = "23505";
+// UNIT-MATE-STATE(W13)가 중복 신청 차단 로직을 직접 테스트할 수 있도록 export한다
+// (Next.js Route Handler 파일에서 HTTP 메서드 외의 이름 있는 export는 라우터가 무시하고
+// 일반 모듈 export로만 동작한다 — 라우팅 동작에는 영향이 없다).
+export const UNIQUE_VIOLATION = "23505";
 
-function hasPgErrorCode(error: unknown, code: string): boolean {
+export function hasPgErrorCode(error: unknown, code: string): boolean {
   return typeof error === "object" && error !== null && "code" in error && (error as { code?: string }).code === code;
 }
 
