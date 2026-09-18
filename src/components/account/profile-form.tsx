@@ -24,7 +24,10 @@ type LoadState = "loading" | "error" | "ready";
  * 절대 입력받거나 저장하지 않는다. 프로필 저장 요청도 nickname/age_range/travel_style/gender
  * 4개 컬럼만 보내고, `role`은 이 Form에서 절대 전송하지 않는다(관리자 권한 자가 승격 방지 —
  * 다만 `profiles_update_own` RLS 정책 자체는 컬럼 단위 제한이 없어 별도 공격 경로가 남아있음을
- * 이번 Wave 보고에 기록한다).
+ * 이번 Wave 보고에 기록한다 — W12에서 `supabase/migrations/0003_profiles_role_lockdown.sql`로 닫았다).
+ *
+ * W12(`PAGE-SCR005`) 배선 중 로그아웃 버튼을 이 Component에 추가했다(Expected Files 밖 최소 편집,
+ * 이유: 로그아웃은 "내 계정" Section에 속하고 새 파일을 만들 만큼의 별도 Task가 없다).
  */
 export function ProfileForm() {
   const { showToast } = useToast();
@@ -226,6 +229,18 @@ export function ProfileForm() {
           </button>
         </div>
       </form>
+
+      <button
+        type="button"
+        onClick={async () => {
+          const supabase = createClient();
+          await supabase.auth.signOut();
+          window.location.reload();
+        }}
+        className="text-button border-hairline inline-flex h-10 w-fit items-center rounded-sm border px-4 text-ink hover:bg-surface-soft"
+      >
+        로그아웃
+      </button>
     </div>
   );
 }
