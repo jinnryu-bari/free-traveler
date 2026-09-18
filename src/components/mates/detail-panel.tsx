@@ -8,6 +8,8 @@ import type { MateApplication, MatePost } from "@/lib/supabase/queries";
 import { computeDisplayStatus, fetchFilteredMatePosts } from "./filter-summary";
 import { readSelectedPostId, SELECTED_PARAM } from "./list-grid";
 import { ParticipateRequestForm } from "./participate-request-form";
+import { ReportModal } from "./report-modal";
+import { BlockButton } from "./block-button";
 
 function DetailPanelPanel() {
   const router = useRouter();
@@ -252,6 +254,13 @@ function DetailPanelPanel() {
               {userId && computeDisplayStatus(post) === "OPEN" && (
                 <div className="mt-2">
                   <ParticipateRequestForm postId={post.id} />
+                </div>
+              )}
+
+              {userId && (
+                <div className="mt-4 flex flex-wrap gap-2 border-t border-hairline pt-4">
+                  <ReportModal postId={post.id} />
+                  <BlockButton userId={post.author_id} onBlocked={() => window.location.reload()} />
                 </div>
               )}
             </div>
