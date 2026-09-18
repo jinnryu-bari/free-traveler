@@ -174,6 +174,39 @@ export async function updateMateApplicationStatus(
   return data as MateApplication;
 }
 
+// ─── 조회 전용 보조 함수 (API-MATE-REQUESTS) ──────────────────────────────
+// 참가 요청 API가 글 존재·작성자 확인, 요청 목록 조회에 쓰는 최소 조회 함수.
+// 기존 CRUD 함수는 수정하지 않고 추가만 한다(API-MATES 섹션과 동일한 원칙).
+
+export async function getMatePostById(id: string): Promise<MatePost | null> {
+  const supabase = await createClient();
+  const { data, error } = await supabase.from("mate_posts").select("*").eq("id", id).maybeSingle();
+  if (error) throw error;
+  return (data as MatePost | null) ?? null;
+}
+
+export async function listApplicationsForPost(postId: string): Promise<MateApplication[]> {
+  const supabase = await createClient();
+  const { data, error } = await supabase
+    .from("mate_applications")
+    .select("*")
+    .eq("post_id", postId)
+    .order("created_at", { ascending: false });
+  if (error) throw error;
+  return data as MateApplication[];
+}
+
+export async function getMateApplicationById(id: string): Promise<MateApplication | null> {
+  const supabase = await createClient();
+  const { data, error } = await supabase
+    .from("mate_applications")
+    .select("*")
+    .eq("id", id)
+    .maybeSingle();
+  if (error) throw error;
+  return (data as MateApplication | null) ?? null;
+}
+
 // ─── 조회 전용 보조 함수 (API-MATES) ──────────────────────────────────────
 // 동행글 목록에서 "내가 차단한 사용자" 글을 제외하고, 작성 전 성인확인 여부를
 // 확인하기 위한 최소 조회 함수. 기존 CRUD 함수는 수정하지 않고 추가만 한다.
