@@ -144,3 +144,37 @@ create policy external_links_update_admin_only
       where profiles.id = auth.uid() and profiles.role = 'admin'
     )
   );
+
+-- ─── GRANT (테이블 단위 권한) ──────────────────────────────────────────────
+-- RLS 정책은 "허용된 행"만 걸러줄 뿐, 그 이전에 anon/authenticated 역할이
+-- 해당 테이블에 접근할 기본 권한(GRANT)이 있어야 한다. Supabase 프로젝트
+-- 대시보드 설정(Data API "Automatically expose new tables" 등)에 이 권한이
+-- 암묵적으로 딸려온다고 가정하지 않고, 위 정책과 1:1로 대응하는 최소 권한만
+-- 명시적으로 부여한다 — RLS 우회나 service_role 사용 없이 anon/authenticated
+-- 두 역할만으로 앱이 동작하도록 하기 위함이다.
+grant usage on schema public to anon, authenticated;
+
+-- profiles: 조회는 비로그인 포함 전체 공개(동행글 카드에 작성자 닉네임 표시),
+-- 생성/수정은 로그인 사용자만(본인 행, RLS가 추가로 제한).
+grant select on profiles to anon;
+grant select, insert, update on profiles to authenticated;
+
+-- mate_posts: 조회는 비로그인 포함 전체 공개, 생성/수정(마감 포함)은 로그인 사용자만.
+grant select on mate_posts to anon;
+grant select, insert, update on mate_posts to authenticated;
+
+-- mate_applications: 전 정책이 auth.uid() 기반이라 비로그인 접근 경로가 없다 —
+-- anon에는 권한을 주지 않는다(RLS로도 항상 0행이지만, 접근 표면 자체를 넓히지 않는다).
+grant select, insert, update on mate_applications to authenticated;
+
+-- blocks: 본인 차단만 조회/생성/해제 — update 정책이 없으므로 update는 부여하지 않는다.
+grant select, insert, delete on blocks to authenticated;
+
+-- reports: 신고자 본인 또는 moderator/admin만 조회, 상태 변경은 moderator/admin만
+-- (역할 판정은 RLS가 하고, GRANT는 authenticated 전체에 동작 자체만 허용한다).
+grant select, insert, update on reports to authenticated;
+
+-- external_links: 조회는 비로그인 포함 전체 공개(SCR-003 외부 이동 URL),
+-- 수정은 admin만(RLS가 제한) — insert/delete 정책이 없으므로 부여하지 않는다.
+grant select on external_links to anon;
+grant select, update on external_links to authenticated;
