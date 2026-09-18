@@ -232,6 +232,15 @@ export async function isProfileAdultVerified(userId: string): Promise<boolean> {
   return Boolean((data as { is_adult: boolean }).is_adult);
 }
 
+// API-ADMIN-REPORTS가 요청자의 역할을 서버에서 재확인하기 위한 최소 조회 함수.
+// 클라이언트가 보여주는 role(RoleGate)을 신뢰하지 않고 항상 이 함수로 다시 조회한다.
+export async function getProfileRole(userId: string): Promise<string> {
+  const supabase = await createClient();
+  const { data, error } = await supabase.from("profiles").select("role").eq("id", userId).single();
+  if (error) throw error;
+  return (data as { role: string }).role;
+}
+
 // ─── 차단 ──────────────────────────────────────────────────────────────
 
 const blockTargetSchema = z.object({
