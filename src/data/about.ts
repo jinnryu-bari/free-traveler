@@ -53,13 +53,13 @@ export interface AboutData {
   contactLinks: AboutContactLink[];
 }
 
-function galleryImage(seed: string, alt: string): AboutGalleryImage {
+function galleryImage(url: string, alt: string, photographer: string, license: string): AboutGalleryImage {
   return {
-    url: `https://picsum.photos/seed/${seed}/1200/900`,
+    url,
     alt,
-    source: "Lorem Picsum",
-    photographer: "Lorem Picsum contributors",
-    license: "Picsum License(무료 사용) — 게시 전 담당자가 실제 여행 사진으로 교체 확인 필요",
+    source: "Wikimedia Commons",
+    photographer,
+    license,
   };
 }
 
@@ -135,14 +135,54 @@ export const aboutData: AboutData = {
     { year: "2025", place: "아이슬란드", summary: "오로라를 보기 위한 겨울 여행." },
   ],
   gallery: [
-    galleryImage("about-01", "도쿄 시부야 스크램블 교차로를 걷는 모습"),
-    galleryImage("about-02", "치앙마이 사원 앞에서 촬영한 전신 사진"),
-    galleryImage("about-03", "파리 에펠탑을 배경으로 한 야경 사진"),
-    galleryImage("about-04", "퀸스타운 호수 앞에서 찍은 풍경 사진"),
-    galleryImage("about-05", "마추픽추 유적지 전경을 담은 사진"),
-    galleryImage("about-06", "모로코 사하라 사막 캠프에서의 일몰 사진"),
-    galleryImage("about-07", "아이슬란드 오로라를 배경으로 한 야간 사진"),
-    galleryImage("about-08", "산토리니 이아마을 골목에서 촬영한 사진"),
+    galleryImage(
+      "https://commons.wikimedia.org/wiki/Special:FilePath/Shibuya_Crossing,_Aerial.jpg?width=1200",
+      "도쿄 시부야 스크램블 교차로",
+      "David Kernan",
+      "CC BY 4.0",
+    ),
+    galleryImage(
+      "https://commons.wikimedia.org/wiki/Special:FilePath/Wat_Phra_That_Doi_Suthep_-_Chiang_Mai.jpg?width=1200",
+      "치앙마이 도이수텝 사원 전경",
+      "JJ Harrison",
+      "CC BY-SA 3.0",
+    ),
+    galleryImage(
+      "https://commons.wikimedia.org/wiki/Special:FilePath/Eiffel_Tower_and_Pont_Alexandre_III_at_night.jpg?width=1200",
+      "파리 에펠탑 야경",
+      "Getfunky Paris",
+      "CC BY 2.0",
+    ),
+    galleryImage(
+      "https://commons.wikimedia.org/wiki/Special:FilePath/Queenstown_1_(8168013172).jpg?width=1200",
+      "퀸스타운 호수와 산악 풍경",
+      "Bernard Spragg. NZ",
+      "CC0",
+    ),
+    galleryImage(
+      "https://commons.wikimedia.org/wiki/Special:FilePath/Machu_Picchu,_2023_(012).jpg?width=1200",
+      "마추픽추 유적지 전경",
+      "Draceane",
+      "CC BY-SA 4.0",
+    ),
+    galleryImage(
+      "https://commons.wikimedia.org/wiki/Special:FilePath/Merzouga_Dunes_2011.jpg?width=1200",
+      "모로코 메르주가 사하라 사막 사구",
+      "Bjørn Christian Tørrissen",
+      "CC BY-SA 3.0",
+    ),
+    galleryImage(
+      "https://commons.wikimedia.org/wiki/Special:FilePath/Aurora_Borealis_-_Iceland_-_2_Nov._2013.jpg?width=1200",
+      "아이슬란드 오로라",
+      "Francisco Diez",
+      "CC BY 2.0",
+    ),
+    galleryImage(
+      "https://commons.wikimedia.org/wiki/Special:FilePath/Oia_sunset_-_panoramio_(2).jpg?width=1200",
+      "산토리니 이아마을과 하얀 건물",
+      "TomasEE",
+      "CC BY 3.0",
+    ),
   ],
   contactLinks: [
     { label: "이메일", url: "mailto:hello@freetraveler.app" },
