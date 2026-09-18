@@ -646,9 +646,23 @@
         "RELEASE-VERCEL-DEPLOY-CHECK",
         "RELEASE-SUPABASE-CHECK"
       ],
-      "status": "pending",
+      "status": "blocked_input",
       "checkpoint_required": true,
-      "checkpoint_result": null
+      "checkpoint_result": null,
+      "tasks": {
+        "RELEASE-VERCEL-DEPLOY-CHECK": {
+          "status": "blocked_input",
+          "commit": "1881ec1",
+          "updated": "2026-09-18",
+          "notes": "GitHub main에 push 완료(8f90f78..1881ec1, https://github.com/jinnryu-bari/free-traveler). 이 세션에는 Vercel 로그인 세션·CLI 링크가 없어 실제 배포 트리거·URL 확인은 불가 — 사용자가 Vercel 대시보드에서 확인/연결해야 한다. docs/preview-checks/W15.md 참고."
+        },
+        "RELEASE-SUPABASE-CHECK": {
+          "status": "blocked_input",
+          "commit": null,
+          "updated": "2026-09-18",
+          "notes": "미착수 — Vercel 배포 URL 확보 후 진행 가능."
+        }
+      }
     }
   ]
 }
