@@ -64,7 +64,7 @@ function galleryImage(seed: string, alt: string): AboutGalleryImage {
 }
 
 export const aboutData: AboutData = {
-  name: "김도윤",
+  name: "free_traveler",
   tagline: "50번의 여행, 30개국에서 배운 것들을 나누는 자유여행 큐레이터.",
   totalTrips: 50,
   totalCountries: 30,
@@ -72,14 +72,14 @@ export const aboutData: AboutData = {
     {
       heading: "자기소개",
       paragraphs: [
-        "안녕하세요, free_traveler를 만든 김도윤입니다. 지난 10년간 50번의 여행을 통해 30개국을 다니며 각 나라의 문화와 사람들을 만나왔습니다.",
+        "안녕하세요, free_traveler입니다. 지금까지 50번의 여행을 통해 30개국을 다니며 각 나라의 문화와 사람들을 만나왔습니다.",
         "혼자 떠난 배낭여행에서 시작해 지금은 여행 정보를 정리하고 동행을 찾는 여행자들을 돕는 일을 하고 있습니다.",
       ],
     },
     {
       heading: "여행을 시작한 이유",
       paragraphs: [
-        "대학 시절 우연히 떠난 도쿄 여행에서 낯선 곳에서 스스로 길을 찾아가는 경험에 매료되었습니다.",
+        "우연히 떠난 도쿄 여행에서 낯선 곳에서 스스로 길을 찾아가는 경험에 매료되었습니다.",
         "정해진 패키지여행이 아니라 직접 계획하고 부딪히며 배우는 여행의 재미를 알게 된 뒤로, 매년 새로운 나라를 찾아 떠나게 되었습니다.",
         "여행 중 만난 동행들과의 인연이 여행을 더 풍요롭게 만든다는 것을 깨달으며, 이 서비스를 구상하게 되었습니다.",
       ],
