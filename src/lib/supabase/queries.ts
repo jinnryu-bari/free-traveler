@@ -174,6 +174,31 @@ export async function updateMateApplicationStatus(
   return data as MateApplication;
 }
 
+// ─── 조회 전용 보조 함수 (API-MATES) ──────────────────────────────────────
+// 동행글 목록에서 "내가 차단한 사용자" 글을 제외하고, 작성 전 성인확인 여부를
+// 확인하기 위한 최소 조회 함수. 기존 CRUD 함수는 수정하지 않고 추가만 한다.
+
+export async function listBlockedUserIds(blockerId: string): Promise<string[]> {
+  const supabase = await createClient();
+  const { data, error } = await supabase
+    .from("blocks")
+    .select("blocked_id")
+    .eq("blocker_id", blockerId);
+  if (error) throw error;
+  return (data as { blocked_id: string }[]).map((row) => row.blocked_id);
+}
+
+export async function isProfileAdultVerified(userId: string): Promise<boolean> {
+  const supabase = await createClient();
+  const { data, error } = await supabase
+    .from("profiles")
+    .select("is_adult")
+    .eq("id", userId)
+    .single();
+  if (error) throw error;
+  return Boolean((data as { is_adult: boolean }).is_adult);
+}
+
 // ─── 차단 ──────────────────────────────────────────────────────────────
 
 const blockTargetSchema = z.object({
