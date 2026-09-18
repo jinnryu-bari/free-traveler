@@ -1,4 +1,9 @@
 import { defineConfig, devices } from "@playwright/test";
+import { loadEnvFile } from "./tests/support/load-test-env";
+
+// `.env.test.local`(테스트 계정 이메일·비밀번호, gitignore 대상)을 로드한다 — Playwright도
+// vitest와 마찬가지로 순수 Node 프로세스라 Next.js처럼 자동으로 읽지 않는다(W13에서 발견).
+loadEnvFile(".env.test.local");
 
 // 기본 baseURL. Vercel Preview 등 실제 배포 URL을 검증할 때는
 // PLAYWRIGHT_BASE_URL 환경변수로 덮어쓴다 — 이 경우 webServer(로컬 npm run dev)는
