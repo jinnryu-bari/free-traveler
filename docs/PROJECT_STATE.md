@@ -35,7 +35,7 @@
 |---|---|---|
 | SCR-001 | `/` | CONFIRMED (2026-09-18, `TASKS/WAVE_STATE.json` W05 checkpoint_result) |
 | SCR-002 | `/about` | CONFIRMED (2026-09-18, `TASKS/WAVE_STATE.json` W07 checkpoint_result) |
-| SCR-003 | `/travel-tools` | PENDING — 미구현(`PAGE-SCR003`, W08 예정) |
-| SCR-004 | `/mates` | PENDING — 미구현(`PAGE-SCR004`, W10 예정) |
-| SCR-005 | `/account` | PENDING — 미구현(`PAGE-SCR005`, W12 예정) |
+| SCR-003 | `/travel-tools` | CONFIRMED (2026-09-18, `TASKS/WAVE_STATE.json` W08 checkpoint_result) |
+| SCR-004 | `/mates` | CONFIRMED (2026-09-18, `TASKS/WAVE_STATE.json` W10 checkpoint_result) |
+| SCR-005 | `/account` | CONFIRMED (2026-09-18, `TASKS/WAVE_STATE.json` W12 checkpoint_result) |
 | FINAL | (전체 통합 — `/release-check` `RELEASE_READY`) | PENDING |

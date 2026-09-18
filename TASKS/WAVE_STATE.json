@@ -14,11 +14,45 @@
         "C-GLOBAL-POLICY-TERMS",
         "C-GLOBAL-POLICY-PRIVACY"
       ],
-      "status": "blocked_dirty_tree",
+      "status": "done",
       "checkpoint_required": false,
       "checkpoint_result": null,
       "tasks": {
-        "C-GLOBAL-TOAST": "blocked_dirty_tree"
+        "C-GLOBAL-TOAST": {
+          "status": "done",
+          "commit": "19a8068",
+          "updated": "2026-09-17"
+        },
+        "C-GLOBAL-SEO-HELPER": {
+          "status": "done",
+          "commit": "5872ecf",
+          "updated": "2026-09-17"
+        },
+        "C-GLOBAL-NOT-FOUND": {
+          "status": "done",
+          "commit": "e82f80b",
+          "updated": "2026-09-17"
+        },
+        "C-GLOBAL-ERROR-BOUNDARY": {
+          "status": "done",
+          "commit": "8b56b3c",
+          "updated": "2026-09-17"
+        },
+        "C-GLOBAL-NAV-FOOTER-EXTEND": {
+          "status": "done",
+          "commit": "eae1fbe",
+          "updated": "2026-09-17"
+        },
+        "C-GLOBAL-POLICY-TERMS": {
+          "status": "done",
+          "commit": "94385ee",
+          "updated": "2026-09-17"
+        },
+        "C-GLOBAL-POLICY-PRIVACY": {
+          "status": "done",
+          "commit": "9f5c965",
+          "updated": "2026-09-17"
+        }
       }
     },
     {
@@ -30,9 +64,31 @@
         "DATA-SAFETY",
         "DATA-REPRESENTATIVE"
       ],
-      "status": "pending",
+      "status": "done",
       "checkpoint_required": false,
-      "checkpoint_result": null
+      "checkpoint_result": null,
+      "tasks": {
+        "C-GLOBAL-POLICY-SAFETY-GUIDE": {
+          "status": "done",
+          "commit": "7a56878",
+          "updated": "2026-09-17"
+        },
+        "DATA-DESTINATIONS": {
+          "status": "done",
+          "commit": "06c5a5d",
+          "updated": "2026-09-17"
+        },
+        "DATA-SAFETY": {
+          "status": "done",
+          "commit": "3f132a8",
+          "updated": "2026-09-17"
+        },
+        "DATA-REPRESENTATIVE": {
+          "status": "done",
+          "commit": "c2f438c",
+          "updated": "2026-09-17"
+        }
+      }
     },
     {
       "wave_id": "W03",
@@ -44,9 +100,36 @@
         "DB-SEED-BASE",
         "API-AUTH-CALLBACK"
       ],
-      "status": "pending",
+      "status": "done",
       "checkpoint_required": false,
-      "checkpoint_result": null
+      "checkpoint_result": null,
+      "tasks": {
+        "DB-SCHEMA-BASE": {
+          "status": "done",
+          "commit": "c004ce4",
+          "updated": "2026-09-17"
+        },
+        "DB-RLS-BASE": {
+          "status": "done",
+          "commit": "b837100",
+          "updated": "2026-09-17"
+        },
+        "DB-ACCESS": {
+          "status": "done",
+          "commit": "59f7b81",
+          "updated": "2026-09-17"
+        },
+        "DB-SEED-BASE": {
+          "status": "done",
+          "commit": "6167b3a",
+          "updated": "2026-09-17"
+        },
+        "API-AUTH-CALLBACK": {
+          "status": "done",
+          "commit": "6b791de",
+          "updated": "2026-09-17"
+        }
+      }
     },
     {
       "wave_id": "W04",
@@ -59,9 +142,41 @@
         "C-SCR001-SAFETY-DETAIL-DRAWER",
         "C-SCR001-DEST-DETAIL-DRAWER"
       ],
-      "status": "pending",
+      "status": "done",
       "checkpoint_required": false,
-      "checkpoint_result": null
+      "checkpoint_result": null,
+      "tasks": {
+        "C-SCR001-HERO-SEARCH": {
+          "status": "done",
+          "commit": "6f38dea",
+          "updated": "2026-09-17"
+        },
+        "C-SCR001-DEST-GRIDS": {
+          "status": "done",
+          "commit": "f7fb45c",
+          "updated": "2026-09-17"
+        },
+        "C-SCR001-THEME-CHIPS": {
+          "status": "done",
+          "commit": "a88f2c7",
+          "updated": "2026-09-17"
+        },
+        "C-SCR001-SAFETY-GRID": {
+          "status": "done",
+          "commit": "c7e9b81",
+          "updated": "2026-09-17"
+        },
+        "C-SCR001-SAFETY-DETAIL-DRAWER": {
+          "status": "done",
+          "commit": "40ff3a7",
+          "updated": "2026-09-17"
+        },
+        "C-SCR001-DEST-DETAIL-DRAWER": {
+          "status": "done",
+          "commit": "13334e9",
+          "updated": "2026-09-17"
+        }
+      }
     },
     {
       "wave_id": "W05",
@@ -72,9 +187,40 @@
         "C-SCR001-MATES-PREVIEW",
         "PAGE-SCR001"
       ],
-      "status": "pending",
+      "status": "done",
       "checkpoint_required": true,
-      "checkpoint_result": null
+      "checkpoint_result": {
+        "confirmed_by": "user",
+        "confirmed_at": "2026-09-18",
+        "screen": "SCR-001 (`/`)",
+        "notes": "브라우저 확인 완료. 확인 중 발견되어 이번 Wave에서 함께 수정된 항목: (1) 여행지 카드 이미지가 picsum 무작위 사진이었던 문제 -> DATA-DESTINATIONS 리비전(커밋 a89bc6c)으로 40건 전부 실제 Wikimedia Commons 사진으로 교체, (2) 대표 소개에 임의 실명(김도윤)과 미제공 이력(\"지난 10년간\", \"대학 시절\")이 있던 문제 -> DATA-REPRESENTATIVE 리비전(커밋 07c5e80)으로 제거. 이 두 리비전은 W05 소속 Task는 아니며(각각 W02 소속 Task의 사후 수정), 별도 커밋으로 기록됨.",
+        "not_yet_implemented": [
+          "SCR-002 (`/about`) — PAGE-SCR002 미구현, W07 예정",
+          "SCR-004 (`/mates`) — PAGE-SCR004 미구현, W10 예정"
+        ]
+      },
+      "tasks": {
+        "C-SCR001-FOUNDER-SPLIT": {
+          "status": "done",
+          "commit": "63724bf",
+          "updated": "2026-09-18"
+        },
+        "API-MATES": {
+          "status": "done",
+          "commit": "84c7e99",
+          "updated": "2026-09-18"
+        },
+        "C-SCR001-MATES-PREVIEW": {
+          "status": "done",
+          "commit": "f7340cc",
+          "updated": "2026-09-18"
+        },
+        "PAGE-SCR001": {
+          "status": "done",
+          "commit": "9bab95b",
+          "updated": "2026-09-18"
+        }
+      }
     },
     {
       "wave_id": "W06",
@@ -85,9 +231,31 @@
         "C-SCR002-TIMELINE",
         "C-SCR002-COUNTRY-CHIPS"
       ],
-      "status": "pending",
+      "status": "done",
       "checkpoint_required": false,
-      "checkpoint_result": null
+      "checkpoint_result": null,
+      "tasks": {
+        "C-SCR002-PROFILE-HERO": {
+          "status": "done",
+          "commit": "1f52c98",
+          "updated": "2026-09-18"
+        },
+        "C-SCR002-INTRO-PHILOSOPHY": {
+          "status": "done",
+          "commit": "5976aee",
+          "updated": "2026-09-18"
+        },
+        "C-SCR002-TIMELINE": {
+          "status": "done",
+          "commit": "2ee25c9",
+          "updated": "2026-09-18"
+        },
+        "C-SCR002-COUNTRY-CHIPS": {
+          "status": "done",
+          "commit": "3d314e7",
+          "updated": "2026-09-18"
+        }
+      }
     },
     {
       "wave_id": "W07",
@@ -98,9 +266,36 @@
         "C-SCR002-CONTACT-LINKS",
         "PAGE-SCR002"
       ],
-      "status": "pending",
+      "status": "done",
       "checkpoint_required": true,
-      "checkpoint_result": null
+      "checkpoint_result": {
+        "confirmed_by": "user",
+        "confirmed_at": "2026-09-18",
+        "screen": "SCR-002 (`/about`)",
+        "notes": "기본 화면 확인 완료(Section 순서·Gallery 8장·실명 없음·모바일 반응형). Gallery 이미지 로딩 실패 시 대체 안내 동작은 1회성 수동 조사로만 확인, 정식 회귀 테스트 미등록 상태로 남음(docs/preview-checks/SCR-002.md 참고)."
+      },
+      "tasks": {
+        "C-SCR002-GALLERY": {
+          "status": "done",
+          "commit": "9057686",
+          "updated": "2026-09-18"
+        },
+        "C-SCR002-MEMORABLE-CTA": {
+          "status": "done",
+          "commit": "65a55de",
+          "updated": "2026-09-18"
+        },
+        "C-SCR002-CONTACT-LINKS": {
+          "status": "done",
+          "commit": "425d984",
+          "updated": "2026-09-18"
+        },
+        "PAGE-SCR002": {
+          "status": "done",
+          "commit": "0242b03",
+          "updated": "2026-09-18"
+        }
+      }
     },
     {
       "wave_id": "W08",
@@ -113,9 +308,46 @@
         "C-SCR003-NONTRANSMIT-TIPS",
         "PAGE-SCR003"
       ],
-      "status": "pending",
+      "status": "done",
       "checkpoint_required": true,
-      "checkpoint_result": null
+      "checkpoint_result": {
+        "confirmed_by": "user",
+        "confirmed_at": "2026-09-18",
+        "screen": "SCR-003 (`/travel-tools`)",
+        "notes": "기본 화면 확인 완료 — 항공편·숙소 입력/요약/외부 이동, 동행 구하기 비로그인 안내, Tip 3개. [2026-09-18 추가] 로그인 후 실제 mate_posts 저장(동행글 등록)도 사용자가 직접 진행해 확인 완료(docs/preview-checks/SCR-003.md 참고)."
+      },
+      "tasks": {
+        "C-SCR003-INTRO-TABS": {
+          "status": "done",
+          "commit": "0d223ff",
+          "updated": "2026-09-18"
+        },
+        "C-SCR003-FLIGHT-FORM": {
+          "status": "done",
+          "commit": "f1f394f",
+          "updated": "2026-09-18"
+        },
+        "C-SCR003-HOTEL-FORM": {
+          "status": "done",
+          "commit": "f8d9a1e",
+          "updated": "2026-09-18"
+        },
+        "C-SCR003-MATE-COMPOSER": {
+          "status": "done",
+          "commit": "8876ce4",
+          "updated": "2026-09-18"
+        },
+        "C-SCR003-NONTRANSMIT-TIPS": {
+          "status": "done",
+          "commit": "d64240c",
+          "updated": "2026-09-18"
+        },
+        "PAGE-SCR003": {
+          "status": "done",
+          "commit": "aeaa33b",
+          "updated": "2026-09-18"
+        }
+      }
     },
     {
       "wave_id": "W09",
@@ -129,9 +361,46 @@
         "C-SCR004-PARTICIPATE-FLOW",
         "C-SCR004-DETAIL-PANEL"
       ],
-      "status": "pending",
+      "status": "done",
       "checkpoint_required": false,
-      "checkpoint_result": null
+      "checkpoint_result": null,
+      "tasks": {
+        "C-SCR004-INTRO-CTA": {
+          "status": "done",
+          "commit": "811e71f",
+          "updated": "2026-09-18"
+        },
+        "C-SCR004-STEPS-SAFETY": {
+          "status": "done",
+          "commit": "e708440",
+          "updated": "2026-09-18"
+        },
+        "C-SCR004-FILTER-SUMMARY": {
+          "status": "done",
+          "commit": "a8f2a32",
+          "updated": "2026-09-18"
+        },
+        "C-SCR004-LIST-GRID": {
+          "status": "done",
+          "commit": "7f83078",
+          "updated": "2026-09-18"
+        },
+        "API-MATE-REQUESTS": {
+          "status": "done",
+          "commit": "a78d2a0",
+          "updated": "2026-09-18"
+        },
+        "C-SCR004-PARTICIPATE-FLOW": {
+          "status": "done",
+          "commit": "e46e269",
+          "updated": "2026-09-18"
+        },
+        "C-SCR004-DETAIL-PANEL": {
+          "status": "done",
+          "commit": "56f24e4",
+          "updated": "2026-09-18"
+        }
+      }
     },
     {
       "wave_id": "W10",
@@ -143,9 +412,41 @@
         "C-SCR004-BLOCK-ACTION",
         "PAGE-SCR004"
       ],
-      "status": "pending",
+      "status": "done",
       "checkpoint_required": true,
-      "checkpoint_result": null
+      "checkpoint_result": {
+        "confirmed_by": "user",
+        "confirmed_at": "2026-09-18",
+        "screen": "SCR-004 (`/mates`)",
+        "notes": "기본 화면 확인 완료 — Section 순서, 빈 목록 Empty State(문장/버튼 정상 폭), 오른쪽 빈 상세 안내 숨김(레이아웃 버그 수정 커밋 a4b65c6 확인됨). [2026-09-18 추가] 실제 글 등록 후 목록 표시, 카드 클릭 시 상세+본인 글 관리 영역도 사용자가 직접 확인 완료. 다른 계정의 참가 신청·승인·신고·차단은 두 번째 계정이 필요해 여전히 미검증 — 계속 이월(docs/preview-checks/SCR-004.md 참고)."
+      },
+      "tasks": {
+        "API-MATE-REPORT": {
+          "status": "done",
+          "commit": "b3de4d5",
+          "updated": "2026-09-18"
+        },
+        "C-SCR004-REPORT-MODAL": {
+          "status": "done",
+          "commit": "968a007",
+          "updated": "2026-09-18"
+        },
+        "API-BLOCKLIST": {
+          "status": "done",
+          "commit": "d57d21b",
+          "updated": "2026-09-18"
+        },
+        "C-SCR004-BLOCK-ACTION": {
+          "status": "done",
+          "commit": "817c3bd",
+          "updated": "2026-09-18"
+        },
+        "PAGE-SCR004": {
+          "status": "done",
+          "commit": "34b48bd",
+          "updated": "2026-09-18"
+        }
+      }
     },
     {
       "wave_id": "W11",
@@ -157,9 +458,36 @@
         "C-SCR005-ROLE-GATE",
         "API-ADMIN-REPORTS"
       ],
-      "status": "pending",
+      "status": "done",
       "checkpoint_required": false,
-      "checkpoint_result": null
+      "checkpoint_result": null,
+      "tasks": {
+        "C-SCR005-AUTH-GUEST": {
+          "status": "done",
+          "commit": "30c13e2",
+          "updated": "2026-09-18"
+        },
+        "C-SCR005-PROFILE": {
+          "status": "done",
+          "commit": "86c5f69",
+          "updated": "2026-09-18"
+        },
+        "C-SCR005-MY-ACTIVITY": {
+          "status": "done",
+          "commit": "bc1f41a",
+          "updated": "2026-09-18"
+        },
+        "C-SCR005-ROLE-GATE": {
+          "status": "done",
+          "commit": "0d59016",
+          "updated": "2026-09-18"
+        },
+        "API-ADMIN-REPORTS": {
+          "status": "done",
+          "commit": "b9c9acf",
+          "updated": "2026-09-18"
+        }
+      }
     },
     {
       "wave_id": "W12",
@@ -170,9 +498,36 @@
         "C-SCR005-ADMIN-EXTERNAL-URL",
         "PAGE-SCR005"
       ],
-      "status": "pending",
+      "status": "done",
       "checkpoint_required": true,
-      "checkpoint_result": null
+      "checkpoint_result": {
+        "confirmed_by": "user",
+        "confirmed_at": "2026-09-18",
+        "screen": "SCR-005 (`/account`)",
+        "notes": "기본 화면 Checkpoint 승인. 사용자가 실제 브라우저로 확인: 로그인, 성인확인, 동행글 등록(SCR-003/004에 이미 기록), 새로고침 후 프로필·성인확인 유지, '내가 쓴 동행글'에 '실습' 표시, 로그아웃 후 재로그인 정상 동작. 다른 계정의 신청·승인·신고·차단, 관리자 기능(신고 상태 변경/외부 URL 설정), 일반 사용자의 role 변경 차단 실제 동작은 미검증으로 남아 W13~W14 검증 항목으로 이월한다 — 전체 인증 흐름이 통과했다고 기록하지 않는다(docs/preview-checks/SCR-005.md 참고)."
+      },
+      "tasks": {
+        "C-SCR005-ADMIN-REPORTS": {
+          "status": "done",
+          "commit": "b9b265a",
+          "updated": "2026-09-18"
+        },
+        "API-ADMIN-EXTERNAL-LINKS": {
+          "status": "done",
+          "commit": "08a07ad",
+          "updated": "2026-09-18"
+        },
+        "C-SCR005-ADMIN-EXTERNAL-URL": {
+          "status": "done",
+          "commit": "f9ae41e",
+          "updated": "2026-09-18"
+        },
+        "PAGE-SCR005": {
+          "status": "done",
+          "commit": "01b0294",
+          "updated": "2026-09-18"
+        }
+      }
     },
     {
       "wave_id": "W13",
@@ -186,9 +541,50 @@
         "E2E-TRAVEL-TOOLS",
         "E2E-MATE-AUTH"
       ],
-      "status": "pending",
+      "status": "done",
       "checkpoint_required": false,
-      "checkpoint_result": null
+      "checkpoint_result": null,
+      "tasks": {
+        "UNIT-TRAVEL-DATES": {
+          "status": "done",
+          "commit": "34ade08",
+          "updated": "2026-09-18"
+        },
+        "UNIT-CONTACT-DETECTION": {
+          "status": "done",
+          "commit": "5c7b091",
+          "updated": "2026-09-18"
+        },
+        "UNIT-MATE-STATE": {
+          "status": "done",
+          "commit": "8f27f03",
+          "updated": "2026-09-18"
+        },
+        "TEST-RLS-BASIC": {
+          "status": "done",
+          "commit": "c8521d8",
+          "updated": "2026-09-18",
+          "notes": "2계정·.env.test.local 기반으로 재작성(원 커밋 9552f75). 로그인 필요 케이스는 계정 준비 전까지 인증 검증 미완료 — docs/preview-checks/W13.md 참고."
+        },
+        "E2E-PUBLIC-SMOKE": {
+          "status": "done",
+          "commit": null,
+          "updated": "2026-09-18",
+          "notes": "새 파일 없이 기존 tests/e2e/public-smoke.spec.ts(E2E-001/002)로 충족 처리 — 사용자 지시로 중복 생성하지 않음. docs/preview-checks/W13.md 참고."
+        },
+        "E2E-TRAVEL-TOOLS": {
+          "status": "done",
+          "commit": null,
+          "updated": "2026-09-18",
+          "notes": "새 파일 없이 기존 tests/e2e/public-smoke.spec.ts(E2E-003/004)로 충족 처리 — 사용자 지시로 중복 생성하지 않음. docs/preview-checks/W13.md 참고."
+        },
+        "E2E-MATE-AUTH": {
+          "status": "done",
+          "commit": "3abdf0e",
+          "updated": "2026-09-18",
+          "notes": "2계정·.env.test.local 기반으로 재작성(원 커밋 3d7bc88). ①②③ 흐름은 계정 준비 전까지 인증 검증 미완료 — docs/preview-checks/W13.md 참고."
+        }
+      }
     },
     {
       "wave_id": "W14",
@@ -201,9 +597,47 @@
         "MANUAL-EXTERNAL-LINKS",
         "RELEASE-CI-GATES"
       ],
-      "status": "pending",
+      "status": "blocked_environment",
       "checkpoint_required": false,
-      "checkpoint_result": null
+      "checkpoint_result": null,
+      "tasks": {
+        "RELEASE-CI-GATES": {
+          "status": "done",
+          "commit": "5d13775",
+          "updated": "2026-09-18",
+          "notes": "npm run format:check가 프로젝트 전체(64개 파일)에서 실패 중이던 것을 발견·수정(prettier --write, 로직 변경 없음). npm run ci(lint/typecheck/test:unit/task:contract/screen:contract:ci/build) 전부 로컬에서 재확인 완료."
+        },
+        "MANUAL-CONTENT-REVIEW": {
+          "status": "done",
+          "commit": null,
+          "updated": "2026-09-18",
+          "notes": "코드 레벨 정량 검사로 대체 — 국내 10개/해외 15개국 30개 도시, 안내소 15개국 전체 안전정보 커버리지, 명소 5개+/음식 3개+ 전부, Gallery 8장/Timeline 7개/방문국가 30개, 이미지 alt·출처·작가·라이선스 필드 전부 확인(스크립트, 파일로 남기지 않음). 실제 렌더링·이미지 로딩 육안 확인은 브라우저 확장 미연결로 미실행 — docs/preview-checks/W14.md 참고."
+        },
+        "MANUAL-A11Y-KEYBOARD": {
+          "status": "blocked_environment",
+          "commit": null,
+          "updated": "2026-09-18",
+          "notes": "키보드만으로 핵심 흐름 완주, 포커스 링 가시성, Drawer/Modal 포커스 트랩은 실제 브라우저 조작이 필요하다 — 이 세션에 Chrome 확장이 연결되지 않아 미실행. docs/preview-checks/W14.md 참고."
+        },
+        "MANUAL-RESPONSIVE-VISUAL": {
+          "status": "blocked_environment",
+          "commit": null,
+          "updated": "2026-09-18",
+          "notes": "1440px/390px 육안 확인이 필요하다 — 브라우저 확장 미연결로 미실행. docs/preview-checks/W14.md 참고."
+        },
+        "MANUAL-PERF-LIGHTHOUSE": {
+          "status": "blocked_environment",
+          "commit": null,
+          "updated": "2026-09-18",
+          "notes": "best-effort 성능 측정, 자동 CI 게이트 아님 — 브라우저/Lighthouse 실행 환경 없어 미실행. docs/preview-checks/W14.md 참고."
+        },
+        "MANUAL-EXTERNAL-LINKS": {
+          "status": "blocked_environment",
+          "commit": null,
+          "updated": "2026-09-18",
+          "notes": "href/target/rel/미전송 assert는 기존 E2E-003/004(public-smoke.spec.ts)로 이미 코드 레벨 확인됨(PASS). 실제 클릭해 외부 사이트가 여는지 육안 확인은 브라우저 확장 미연결로 미실행. docs/preview-checks/W14.md 참고."
+        }
+      }
     },
     {
       "wave_id": "W15",
