@@ -40,13 +40,13 @@ export interface Destination {
   image: DestinationImage;
 }
 
-function img(seed: string, alt: string): DestinationImage {
+function img(url: string, alt: string, photographer: string, license: string): DestinationImage {
   return {
-    url: `https://picsum.photos/seed/${seed}/1200/750`,
+    url,
     alt,
-    source: "Lorem Picsum",
-    photographer: "Lorem Picsum contributors",
-    license: "Picsum License(무료 사용) — 게시 전 담당자가 실제 목적지 사진으로 교체 확인 필요",
+    source: "Wikimedia Commons",
+    photographer,
+    license,
   };
 }
 
@@ -78,7 +78,7 @@ export const destinations: Destination[] = [
     etiquette: "식당에서 신발을 벗어야 하는 좌식 공간이 많으니 양말 상태를 확인하세요.",
     source: "한국관광공사(visitkorea.or.kr)",
     updatedAt: "2026-01-01",
-    image: img("dom-seoul", "서울 경복궁 근정전 전경"),
+    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/%EA%B4%91%ED%99%94%EB%AC%B8_%EC%9B%94%EB%8C%80.jpg?width=1200`, "서울 경복궁 근정전 전경", "서울관광 아카이브", "KOGL Type 1"),
   },
   {
     id: "dom-busan",
@@ -106,7 +106,7 @@ export const destinations: Destination[] = [
     etiquette: "해수욕장 인근 상가는 모래 묻은 발로 들어가지 않도록 발 세척대를 이용하세요.",
     source: "부산관광공사(bto.or.kr)",
     updatedAt: "2026-01-01",
-    image: img("dom-busan", "부산 광안대교와 광안리 해변 야경"),
+    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/Gwangan_Bridge1.jpg?width=1200`, "부산 광안대교와 광안리 해변 야경", "Glabb", "Public domain"),
   },
   {
     id: "dom-jeju",
@@ -130,7 +130,7 @@ export const destinations: Destination[] = [
     etiquette: "오름·자연보호구역에서는 지정된 탐방로를 벗어나지 마세요.",
     source: "제주관광공사(ijto.or.kr)",
     updatedAt: "2026-01-01",
-    image: img("dom-jeju", "제주 성산일출봉 전경"),
+    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/Seongsan_Ilchulbong_from_the_air.jpg?width=1200`, "제주 성산일출봉 전경", "Korea.net / Korean Culture and Information Service", "CC BY-SA 2.0"),
   },
   {
     id: "dom-gyeongju",
@@ -154,7 +154,7 @@ export const destinations: Destination[] = [
     etiquette: "문화재 구역 내 촬영 제한 표지판을 반드시 확인하세요.",
     source: "경주시청 문화관광(gyeongju.go.kr)",
     updatedAt: "2026-01-01",
-    image: img("dom-gyeongju", "경주 동궁과월지 야경"),
+    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/Water_reflection_of_Donggung_Palace_in_Wolji_Pond_at_blue_hour_in_Gyeongju_South_Korea.jpg?width=1200`, "경주 동궁과월지 야경", "Basile Morin", "CC BY-SA 4.0"),
   },
   {
     id: "dom-jeonju",
@@ -178,7 +178,7 @@ export const destinations: Destination[] = [
     etiquette: "한옥 체험 시설은 실내 신발 착용 규칙을 지켜주세요.",
     source: "전주시청 문화관광(jeonju.go.kr)",
     updatedAt: "2026-01-01",
-    image: img("dom-jeonju", "전주한옥마을 기와지붕 풍경"),
+    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/Jeonju_Hanok_Maeul_01.jpg?width=1200`, "전주한옥마을 기와지붕 풍경", "Bernard Gagnon", "CC0"),
   },
   {
     id: "dom-gangneung",
@@ -202,7 +202,7 @@ export const destinations: Destination[] = [
     etiquette: "해변 캠핑·취사는 지정 구역에서만 가능합니다.",
     source: "강릉시청 문화관광(gn.go.kr)",
     updatedAt: "2026-01-01",
-    image: img("dom-gangneung", "강릉 안목해변 카페거리"),
+    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/Jumunjin_Lighthouse_20220501_026.jpg?width=1200`, "강릉 안목해변 카페거리", "Mobius6", "CC BY-SA 4.0"),
   },
   {
     id: "dom-yeosu",
@@ -226,7 +226,7 @@ export const destinations: Destination[] = [
     etiquette: "케이블카 탑승 시 안내 방송에 따라 순서를 지켜주세요.",
     source: "여수시청 문화관광(yeosu.go.kr)",
     updatedAt: "2026-01-01",
-    image: img("dom-yeosu", "여수 밤바다와 해상케이블카 야경"),
+    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/Dolsan_Bridge1.JPG?width=1200`, "여수 밤바다와 해상케이블카 야경", "Glabb", "Public domain"),
   },
   {
     id: "dom-tongyeong",
@@ -250,7 +250,7 @@ export const destinations: Destination[] = [
     etiquette: "벽화마을은 실제 주민 거주 공간이므로 정숙을 유지해 주세요.",
     source: "통영시청 문화관광(tongyeong.go.kr)",
     updatedAt: "2026-01-01",
-    image: img("dom-tongyeong", "통영 동피랑벽화마을 골목"),
+    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/Korea-Tongyeong-Collage-01.jpg?width=1200`, "통영 동피랑벽화마을 골목", "Jungho Jung and User:Asfreeas Derivative work by User:Caspian blue", "CC BY 3.0"),
   },
   {
     id: "dom-andong",
@@ -274,7 +274,7 @@ export const destinations: Destination[] = [
     etiquette: "서원·고택 방문 시 문지방을 밟지 않는 것이 전통 예절입니다.",
     source: "안동시청 문화관광(andong.go.kr)",
     updatedAt: "2026-01-01",
-    image: img("dom-andong", "안동 하회마을 전통 가옥"),
+    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/Hahoe_Folk_Village_02.jpg?width=1200`, "안동 하회마을 전통 가옥", "Bernard Gagnon", "CC0"),
   },
   {
     id: "dom-sokcho",
@@ -298,7 +298,7 @@ export const destinations: Destination[] = [
     etiquette: "설악산 국립공원 등산로는 지정 시간 내 하산해야 합니다.",
     source: "속초시청 문화관광(sokcho.go.kr)",
     updatedAt: "2026-01-01",
-    image: img("dom-sokcho", "속초 설악산과 케이블카 전경"),
+    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/Dinosaur_Ridge_of_Seoraksan.jpg?width=1200`, "속초 설악산과 케이블카 전경", "Taewangkorea", "CC BY-SA 4.0"),
   },
 
   // ── 해외 15개국 30개 도시 ──────────────────────────────
@@ -324,7 +324,7 @@ export const destinations: Destination[] = [
     etiquette: "대중교통에서는 통화를 삼가고 조용히 이용하는 것이 예의입니다.",
     source: "일본정부관광국(JNTO, jnto.go.jp)",
     updatedAt: "2026-01-01",
-    image: img("intl-tokyo", "도쿄 센소지와 아사쿠사 거리"),
+    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/Sensoji_2023.jpg?width=1200`, "도쿄 센소지와 아사쿠사 거리", "Akonnchiroll", "CC0"),
   },
   {
     id: "intl-osaka",
@@ -348,7 +348,7 @@ export const destinations: Destination[] = [
     etiquette: "에스컬레이터에서는 한쪽 줄로 서서 이용하세요.",
     source: "일본정부관광국(JNTO, jnto.go.jp)",
     updatedAt: "2026-01-01",
-    image: img("intl-osaka", "오사카 도톤보리 야경"),
+    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/Osaka_Dotonbori_Ebisu_Bridge.jpg?width=1200`, "오사카 도톤보리 야경", "Type specimen", "CC BY-SA 3.0"),
   },
   {
     id: "intl-bangkok",
@@ -372,7 +372,7 @@ export const destinations: Destination[] = [
     etiquette: "사원 방문 시 어깨와 무릎을 가리는 복장을 갖춰야 합니다.",
     source: "태국관광청(TAT, tourismthailand.org)",
     updatedAt: "2026-01-01",
-    image: img("intl-bangkok", "방콕 왓아룬 사원 전경"),
+    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/%E0%B9%80%E0%B8%88%E0%B8%94%E0%B8%B5%E0%B8%A2%E0%B9%8C%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%98%E0%B8%B2%E0%B8%99%E0%B8%97%E0%B8%A3%E0%B8%87%E0%B8%9B%E0%B8%A3%E0%B8%B2%E0%B8%87%E0%B8%84%E0%B9%8C%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B8%AD%E0%B8%A3%E0%B8%B8%E0%B8%932.jpg?width=1200`, "방콕 왓아룬 사원 전경", "Mastertongapollo", "CC BY-SA 4.0"),
   },
   {
     id: "intl-chiangmai",
@@ -396,7 +396,7 @@ export const destinations: Destination[] = [
     etiquette: "승려에게 물건을 직접 건네지 않고 내려놓아 전달하세요.",
     source: "태국관광청(TAT, tourismthailand.org)",
     updatedAt: "2026-01-01",
-    image: img("intl-chiangmai", "치앙마이 도이수텝 사원"),
+    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/Wat_Phra_That_Doi_Suthep_-_Chiang_Mai.jpg?width=1200`, "치앙마이 도이수텝 사원", "JJ Harrison (https://www.jjharrison.com.au/)", "CC BY-SA 3.0"),
   },
   {
     id: "intl-danang",
@@ -420,7 +420,7 @@ export const destinations: Destination[] = [
     etiquette: "사원·성당 방문 시 짧은 옷차림은 피하는 것이 좋습니다.",
     source: "베트남국가관광청(vietnamtourism.gov.vn)",
     updatedAt: "2026-01-01",
-    image: img("intl-danang", "다낭 미케비치와 해안선"),
+    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/Dragon_Bridge%2C_Da_Nang_during_day_-_20230819_%28cropped%29.jpg?width=1200`, "다낭 미케비치와 해안선", "Somerset999", "CC BY-SA 4.0"),
   },
   {
     id: "intl-hanoi",
@@ -444,7 +444,7 @@ export const destinations: Destination[] = [
     etiquette: "호치민 묘 방문 시 반바지·민소매 착용이 제한됩니다.",
     source: "베트남국가관광청(vietnamtourism.gov.vn)",
     updatedAt: "2026-01-01",
-    image: img("intl-hanoi", "하노이 호안끼엠호수와 구시가지"),
+    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/Thap_Rua.jpg?width=1200`, "하노이 호안끼엠호수와 구시가지", "Cyril Doussin from London, United Kingdom", "CC BY-SA 2.0"),
   },
   {
     id: "intl-paris",
@@ -468,7 +468,7 @@ export const destinations: Destination[] = [
     etiquette: "레스토랑 입장 시 직원의 안내를 기다리는 것이 일반적입니다.",
     source: "프랑스관광청(france.fr)",
     updatedAt: "2026-01-01",
-    image: img("intl-paris", "파리 에펠탑 전경"),
+    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/Tour_Eiffel_Wikimedia_Commons.jpg?width=1200`, "파리 에펠탑 전경", "Benh LIEU SONG", "Public domain"),
   },
   {
     id: "intl-nice",
@@ -492,7 +492,7 @@ export const destinations: Destination[] = [
     etiquette: "해변에서 반라 일광욕이 흔하지만 구시가지에서는 정장에 준하는 복장을 갖추세요.",
     source: "프랑스관광청(france.fr)",
     updatedAt: "2026-01-01",
-    image: img("intl-nice", "니스 프롬나드 데 장글레 해안"),
+    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/CollineDuChateau_NiceFrance2022.png?width=1200`, "니스 프롬나드 데 장글레 해안", "3602kiva", "CC0"),
   },
   {
     id: "intl-rome",
@@ -516,7 +516,7 @@ export const destinations: Destination[] = [
     etiquette: "성당 방문 시 어깨와 무릎을 가리는 복장이 필요합니다.",
     source: "이탈리아관광청(ENIT, enit.it)",
     updatedAt: "2026-01-01",
-    image: img("intl-rome", "로마 콜로세움 전경"),
+    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/Colosseo_2020.jpg?width=1200`, "로마 콜로세움 전경", "FeaturedPics", "CC BY-SA 4.0"),
   },
   {
     id: "intl-florence",
@@ -540,7 +540,7 @@ export const destinations: Destination[] = [
     etiquette: "박물관은 사전 예약 시 대기시간을 크게 줄일 수 있습니다.",
     source: "이탈리아관광청(ENIT, enit.it)",
     updatedAt: "2026-01-01",
-    image: img("intl-florence", "피렌체 두오모와 붉은 지붕 전경"),
+    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/Cattedrale_di_Santa_Maria_del_Fiore_%E2%80%93_Il_Duomo_di_Firenze.jpg?width=1200`, "피렌체 두오모와 붉은 지붕 전경", "Gary Campbell-Hall", "CC BY 2.0"),
   },
   {
     id: "intl-barcelona",
@@ -564,7 +564,7 @@ export const destinations: Destination[] = [
     etiquette: "사그라다파밀리아 등 인기 명소는 사전 예약이 사실상 필수입니다.",
     source: "스페인관광청(spain.info)",
     updatedAt: "2026-01-01",
-    image: img("intl-barcelona", "바르셀로나 사그라다파밀리아 외관"),
+    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/SF_maig_2_cropped.jpg?width=1200`, "바르셀로나 사그라다파밀리아 외관", "Canaan", "CC BY-SA 4.0"),
   },
   {
     id: "intl-madrid",
@@ -588,7 +588,7 @@ export const destinations: Destination[] = [
     etiquette: "저녁 식사 시간이 늦은 편(21시 이후)이니 사전에 문 여는 시간을 확인하세요.",
     source: "스페인관광청(spain.info)",
     updatedAt: "2026-01-01",
-    image: img("intl-madrid", "마드리드 마요르광장 전경"),
+    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/Madrid_Plaza_Mayor_%2848733706273%29.jpg?width=1200`, "마드리드 마요르광장 전경", "Jorge Franganillo", "CC BY 2.0"),
   },
   {
     id: "intl-london",
@@ -612,7 +612,7 @@ export const destinations: Destination[] = [
     etiquette: "지하철 에스컬레이터는 왼쪽으로 걷고 오른쪽에 서는 것이 관행입니다.",
     source: "영국관광청(VisitBritain)",
     updatedAt: "2026-01-01",
-    image: img("intl-london", "런던 빅벤과 웨스트민스터 다리"),
+    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/Elizabeth_Tower_and_the_north_front_of_the_Palace_of_Westminster%2C_London.jpg?width=1200`, "런던 빅벤과 웨스트민스터 다리", "Christian David", "CC BY-SA 4.0"),
   },
   {
     id: "intl-edinburgh",
@@ -636,7 +636,7 @@ export const destinations: Destination[] = [
     etiquette: "8월 축제 기간은 숙소·교통이 매우 붐비니 예약을 서두르세요.",
     source: "영국관광청(VisitBritain)",
     updatedAt: "2026-01-01",
-    image: img("intl-edinburgh", "에든버러성과 로열마일 전경"),
+    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/City_of_Edinburgh_-_Edinburgh_Castle_-_20140421004403.jpg?width=1200`, "에든버러성과 로열마일 전경", "Enric", "CC BY-SA 4.0"),
   },
   {
     id: "intl-newyork",
@@ -660,7 +660,7 @@ export const destinations: Destination[] = [
     etiquette: "레스토랑 이용 시 팁(15~20%)이 관행적으로 요구됩니다.",
     source: "미국관광청(Visit The USA)",
     updatedAt: "2026-01-01",
-    image: img("intl-newyork", "뉴욕 타임스퀘어 야경"),
+    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/New_york_times_square-terabass.jpg?width=1200`, "뉴욕 타임스퀘어 야경", "Terabass", "CC BY-SA 3.0"),
   },
   {
     id: "intl-losangeles",
@@ -684,7 +684,7 @@ export const destinations: Destination[] = [
     etiquette: "도시 규모가 넓어 이동시간을 넉넉히 계획하세요.",
     source: "미국관광청(Visit The USA)",
     updatedAt: "2026-01-01",
-    image: img("intl-losangeles", "로스앤젤레스 산타모니카비치 부두"),
+    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/Santa_monica_pier_entrance_evening.jpg?width=1200`, "로스앤젤레스 산타모니카비치 부두", "web4camguy", "CC BY-SA 2.0"),
   },
   {
     id: "intl-sydney",
@@ -708,7 +708,7 @@ export const destinations: Destination[] = [
     etiquette: "해변에서는 깃발로 표시된 안전 구역 안에서만 수영하세요.",
     source: "호주관광청(Tourism Australia)",
     updatedAt: "2026-01-01",
-    image: img("intl-sydney", "시드니 오페라하우스와 하버브리지"),
+    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/Sydney_Australia._%2821339175489%29.jpg?width=1200`, "시드니 오페라하우스와 하버브리지", "Bernard Spragg. NZ from Christchurch, New Zealand", "CC0"),
   },
   {
     id: "intl-melbourne",
@@ -732,7 +732,7 @@ export const destinations: Destination[] = [
     etiquette: "무료 트램존 밖에서는 반드시 요금을 태그해야 합니다.",
     source: "호주관광청(Tourism Australia)",
     updatedAt: "2026-01-01",
-    image: img("intl-melbourne", "멜버른 시내 골목 예술 거리"),
+    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/Melbourne_skyline_sor.jpg?width=1200`, "멜버른 시내 골목 예술 거리", "Melbpal", "CC BY-SA 4.0"),
   },
   {
     id: "intl-auckland",
@@ -756,7 +756,7 @@ export const destinations: Destination[] = [
     etiquette: "마오리 문화 시설 방문 시 안내자의 설명을 존중해 주세요.",
     source: "뉴질랜드관광청(newzealand.com)",
     updatedAt: "2026-01-01",
-    image: img("intl-auckland", "오클랜드 스카이타워와 항구 전경"),
+    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/01_Auckland_New_Zealand-1000137.jpg?width=1200`, "오클랜드 스카이타워와 항구 전경", "QFSE Media", "CC BY-SA 3.0 nz"),
   },
   {
     id: "intl-queenstown",
@@ -780,7 +780,7 @@ export const destinations: Destination[] = [
     etiquette: "액티비티 예약 시 취소·환불 규정을 사전에 확인하세요.",
     source: "뉴질랜드관광청(newzealand.com)",
     updatedAt: "2026-01-01",
-    image: img("intl-queenstown", "퀸스타운 호수와 산악 전경"),
+    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/Queenstown_1_%288168013172%29.jpg?width=1200`, "퀸스타운 호수와 산악 전경", "Bernard Spragg. NZ from Christchurch, New Zealand", "CC0"),
   },
   {
     id: "intl-zurich",
@@ -804,7 +804,7 @@ export const destinations: Destination[] = [
     etiquette: "대중교통 요금은 반드시 사전 검표기에 태그해야 합니다.",
     source: "스위스관광청(MySwitzerland.com)",
     updatedAt: "2026-01-01",
-    image: img("intl-zurich", "취리히호수와 구시가지 전경"),
+    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/Altstadt_Z%C3%BCrich_2015.jpg?width=1200`, "취리히호수와 구시가지 전경", "Thomas Wolf, www.foto-tw.de", "CC BY-SA 3.0 de"),
   },
   {
     id: "intl-lucerne",
@@ -828,7 +828,7 @@ export const destinations: Destination[] = [
     etiquette: "산악열차·케이블카는 사전 예약 시 대기 시간을 줄일 수 있습니다.",
     source: "스위스관광청(MySwitzerland.com)",
     updatedAt: "2026-01-01",
-    image: img("intl-lucerne", "루체른 카펠교와 호수 전경"),
+    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/Kapellbruecke.JPG?width=1200`, "루체른 카펠교와 호수 전경", "Simon Koopmann", "CC BY-SA 2.5"),
   },
   {
     id: "intl-berlin",
@@ -852,7 +852,7 @@ export const destinations: Destination[] = [
     etiquette: "무단 횡단은 벌금 대상이니 신호를 반드시 지키세요.",
     source: "독일관광청(germany.travel)",
     updatedAt: "2026-01-01",
-    image: img("intl-berlin", "베를린 브란덴부르크문 전경"),
+    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/Brandenburger_Tor_abends.jpg?width=1200`, "베를린 브란덴부르크문 전경", "Thomas Wolf, www.foto-tw.de", "CC BY-SA 3.0"),
   },
   {
     id: "intl-munich",
@@ -876,7 +876,7 @@ export const destinations: Destination[] = [
     etiquette: "비어가든에서는 남는 좌석에 합석하는 문화가 일반적입니다.",
     source: "독일관광청(germany.travel)",
     updatedAt: "2026-01-01",
-    image: img("intl-munich", "뮌헨 마리엔광장과 신청사"),
+    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/Rathaus_and_Marienplatz_from_Peterskirche_-_August_2006.jpg?width=1200`, "뮌헨 마리엔광장과 신청사", "Diliff", "CC BY-SA 3.0"),
   },
   {
     id: "intl-athens",
@@ -900,7 +900,7 @@ export const destinations: Destination[] = [
     etiquette: "여름철 한낮에는 유적지 그늘이 적으니 오전·늦은 오후 방문을 권장합니다.",
     source: "그리스관광청(visitgreece.gr)",
     updatedAt: "2026-01-01",
-    image: img("intl-athens", "아테네 파르테논신전 전경"),
+    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/The_Parthenon_in_Athens.jpg?width=1200`, "아테네 파르테논신전 전경", "Steve Swayne", "CC BY 2.0"),
   },
   {
     id: "intl-santorini",
@@ -924,7 +924,7 @@ export const destinations: Destination[] = [
     etiquette: "이아마을 일몰 명당은 해지기 1~2시간 전부터 자리가 찹니다.",
     source: "그리스관광청(visitgreece.gr)",
     updatedAt: "2026-01-01",
-    image: img("intl-santorini", "산토리니 이아마을 하얀 건물과 바다"),
+    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/Oia_sunset_-_panoramio_%282%29.jpg?width=1200`, "산토리니 이아마을 하얀 건물과 바다", "TomasEE", "CC BY 3.0"),
   },
   {
     id: "intl-lisbon",
@@ -948,7 +948,7 @@ export const destinations: Destination[] = [
     etiquette: "파두 공연 중에는 대화를 자제하고 조용히 감상하는 것이 예의입니다.",
     source: "포르투갈관광청(visitportugal.com)",
     updatedAt: "2026-01-01",
-    image: img("intl-lisbon", "리스본 알파마지구와 노란 트램"),
+    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/Lisbon_alfalma.jpg?width=1200`, "리스본 알파마지구와 노란 트램", "Arne Müseler", "CC BY-SA 3.0 de"),
   },
   {
     id: "intl-porto",
@@ -972,7 +972,7 @@ export const destinations: Destination[] = [
     etiquette: "렐루서점은 입장료가 있으며 성수기에는 줄이 길어 예약을 권장합니다.",
     source: "포르투갈관광청(visitportugal.com)",
     updatedAt: "2026-01-01",
-    image: img("intl-porto", "포르투 리베이라지구와 두오루강"),
+    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/Puente_Don_Luis_I%2C_Oporto%2C_Portugal%2C_2012-05-09%2C_DD_13.JPG?width=1200`, "포르투 리베이라지구와 두오루강", "Diego Delso", "CC BY-SA 3.0"),
   },
   {
     id: "intl-prague",
@@ -996,7 +996,7 @@ export const destinations: Destination[] = [
     etiquette: "구시가지 레스토랑은 관광객 대상 바가지 메뉴판이 있을 수 있어 가격을 미리 확인하세요.",
     source: "체코관광청(czechtourism.com)",
     updatedAt: "2026-01-01",
-    image: img("intl-prague", "프라하성과 카를교 전경"),
+    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/Karl%C5%AFv_most_Praha%2C_Star%C3%A9_M%C4%9Bsto_20170810_007.jpg?width=1200`, "프라하성과 카를교 전경", "Tilman2007", "CC BY-SA 4.0"),
   },
   {
     id: "intl-ceskykrumlov",
@@ -1020,6 +1020,6 @@ export const destinations: Destination[] = [
     etiquette: "구시가지는 도보 전용 구간이 많아 차량 진입이 제한됩니다.",
     source: "체코관광청(czechtourism.com)",
     updatedAt: "2026-01-01",
-    image: img("intl-ceskykrumlov", "체스키크룸로프성과 블타바강"),
+    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/%C4%8Cesk%C3%BD_Krumlov%2C_z%C3%A1mek_cel%C3%BD_z_vyhl%C3%ADdky.jpg?width=1200`, "체스키크룸로프성과 블타바강", "VitVit", "CC BY-SA 4.0"),
   },
 ];
