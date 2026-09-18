@@ -5,7 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import { useToast } from "@/components/ui/toast";
 import type { MateApplication, MatePost } from "@/lib/supabase/queries";
-import { computeDisplayStatus, fetchFilteredMatePosts } from "./filter-summary";
+import { computeDisplayStatus, fetchFilteredMatePosts, readMateFilters } from "./filter-summary";
 import { readSelectedPostId, SELECTED_PARAM } from "./list-grid";
 import { ParticipateRequestForm } from "./participate-request-form";
 import { ReportModal } from "./report-modal";
@@ -15,6 +15,8 @@ function DetailPanelPanel() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const selectedId = readSelectedPostId(new URLSearchParams(searchParams.toString()));
+  const filters = readMateFilters(new URLSearchParams(searchParams.toString()));
+  const filterKey = `${filters.country}|${filters.region}|${filters.start}|${filters.end}|${filters.status}`;
   const { showToast } = useToast();
 
   const [userId, setUserId] = useState<string | null | undefined>(undefined);
@@ -29,11 +31,33 @@ function DetailPanelPanel() {
     applications: MateApplication[] | null;
     error: boolean;
   }>({ key: "", applications: null, error: false });
+  const [emptyListCheck, setEmptyListCheck] = useState<{ key: string; isEmpty: boolean }>({
+    key: "",
+    isEmpty: false,
+  });
 
   useEffect(() => {
     const supabase = createClient();
     supabase.auth.getUser().then(({ data }) => setUserId(data.user?.id ?? null));
   }, []);
+
+  // 선택된 글이 없을 때만 필요 — 현재 필터 결과가 0건이면 "글을 선택하면..." Placeholder를 숨긴다
+  // (빈 목록 Empty State 옆에 의미 없는 우측 패널이 남는 것을 막기 위함, list-grid.tsx와 같은 필터 로직 재사용).
+  useEffect(() => {
+    if (selectedId) return;
+    let active = true;
+    fetchFilteredMatePosts(filters)
+      .then((posts) => {
+        if (active) setEmptyListCheck({ key: filterKey, isEmpty: posts.length === 0 });
+      })
+      .catch(() => {
+        if (active) setEmptyListCheck({ key: filterKey, isEmpty: false });
+      });
+    return () => {
+      active = false;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedId, filterKey]);
 
   const loadPost = useCallback(async (id: string) => {
     try {
@@ -141,6 +165,9 @@ function DetailPanelPanel() {
   };
 
   if (!selectedId) {
+    if (emptyListCheck.key === filterKey && emptyListCheck.isEmpty) {
+      return null;
+    }
     return (
       <aside className="border-hairline hidden rounded-md border p-8 text-center lg:block lg:w-[60%]">
         <p className="text-body-md text-body">왼쪽 목록에서 동행글을 선택하면 상세 정보가 여기에 표시됩니다.</p>

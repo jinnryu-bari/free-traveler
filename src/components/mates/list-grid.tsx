@@ -59,6 +59,10 @@ function ListGridPanel() {
 
   const visiblePosts = useMemo(() => posts?.slice(0, visibleCount) ?? [], [posts, visibleCount]);
 
+  // 결과가 0건이고 선택도 없으면 상세 패널(DetailPanel)이 스스로를 숨기므로(같은 필터로 동일 판정),
+  // 목록이 그 옆 60%를 넘겨받아 Empty State가 전체 너비를 쓰도록 한다.
+  const detailPanelVisible = Boolean(selectedId) || (posts !== null && posts.length > 0);
+
   useEffect(() => {
     const authorIds = Array.from(new Set(visiblePosts.map((p) => p.author_id))).filter(
       (id) => !(id in nicknames),
@@ -97,9 +101,8 @@ function ListGridPanel() {
   };
 
   return (
-    <section className="mx-auto max-w-[1240px] px-5 py-10 lg:flex lg:gap-6 lg:px-10">
-      <div className="lg:w-[40%]">
-        {loadError && (
+    <div className={`w-full ${detailPanelVisible ? "lg:w-[40%]" : ""}`}>
+      {loadError && (
           <div className="border-hairline rounded-md border p-6 text-center">
             <p className="text-body-md text-ink">동행글 목록을 불러오지 못했어요.</p>
             <p className="text-body-sm text-body mt-1">잠시 후 다시 시도해주세요.</p>
@@ -182,8 +185,7 @@ function ListGridPanel() {
             )}
           </div>
         )}
-      </div>
-    </section>
+    </div>
   );
 }
 
@@ -194,7 +196,7 @@ function ListGridPanel() {
  */
 export function ListGrid() {
   return (
-    <Suspense fallback={<div className="mx-auto h-64 max-w-[1240px] animate-pulse rounded-md bg-surface-strong px-5 lg:px-10" />}>
+    <Suspense fallback={<div className="h-64 w-full animate-pulse rounded-md bg-surface-strong lg:w-[40%]" />}>
       <ListGridPanel />
     </Suspense>
   );
