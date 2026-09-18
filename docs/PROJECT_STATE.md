@@ -22,7 +22,7 @@
 | **Vercel Preview URL** | 없음 — `.vercel/` 프로젝트 연결 없음, 배포 이력 없음 |
 | **Screen Checkpoints** | 아래 표 참조 — 전부 `PENDING` |
 | **Playwright State** | 미설치 — `package.json`에 `@playwright/test` 없음, `playwright.config.ts` 없음(`I-PLAYWRIGHT-SETUP` 상당 작업 착수 전) |
-| **Deferred Items** | ① EXCLUDED 요구사항 25건 — `TASKS/00_TASK_LIST.md` §4, `docs/PROJECT_SCOPE.md` §3 참조(구현 보류가 아니라 범위 제외로 확정된 항목). ② `TASKS/WAVE_PLAN.md` 작성 — Wave 분할 기준 자체가 아직 확정되지 않음(`docs/DECISION_LOG.md` DEC-010 참조). ③ CMS·외부 이메일 공급자·모니터링 인프라 — `docs/ARCHITECTURE.md` §14에 따라 범위 밖으로 확정, 재검토 대상 아님. |
+| **Deferred Items** | ① EXCLUDED 요구사항 25건 — `TASKS/00_TASK_LIST.md` §4, `docs/PROJECT_SCOPE.md` §3 참조(구현 보류가 아니라 범위 제외로 확정된 항목). ② `TASKS/WAVE_PLAN.md` 작성 — Wave 분할 기준 자체가 아직 확정되지 않음(`docs/DECISION_LOG.md` DEC-010 참조). ③ CMS·외부 이메일 공급자·모니터링 인프라 — `docs/ARCHITECTURE.md` §14에 따라 범위 밖으로 확정, 재검토 대상 아님. ④ **미해결 — `app_settings` vs `external_links` 명명 확인 필요**: 외부 URL 설정을 저장하는 6번째 테이블 이름으로 세션 중 `app_settings`를 지시받은 적이 두 차례 있었으나(2026-09-16, 2026-09-18), 현재 확정 정본(`CLAUDE.md` 규칙 13, `TASKS/00_TASK_LIST.md`, `API-ADMIN-EXTERNAL-LINKS` Task)은 전부 `external_links`를 사용 중이다. 사용자 요청에 따라 테이블명은 변경하지 않았고, 어느 쪽이 맞는지 사람 확인이 필요한 상태로 남겨둔다. |
 | **Next Action** | `TASKS/WAVE_PLAN.md` 작성(Wave 분할 확정) → `/run-wave W01`로 첫 Wave 착수. 그 전에 `docs/ARCHITECTURE.md` §15의 착수 차단 항목(Supabase 패키지·env·마이그레이션, Playwright 설치, CI 워크플로) 중 첫 Wave가 실제로 필요로 하는 것부터 해소 필요. |
 
 ---
