@@ -53,18 +53,24 @@ function overlapsPeriod(post: MatePost, start: string, end: string): boolean {
  * 자동 마감(CLOSED) 판정은 조회 시점에 이 함수가 클라이언트에서 추가로 적용한다 —
  * `C-SCR004-LIST-GRID`도 같은 조건으로 일관되게 필터링하기 위해 이 함수를 그대로 가져다 쓴다.
  */
-export async function fetchFilteredMatePosts(filters: MateFilters): Promise<MatePost[]> {
+export async function fetchFilteredMatePosts(
+  filters: MateFilters,
+): Promise<MatePost[]> {
   const params = new URLSearchParams();
   if (filters.country) params.set("country", filters.country);
   if (filters.region) params.set("region", filters.region);
 
-  const res = await fetch(`/api/mates${params.toString() ? `?${params}` : ""}`, { cache: "no-store" });
+  const res = await fetch(
+    `/api/mates${params.toString() ? `?${params}` : ""}`,
+    { cache: "no-store" },
+  );
   if (!res.ok) throw new Error("동행글을 불러오지 못했다");
   const body = (await res.json()) as { posts: MatePost[] };
 
   return body.posts.filter((post) => {
     if (!overlapsPeriod(post, filters.start, filters.end)) return false;
-    if (filters.status && computeDisplayStatus(post) !== filters.status) return false;
+    if (filters.status && computeDisplayStatus(post) !== filters.status)
+      return false;
     return true;
   });
 }
@@ -80,15 +86,27 @@ function FilterSummaryPanel() {
 
   const [mobileOpen, setMobileOpen] = useState(false);
   const filterKey = `${filters.country}|${filters.region}|${filters.start}|${filters.end}|${filters.status}`;
-  const [result, setResult] = useState<{ key: string; count: number | null; error: boolean }>({
+  const [result, setResult] = useState<{
+    key: string;
+    count: number | null;
+    error: boolean;
+  }>({
     key: "",
     count: null,
     error: false,
   });
 
-  const countries = useMemo(() => uniqueSorted(destinations.map((d) => d.country)), []);
+  const countries = useMemo(
+    () => uniqueSorted(destinations.map((d) => d.country)),
+    [],
+  );
   const regions = useMemo(
-    () => uniqueSorted(destinations.filter((d) => d.country === filters.country).map((d) => d.city)),
+    () =>
+      uniqueSorted(
+        destinations
+          .filter((d) => d.country === filters.country)
+          .map((d) => d.city),
+      ),
     [filters.country],
   );
 
@@ -96,7 +114,8 @@ function FilterSummaryPanel() {
     let active = true;
     fetchFilteredMatePosts(filters)
       .then((posts) => {
-        if (active) setResult({ key: filterKey, count: posts.length, error: false });
+        if (active)
+          setResult({ key: filterKey, count: posts.length, error: false });
       })
       .catch(() => {
         if (active) setResult({ key: filterKey, count: null, error: true });
@@ -135,7 +154,10 @@ function FilterSummaryPanel() {
           className={`${mobileOpen ? "flex" : "hidden"} mt-3 flex-col gap-3 lg:mt-0 lg:flex lg:flex-row lg:flex-wrap lg:items-end lg:gap-4`}
         >
           <div className="flex flex-col gap-1">
-            <label htmlFor="mate-filter-country" className="text-body-sm text-ink">
+            <label
+              htmlFor="mate-filter-country"
+              className="text-body-sm text-ink"
+            >
               국가
             </label>
             <select
@@ -154,7 +176,10 @@ function FilterSummaryPanel() {
           </div>
 
           <div className="flex flex-col gap-1">
-            <label htmlFor="mate-filter-region" className="text-body-sm text-ink">
+            <label
+              htmlFor="mate-filter-region"
+              className="text-body-sm text-ink"
+            >
               지역
             </label>
             <select
@@ -174,7 +199,10 @@ function FilterSummaryPanel() {
           </div>
 
           <div className="flex flex-col gap-1">
-            <label htmlFor="mate-filter-start" className="text-body-sm text-ink">
+            <label
+              htmlFor="mate-filter-start"
+              className="text-body-sm text-ink"
+            >
               시작일
             </label>
             <input
@@ -200,7 +228,10 @@ function FilterSummaryPanel() {
           </div>
 
           <div className="flex flex-col gap-1">
-            <label htmlFor="mate-filter-status" className="text-body-sm text-ink">
+            <label
+              htmlFor="mate-filter-status"
+              className="text-body-sm text-ink"
+            >
               모집 상태
             </label>
             <select
@@ -235,7 +266,11 @@ function FilterSummaryPanel() {
  */
 export function FilterSummary() {
   return (
-    <Suspense fallback={<div className="mx-auto h-20 max-w-[1240px] animate-pulse rounded-md bg-surface-strong px-5 lg:px-10" />}>
+    <Suspense
+      fallback={
+        <div className="mx-auto h-20 max-w-[1240px] animate-pulse rounded-md bg-surface-strong px-5 lg:px-10" />
+      }
+    >
       <FilterSummaryPanel />
     </Suspense>
   );

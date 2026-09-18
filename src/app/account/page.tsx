@@ -37,7 +37,8 @@ export default async function Account({
       <div className="mx-auto max-w-[1240px] px-5 py-16 lg:px-10 lg:py-20">
         <h1 className="text-display-lg text-ink">계정</h1>
         <p className="text-body-md text-body mt-2">
-          로그인하면 프로필을 관리하고, 내가 쓴 동행글과 신청 현황을 확인할 수 있습니다.
+          로그인하면 프로필을 관리하고, 내가 쓴 동행글과 신청 현황을 확인할 수
+          있습니다.
         </p>
         <div className="mt-8">
           <AuthGuest />
@@ -46,7 +47,11 @@ export default async function Account({
     );
   }
 
-  const { data: profileRow } = await supabase.from("profiles").select("role").eq("id", user.id).single();
+  const { data: profileRow } = await supabase
+    .from("profiles")
+    .select("role")
+    .eq("id", user.id)
+    .single();
   const role = (profileRow?.role as string | undefined) ?? "member";
   const isAdminArea = role === "moderator" || role === "admin";
   const activeTab = isAdminArea && tab === "admin" ? "admin" : "account";
@@ -54,7 +59,9 @@ export default async function Account({
   return (
     <div className="mx-auto max-w-[1240px] px-5 py-16 lg:px-10 lg:py-20">
       <h1 className="text-display-lg text-ink">계정</h1>
-      <p className="text-body-md text-body mt-2">프로필과 내 활동을 관리하세요.</p>
+      <p className="text-body-md text-body mt-2">
+        프로필과 내 활동을 관리하세요.
+      </p>
 
       {isAdminArea && (
         <div className="border-hairline mt-6 flex gap-1 overflow-x-auto border-b">
@@ -85,7 +92,9 @@ export default async function Account({
           <div className="flex flex-col gap-10">
             <div>
               <p className="text-title-md text-ink">관리</p>
-              <p className="text-body-sm text-body mt-1">신고 처리와 외부 이동 URL을 관리합니다.</p>
+              <p className="text-body-sm text-body mt-1">
+                신고 처리와 외부 이동 URL을 관리합니다.
+              </p>
             </div>
             <AdminReports />
             <AdminExternalLinks />

@@ -15,7 +15,13 @@ function uniqueSorted(values: string[]): string[] {
   return Array.from(new Set(values)).sort((a, b) => a.localeCompare(b, "ko"));
 }
 
-function DestinationCard({ destination, onOpen }: { destination: Destination; onOpen: (id: string) => void }) {
+function DestinationCard({
+  destination,
+  onOpen,
+}: {
+  destination: Destination;
+  onOpen: (id: string) => void;
+}) {
   return (
     <button
       type="button"
@@ -42,7 +48,9 @@ function DestinationCard({ destination, onOpen }: { destination: Destination; on
       <div className="flex flex-col gap-1 p-4">
         <p className="text-title-md text-ink">{destination.city}</p>
         <p className="text-body-sm text-body">{destination.country}</p>
-        <p className="text-body-sm text-body line-clamp-2">{destination.summary}</p>
+        <p className="text-body-sm text-body line-clamp-2">
+          {destination.summary}
+        </p>
       </div>
     </button>
   );
@@ -75,12 +83,23 @@ function DestinationGridsSection() {
     } else {
       params.delete(THEME_PARAM);
     }
-    router.replace(params.toString() ? `/?${params.toString()}` : "/", { scroll: false });
+    router.replace(params.toString() ? `/?${params.toString()}` : "/", {
+      scroll: false,
+    });
   };
 
-  const countries = useMemo(() => uniqueSorted(destinations.map((d) => d.country)), []);
-  const cities = useMemo(() => uniqueSorted(destinations.map((d) => d.city)), []);
-  const themes = useMemo(() => uniqueSorted(destinations.flatMap((d) => d.themes)), []);
+  const countries = useMemo(
+    () => uniqueSorted(destinations.map((d) => d.country)),
+    [],
+  );
+  const cities = useMemo(
+    () => uniqueSorted(destinations.map((d) => d.city)),
+    [],
+  );
+  const themes = useMemo(
+    () => uniqueSorted(destinations.flatMap((d) => d.themes)),
+    [],
+  );
 
   const openDetail = (id: string) => {
     const params = new URLSearchParams(searchParams.toString());
@@ -96,17 +115,22 @@ function DestinationGridsSection() {
     params.delete(QUERY_PARAM);
     params.delete(THEME_PARAM);
     setThemeState("");
-    router.replace(params.toString() ? `/?${params.toString()}` : "/", { scroll: false });
+    router.replace(params.toString() ? `/?${params.toString()}` : "/", {
+      scroll: false,
+    });
   };
 
   const filtered = useMemo(() => {
     return destinations.filter((d) => {
       if (country && d.country !== country) return false;
       if (city && d.city !== city) return false;
-      if (season && !d.seasons.includes(season as (typeof ALL_SEASONS)[number])) return false;
+      if (season && !d.seasons.includes(season as (typeof ALL_SEASONS)[number]))
+        return false;
       if (theme && !d.themes.includes(theme)) return false;
       if (keyword) {
-        const haystack = [d.country, d.city, d.summary, ...d.themes].join(" ").toLowerCase();
+        const haystack = [d.country, d.city, d.summary, ...d.themes]
+          .join(" ")
+          .toLowerCase();
         if (!haystack.includes(keyword)) return false;
       }
       return true;
@@ -119,7 +143,10 @@ function DestinationGridsSection() {
   const isEmpty = filtered.length === 0;
 
   return (
-    <div id={DESTINATION_GRIDS_SECTION_ID} className="flex flex-col gap-8 scroll-mt-20">
+    <div
+      id={DESTINATION_GRIDS_SECTION_ID}
+      className="flex flex-col gap-8 scroll-mt-20"
+    >
       <div className="flex flex-wrap gap-3">
         <select
           aria-label="국가 필터"
@@ -178,7 +205,8 @@ function DestinationGridsSection() {
       {isEmpty ? (
         <div className="flex flex-col items-start gap-3 py-8">
           <p className="text-body-md text-body">
-            선택하신 조건에 맞는 여행지가 없어요. 국가·도시·계절·테마 조건을 완화해보세요.
+            선택하신 조건에 맞는 여행지가 없어요. 국가·도시·계절·테마 조건을
+            완화해보세요.
           </p>
           <button
             type="button"
@@ -200,11 +228,17 @@ function DestinationGridsSection() {
             {domestic.length > 0 ? (
               <div className="grid grid-cols-1 gap-5 lg:grid-cols-3">
                 {domestic.map((d) => (
-                  <DestinationCard key={d.id} destination={d} onOpen={openDetail} />
+                  <DestinationCard
+                    key={d.id}
+                    destination={d}
+                    onOpen={openDetail}
+                  />
                 ))}
               </div>
             ) : (
-              <p className="text-body-sm text-muted">조건에 맞는 국내 여행지가 없어요.</p>
+              <p className="text-body-sm text-muted">
+                조건에 맞는 국내 여행지가 없어요.
+              </p>
             )}
           </section>
 
@@ -218,11 +252,17 @@ function DestinationGridsSection() {
             {international.length > 0 ? (
               <div className="grid grid-cols-1 gap-5 lg:grid-cols-3">
                 {international.map((d) => (
-                  <DestinationCard key={d.id} destination={d} onOpen={openDetail} />
+                  <DestinationCard
+                    key={d.id}
+                    destination={d}
+                    onOpen={openDetail}
+                  />
                 ))}
               </div>
             ) : (
-              <p className="text-body-sm text-muted">조건에 맞는 해외 여행지가 없어요.</p>
+              <p className="text-body-sm text-muted">
+                조건에 맞는 해외 여행지가 없어요.
+              </p>
             )}
           </section>
         </>
@@ -248,7 +288,11 @@ function DestinationGridsSection() {
  */
 export function DestinationGrids() {
   return (
-    <Suspense fallback={<div className="h-64 animate-pulse rounded-md bg-surface-strong" />}>
+    <Suspense
+      fallback={
+        <div className="h-64 animate-pulse rounded-md bg-surface-strong" />
+      }
+    >
       <DestinationGridsSection />
     </Suspense>
   );

@@ -19,7 +19,10 @@ export function IntroPhilosophy() {
       id={INTRO_PHILOSOPHY_SECTION_ID}
       className="mx-auto flex max-w-[1240px] flex-col gap-8 px-5 py-16 scroll-mt-20 lg:flex-row lg:gap-14 lg:px-10 lg:py-20"
     >
-      <nav aria-label="소개 목차" className="flex flex-row gap-4 lg:w-56 lg:shrink-0 lg:flex-col lg:gap-2">
+      <nav
+        aria-label="소개 목차"
+        className="flex flex-row gap-4 lg:w-56 lg:shrink-0 lg:flex-col lg:gap-2"
+      >
         {philosophySections.map((section, i) => (
           <a
             key={section.heading}
@@ -33,7 +36,11 @@ export function IntroPhilosophy() {
 
       <div className="flex flex-col gap-10">
         {philosophySections.map((section, i) => (
-          <div key={section.heading} id={sectionAnchorId(i)} className="flex flex-col gap-3 scroll-mt-20">
+          <div
+            key={section.heading}
+            id={sectionAnchorId(i)}
+            className="flex flex-col gap-3 scroll-mt-20"
+          >
             <h2 className="text-display-md text-ink">{section.heading}</h2>
             {section.paragraphs.map((paragraph, j) => (
               <p key={j} className="text-body-md text-body">

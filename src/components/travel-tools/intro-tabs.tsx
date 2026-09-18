@@ -31,11 +31,15 @@ function IntroTabsRow() {
     <div className="mx-auto max-w-[1240px] px-5 py-12 lg:px-10 lg:py-16">
       <h1 className="text-display-xl text-ink">여행 조건 정리하기</h1>
       <p className="text-body-md text-body mt-3 max-w-xl">
-        항공·숙소 조건을 정리해 외부 사이트로 이동하거나, 함께 떠날 동행을 구해보세요. 입력 →
-        요약 확인 → 이동 순서로 진행됩니다.
+        항공·숙소 조건을 정리해 외부 사이트로 이동하거나, 함께 떠날 동행을
+        구해보세요. 입력 → 요약 확인 → 이동 순서로 진행됩니다.
       </p>
 
-      <div role="tablist" aria-label="여행 도구" className="border-hairline mt-8 grid grid-cols-3 border-b">
+      <div
+        role="tablist"
+        aria-label="여행 도구"
+        className="border-hairline mt-8 grid grid-cols-3 border-b"
+      >
         {TABS.map((tab) => (
           <button
             key={tab.id}
@@ -44,7 +48,9 @@ function IntroTabsRow() {
             aria-selected={active === tab.id}
             onClick={() => selectTab(tab.id)}
             className={`text-button -mb-px border-b-2 px-2 py-3 text-center ${
-              active === tab.id ? "border-brand-coral text-ink" : "border-transparent text-muted"
+              active === tab.id
+                ? "border-brand-coral text-ink"
+                : "border-transparent text-muted"
             }`}
           >
             {tab.label}
@@ -63,7 +69,9 @@ function IntroTabsRow() {
  */
 export function IntroTabs() {
   return (
-    <Suspense fallback={<div className="h-40 animate-pulse bg-surface-strong" />}>
+    <Suspense
+      fallback={<div className="h-40 animate-pulse bg-surface-strong" />}
+    >
       <IntroTabsRow />
     </Suspense>
   );

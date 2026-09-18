@@ -17,7 +17,11 @@ interface Report {
 }
 
 const STATUS_OPTIONS: ReportStatus[] = ["OPEN", "RESOLVED", "DISMISSED"];
-const STATUS_LABEL: Record<ReportStatus, string> = { OPEN: "처리 대기", RESOLVED: "처리 완료", DISMISSED: "반려" };
+const STATUS_LABEL: Record<ReportStatus, string> = {
+  OPEN: "처리 대기",
+  RESOLVED: "처리 완료",
+  DISMISSED: "반려",
+};
 
 /**
  * SCR-005 Admin — 신고 상태 필터·변경(간소화, REQ-FUNC-041). `/api/admin/reports`(API-ADMIN-REPORTS)를
@@ -28,7 +32,11 @@ export function AdminReports() {
   const { role, loading: roleLoading } = useAccountRole();
   const { showToast } = useToast();
   const [filter, setFilter] = useState<ReportStatus>("OPEN");
-  const [result, setResult] = useState<{ key: string; reports: Report[] | null; error: boolean }>({
+  const [result, setResult] = useState<{
+    key: string;
+    reports: Report[] | null;
+    error: boolean;
+  }>({
     key: "",
     reports: null,
     error: false,
@@ -39,7 +47,9 @@ export function AdminReports() {
 
   const load = useCallback(async (status: ReportStatus) => {
     try {
-      const res = await fetch(`/api/admin/reports?status=${status}`, { cache: "no-store" });
+      const res = await fetch(`/api/admin/reports?status=${status}`, {
+        cache: "no-store",
+      });
       if (!res.ok) throw new Error();
       const body = (await res.json()) as { reports: Report[] };
       setResult({ key: status, reports: body.reports, error: false });
@@ -57,7 +67,8 @@ export function AdminReports() {
         return res.json() as Promise<{ reports: Report[] }>;
       })
       .then((body) => {
-        if (active) setResult({ key: filter, reports: body.reports, error: false });
+        if (active)
+          setResult({ key: filter, reports: body.reports, error: false });
       })
       .catch(() => {
         if (active) setResult({ key: filter, reports: null, error: true });
@@ -100,7 +111,9 @@ export function AdminReports() {
     <div className="flex flex-col gap-4">
       <div className="flex flex-col gap-1">
         <p className="text-title-md text-ink">신고 관리</p>
-        <p className="text-body-sm text-body">신고 상태를 확인하고 처리 결과를 기록합니다.</p>
+        <p className="text-body-sm text-body">
+          신고 상태를 확인하고 처리 결과를 기록합니다.
+        </p>
       </div>
 
       <div className="flex flex-col gap-1">
@@ -121,8 +134,12 @@ export function AdminReports() {
         </select>
       </div>
 
-      {loadError && <p className="text-body-sm text-danger">신고 목록을 불러오지 못했다.</p>}
-      {!loadError && reports === null && <div className="h-24 animate-pulse rounded-md bg-surface-strong" />}
+      {loadError && (
+        <p className="text-body-sm text-danger">신고 목록을 불러오지 못했다.</p>
+      )}
+      {!loadError && reports === null && (
+        <div className="h-24 animate-pulse rounded-md bg-surface-strong" />
+      )}
       {!loadError && reports !== null && reports.length === 0 && (
         <div className="border-hairline rounded-md border p-6 text-center">
           <p className="text-body-md text-ink">현재 처리할 신고가 없어요.</p>
@@ -131,16 +148,24 @@ export function AdminReports() {
       {!loadError && reports !== null && reports.length > 0 && (
         <div className="flex flex-col gap-3">
           {reports.map((report) => (
-            <div key={report.id} className="shadow-card flex flex-col gap-2 rounded-md p-4">
+            <div
+              key={report.id}
+              className="shadow-card flex flex-col gap-2 rounded-md p-4"
+            >
               <div className="flex items-center justify-between gap-2">
-                <p className="text-body-sm text-ink">사유: {report.reason_code}</p>
+                <p className="text-body-sm text-ink">
+                  사유: {report.reason_code}
+                </p>
                 <span className="text-caption bg-surface-strong text-body rounded-full px-2 py-0.5">
                   {STATUS_LABEL[report.status]}
                 </span>
               </div>
               <p className="text-body-sm text-body">{report.description}</p>
               <p className="text-caption text-body">
-                대상: {report.target_post_id ? `동행글 ${report.target_post_id}` : `사용자 ${report.target_user_id}`}
+                대상:{" "}
+                {report.target_post_id
+                  ? `동행글 ${report.target_post_id}`
+                  : `사용자 ${report.target_user_id}`}
               </p>
               {report.status !== "RESOLVED" && report.status !== "DISMISSED" ? (
                 <div className="mt-1 flex gap-2">

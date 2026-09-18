@@ -32,7 +32,13 @@ const STATUS_LABEL: Record<string, string> = {
   REJECTED: "거절됨",
 };
 
-function SectionTitle({ title, description }: { title: string; description: string }) {
+function SectionTitle({
+  title,
+  description,
+}: {
+  title: string;
+  description: string;
+}) {
   return (
     <div>
       <p className="text-title-md text-ink">{title}</p>
@@ -41,7 +47,15 @@ function SectionTitle({ title, description }: { title: string; description: stri
   );
 }
 
-function EmptyState({ message, ctaHref, ctaLabel }: { message: string; ctaHref: string; ctaLabel: string }) {
+function EmptyState({
+  message,
+  ctaHref,
+  ctaLabel,
+}: {
+  message: string;
+  ctaHref: string;
+  ctaLabel: string;
+}) {
   return (
     <div className="border-hairline rounded-md border p-6 text-center">
       <p className="text-body-md text-ink">{message}</p>
@@ -64,7 +78,9 @@ export function MyActivity() {
   const { showToast } = useToast();
   const [userId, setUserId] = useState<string | null>(null);
   const [posts, setPosts] = useState<MyPost[] | null>(null);
-  const [applications, setApplications] = useState<MyApplication[] | null>(null);
+  const [applications, setApplications] = useState<MyApplication[] | null>(
+    null,
+  );
   const [blocks, setBlocks] = useState<MyBlock[] | null>(null);
   const [closingId, setClosingId] = useState<string | null>(null);
   const [unblockingId, setUnblockingId] = useState<string | null>(null);
@@ -87,15 +103,31 @@ export function MyActivity() {
     ]);
 
     setPosts((postsRes.data as MyPost[] | null) ?? []);
-    setApplications((applicationsRes.data as unknown as MyApplication[] | null) ?? []);
+    setApplications(
+      (applicationsRes.data as unknown as MyApplication[] | null) ?? [],
+    );
 
-    const blockedIds = ((blocksRes.data as { blocked_id: string }[] | null) ?? []).map((row) => row.blocked_id);
+    const blockedIds = (
+      (blocksRes.data as { blocked_id: string }[] | null) ?? []
+    ).map((row) => row.blocked_id);
     if (blockedIds.length === 0) {
       setBlocks([]);
     } else {
-      const { data: profileRows } = await supabase.from("profiles").select("id, nickname").in("id", blockedIds);
-      const nicknameById = new Map((profileRows as { id: string; nickname: string }[] | null ?? []).map((r) => [r.id, r.nickname]));
-      setBlocks(blockedIds.map((blockedId) => ({ blocked_id: blockedId, nickname: nicknameById.get(blockedId) ?? "알 수 없음" })));
+      const { data: profileRows } = await supabase
+        .from("profiles")
+        .select("id, nickname")
+        .in("id", blockedIds);
+      const nicknameById = new Map(
+        ((profileRows as { id: string; nickname: string }[] | null) ?? []).map(
+          (r) => [r.id, r.nickname],
+        ),
+      );
+      setBlocks(
+        blockedIds.map((blockedId) => ({
+          blocked_id: blockedId,
+          nickname: nicknameById.get(blockedId) ?? "알 수 없음",
+        })),
+      );
     }
   }, []);
 
@@ -112,7 +144,10 @@ export function MyActivity() {
     if (closingId) return;
     setClosingId(postId);
     const supabase = createClient();
-    const { error } = await supabase.from("mate_posts").update({ status: "CLOSED" }).eq("id", postId);
+    const { error } = await supabase
+      .from("mate_posts")
+      .update({ status: "CLOSED" })
+      .eq("id", postId);
     setClosingId(null);
     if (error) {
       showToast("error", "모집을 마감하지 못했다");
@@ -125,7 +160,9 @@ export function MyActivity() {
   const unblock = async (blockedId: string) => {
     if (unblockingId) return;
     setUnblockingId(blockedId);
-    const res = await fetch(`/api/account/blocklist?blockedId=${blockedId}`, { method: "DELETE" });
+    const res = await fetch(`/api/account/blocklist?blockedId=${blockedId}`, {
+      method: "DELETE",
+    });
     setUnblockingId(null);
     if (!res.ok) {
       showToast("error", "차단을 해제하지 못했다");
@@ -138,17 +175,31 @@ export function MyActivity() {
   return (
     <div className="flex flex-col gap-10">
       <div className="flex flex-col gap-4">
-        <SectionTitle title="내가 쓴 동행글" description="작성한 글의 모집 상태를 확인하고 마감할 수 있습니다." />
-        {posts === null && <div className="h-24 animate-pulse rounded-md bg-surface-strong" />}
+        <SectionTitle
+          title="내가 쓴 동행글"
+          description="작성한 글의 모집 상태를 확인하고 마감할 수 있습니다."
+        />
+        {posts === null && (
+          <div className="h-24 animate-pulse rounded-md bg-surface-strong" />
+        )}
         {posts !== null && posts.length === 0 && (
-          <EmptyState message="아직 작성한 동행글이 없습니다." ctaHref="/travel-tools?tab=mate" ctaLabel="동행글 작성하기" />
+          <EmptyState
+            message="아직 작성한 동행글이 없습니다."
+            ctaHref="/travel-tools?tab=mate"
+            ctaLabel="동행글 작성하기"
+          />
         )}
         {posts !== null && posts.length > 0 && (
           <div className="grid grid-cols-1 gap-3 lg:grid-cols-2">
             {posts.map((post) => (
-              <div key={post.id} className="shadow-card flex flex-col gap-1 rounded-md p-4">
+              <div
+                key={post.id}
+                className="shadow-card flex flex-col gap-1 rounded-md p-4"
+              >
                 <div className="flex items-center justify-between gap-2">
-                  <p className="text-title-sm text-ink line-clamp-1">{post.title}</p>
+                  <p className="text-title-sm text-ink line-clamp-1">
+                    {post.title}
+                  </p>
                   <span
                     className={`text-caption shrink-0 rounded-full px-2 py-0.5 ${post.status === "OPEN" ? "bg-info-bg text-info" : "bg-surface-strong text-body"}`}
                   >
@@ -156,7 +207,8 @@ export function MyActivity() {
                   </span>
                 </div>
                 <p className="text-body-sm text-body">
-                  {post.country} {post.region} · {post.start_date} ~ {post.end_date}
+                  {post.country} {post.region} · {post.start_date} ~{" "}
+                  {post.end_date}
                 </p>
                 {post.status === "OPEN" && (
                   <button
@@ -175,17 +227,31 @@ export function MyActivity() {
       </div>
 
       <div className="flex flex-col gap-4">
-        <SectionTitle title="내가 신청한 동행글" description="참가 신청 상태를 확인할 수 있습니다." />
-        {applications === null && <div className="h-24 animate-pulse rounded-md bg-surface-strong" />}
+        <SectionTitle
+          title="내가 신청한 동행글"
+          description="참가 신청 상태를 확인할 수 있습니다."
+        />
+        {applications === null && (
+          <div className="h-24 animate-pulse rounded-md bg-surface-strong" />
+        )}
         {applications !== null && applications.length === 0 && (
-          <EmptyState message="아직 신청한 동행글이 없습니다." ctaHref="/mates" ctaLabel="동행글 찾아보기" />
+          <EmptyState
+            message="아직 신청한 동행글이 없습니다."
+            ctaHref="/mates"
+            ctaLabel="동행글 찾아보기"
+          />
         )}
         {applications !== null && applications.length > 0 && (
           <div className="grid grid-cols-1 gap-3 lg:grid-cols-2">
             {applications.map((app) => (
-              <div key={app.id} className="shadow-card flex flex-col gap-1 rounded-md p-4">
+              <div
+                key={app.id}
+                className="shadow-card flex flex-col gap-1 rounded-md p-4"
+              >
                 <div className="flex items-center justify-between gap-2">
-                  <p className="text-title-sm text-ink line-clamp-1">{app.mate_posts?.title ?? "삭제된 글"}</p>
+                  <p className="text-title-sm text-ink line-clamp-1">
+                    {app.mate_posts?.title ?? "삭제된 글"}
+                  </p>
                   <span className="text-caption bg-surface-strong text-body shrink-0 rounded-full px-2 py-0.5">
                     {STATUS_LABEL[app.status]}
                   </span>
@@ -202,15 +268,27 @@ export function MyActivity() {
       </div>
 
       <div className="flex flex-col gap-4">
-        <SectionTitle title="차단 목록" description="차단한 사용자를 관리할 수 있습니다." />
-        {blocks === null && <div className="h-24 animate-pulse rounded-md bg-surface-strong" />}
+        <SectionTitle
+          title="차단 목록"
+          description="차단한 사용자를 관리할 수 있습니다."
+        />
+        {blocks === null && (
+          <div className="h-24 animate-pulse rounded-md bg-surface-strong" />
+        )}
         {blocks !== null && blocks.length === 0 && (
-          <EmptyState message="차단한 사용자가 없습니다." ctaHref="/mates" ctaLabel="동행글 찾아보기" />
+          <EmptyState
+            message="차단한 사용자가 없습니다."
+            ctaHref="/mates"
+            ctaLabel="동행글 찾아보기"
+          />
         )}
         {blocks !== null && blocks.length > 0 && (
           <div className="grid grid-cols-1 gap-3 lg:grid-cols-2">
             {blocks.map((block) => (
-              <div key={block.blocked_id} className="shadow-card flex items-center justify-between gap-2 rounded-md p-4">
+              <div
+                key={block.blocked_id}
+                className="shadow-card flex items-center justify-between gap-2 rounded-md p-4"
+              >
                 <p className="text-body-sm text-ink">{block.nickname}</p>
                 <button
                   type="button"
@@ -218,7 +296,9 @@ export function MyActivity() {
                   disabled={unblockingId === block.blocked_id}
                   className="text-button border-hairline inline-flex h-8 shrink-0 items-center rounded-sm border px-3 text-ink hover:bg-surface-soft disabled:opacity-50"
                 >
-                  {unblockingId === block.blocked_id ? "해제하는 중..." : "차단 해제"}
+                  {unblockingId === block.blocked_id
+                    ? "해제하는 중..."
+                    : "차단 해제"}
                 </button>
               </div>
             ))}

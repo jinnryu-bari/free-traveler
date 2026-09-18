@@ -15,7 +15,10 @@ interface ParticipateRequestFormProps {
  * 최대 500자 비공개 참가 메시지를 `/api/mates/[id]/requests`(API-MATE-REQUESTS)로 제출한다.
  * 중복 PENDING/ACCEPTED 신청은 서버가 409로 응답하며, 이 화면은 그 오류를 그대로 노출한다.
  */
-export function ParticipateRequestForm({ postId, onSubmitted }: ParticipateRequestFormProps) {
+export function ParticipateRequestForm({
+  postId,
+  onSubmitted,
+}: ParticipateRequestFormProps) {
   const { showToast } = useToast();
   const [message, setMessage] = useState("");
   const [submitting, setSubmitting] = useState(false);
@@ -35,7 +38,9 @@ export function ParticipateRequestForm({ postId, onSubmitted }: ParticipateReque
         body: JSON.stringify({ message: message.trim() }),
       });
       if (!res.ok) {
-        const body = (await res.json().catch(() => null)) as { error?: string } | null;
+        const body = (await res.json().catch(() => null)) as {
+          error?: string;
+        } | null;
         const message = body?.error ?? "참가 신청을 보내지 못했다";
         setError(message);
         showToast("error", message);
@@ -55,7 +60,9 @@ export function ParticipateRequestForm({ postId, onSubmitted }: ParticipateReque
   if (submitted) {
     return (
       <div className="border-hairline rounded-md border p-4">
-        <p className="text-body-md text-ink">참가 신청을 보냈습니다. 작성자 승인을 기다려주세요.</p>
+        <p className="text-body-md text-ink">
+          참가 신청을 보냈습니다. 작성자 승인을 기다려주세요.
+        </p>
       </div>
     );
   }
@@ -74,7 +81,9 @@ export function ParticipateRequestForm({ postId, onSubmitted }: ParticipateReque
         className="border-hairline text-body-sm rounded-sm border px-3 py-2 text-ink"
         placeholder="간단한 자기소개와 참가 이유를 적어주세요."
       />
-      <p className="text-caption text-body text-right">{message.length}/{MAX_LENGTH}</p>
+      <p className="text-caption text-body text-right">
+        {message.length}/{MAX_LENGTH}
+      </p>
       {error && <p className="text-caption text-danger">{error}</p>}
       <button
         type="submit"

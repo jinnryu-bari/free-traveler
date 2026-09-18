@@ -50,7 +50,9 @@ export function ProfileForm() {
       setUserId(data.user.id);
       const { data: row, error } = await supabase
         .from("profiles")
-        .select("nickname, age_range, travel_style, gender, is_adult, adult_verified_at")
+        .select(
+          "nickname, age_range, travel_style, gender, is_adult, adult_verified_at",
+        )
         .eq("id", data.user.id)
         .single();
       if (!active) return;
@@ -69,7 +71,11 @@ export function ProfileForm() {
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     if (!userId || !profile || saving) return;
-    if (!profile.nickname.trim() || !profile.age_range || !profile.travel_style.trim()) {
+    if (
+      !profile.nickname.trim() ||
+      !profile.age_range ||
+      !profile.travel_style.trim()
+    ) {
       showToast("error", "닉네임·연령대·여행 스타일은 필수다");
       return;
     }
@@ -107,7 +113,11 @@ export function ProfileForm() {
       showToast("error", "성인확인을 저장하지 못했다");
       return;
     }
-    setProfile((current) => (current ? { ...current, is_adult: true, adult_verified_at: now } : current));
+    setProfile((current) =>
+      current
+        ? { ...current, is_adult: true, adult_verified_at: now }
+        : current,
+    );
     showToast("success", "성인확인을 완료했다");
   };
 
@@ -132,7 +142,9 @@ export function ProfileForm() {
           </p>
         ) : (
           <div className="flex flex-col gap-2">
-            <p className="text-body-sm text-ink">아직 성인확인을 완료하지 않았습니다.</p>
+            <p className="text-body-sm text-ink">
+              아직 성인확인을 완료하지 않았습니다.
+            </p>
             <label className="text-body-sm flex items-center gap-2 text-ink">
               <input
                 type="checkbox"
@@ -153,7 +165,10 @@ export function ProfileForm() {
         )}
       </div>
 
-      <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-5 lg:grid-cols-2">
+      <form
+        onSubmit={handleSubmit}
+        className="grid grid-cols-1 gap-5 lg:grid-cols-2"
+      >
         <div className="flex flex-col gap-1">
           <label htmlFor="profile-nickname" className="text-body-sm text-ink">
             닉네임
@@ -162,7 +177,9 @@ export function ProfileForm() {
             id="profile-nickname"
             required
             value={profile.nickname}
-            onChange={(e) => setProfile({ ...profile, nickname: e.target.value })}
+            onChange={(e) =>
+              setProfile({ ...profile, nickname: e.target.value })
+            }
             className="border-hairline text-body-sm rounded-sm border px-3 py-2 text-ink"
           />
         </div>
@@ -175,7 +192,9 @@ export function ProfileForm() {
             id="profile-age-range"
             required
             value={profile.age_range}
-            onChange={(e) => setProfile({ ...profile, age_range: e.target.value })}
+            onChange={(e) =>
+              setProfile({ ...profile, age_range: e.target.value })
+            }
             className="border-hairline text-body-sm rounded-sm border px-3 py-2 text-ink"
           >
             <option value="">선택하세요</option>
@@ -188,14 +207,19 @@ export function ProfileForm() {
         </div>
 
         <div className="flex flex-col gap-1">
-          <label htmlFor="profile-travel-style" className="text-body-sm text-ink">
+          <label
+            htmlFor="profile-travel-style"
+            className="text-body-sm text-ink"
+          >
             여행 스타일
           </label>
           <input
             id="profile-travel-style"
             required
             value={profile.travel_style}
-            onChange={(e) => setProfile({ ...profile, travel_style: e.target.value })}
+            onChange={(e) =>
+              setProfile({ ...profile, travel_style: e.target.value })
+            }
             placeholder="예: 느긋한 힐링 여행"
             className="border-hairline text-body-sm rounded-sm border px-3 py-2 text-ink"
           />

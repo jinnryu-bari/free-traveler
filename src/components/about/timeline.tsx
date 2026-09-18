@@ -10,10 +10,15 @@ export function Timeline() {
   const { timeline } = aboutData;
 
   return (
-    <section id={TIMELINE_SECTION_ID} className="mx-auto max-w-[1240px] px-5 py-16 scroll-mt-20 lg:px-10 lg:py-20">
+    <section
+      id={TIMELINE_SECTION_ID}
+      className="mx-auto max-w-[1240px] px-5 py-16 scroll-mt-20 lg:px-10 lg:py-20"
+    >
       <div>
         <h2 className="text-display-md text-ink">여행 Timeline</h2>
-        <p className="text-body-md text-body mt-1">지금까지 다녀온 여행을 연도별로 정리했어요.</p>
+        <p className="text-body-md text-body mt-1">
+          지금까지 다녀온 여행을 연도별로 정리했어요.
+        </p>
       </div>
 
       <ol className="border-hairline mt-8 flex flex-col gap-8 border-l pl-6 lg:max-w-2xl">

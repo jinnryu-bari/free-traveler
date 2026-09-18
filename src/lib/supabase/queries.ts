@@ -10,7 +10,8 @@ import { createClient } from "./server";
 export type MatePostStatus = "OPEN" | "CLOSED";
 export type MateApplicationStatus = "PENDING" | "ACCEPTED" | "REJECTED";
 export type ReportStatus = "OPEN" | "RESOLVED" | "DISMISSED";
-export type ExternalLinkKey = "flight_search_base_url" | "hotel_search_base_url";
+export type ExternalLinkKey =
+  "flight_search_base_url" | "hotel_search_base_url";
 
 export interface MatePost {
   id: string;
@@ -65,11 +66,16 @@ const matePostFiltersSchema = z.object({
 
 export type MatePostFilters = z.infer<typeof matePostFiltersSchema>;
 
-export async function listMatePosts(filters: MatePostFilters = {}): Promise<MatePost[]> {
+export async function listMatePosts(
+  filters: MatePostFilters = {},
+): Promise<MatePost[]> {
   const parsed = matePostFiltersSchema.parse(filters);
   const supabase = await createClient();
 
-  let query = supabase.from("mate_posts").select("*").order("created_at", { ascending: false });
+  let query = supabase
+    .from("mate_posts")
+    .select("*")
+    .order("created_at", { ascending: false });
   if (parsed.country) query = query.eq("country", parsed.country);
   if (parsed.region) query = query.eq("region", parsed.region);
   if (parsed.status) query = query.eq("status", parsed.status);
@@ -129,7 +135,9 @@ const createMateApplicationSchema = z.object({
   message: z.string().trim().min(1).max(500),
 });
 
-export type CreateMateApplicationInput = z.infer<typeof createMateApplicationSchema>;
+export type CreateMateApplicationInput = z.infer<
+  typeof createMateApplicationSchema
+>;
 
 export async function createMateApplication(
   applicantId: string,
@@ -180,12 +188,18 @@ export async function updateMateApplicationStatus(
 
 export async function getMatePostById(id: string): Promise<MatePost | null> {
   const supabase = await createClient();
-  const { data, error } = await supabase.from("mate_posts").select("*").eq("id", id).maybeSingle();
+  const { data, error } = await supabase
+    .from("mate_posts")
+    .select("*")
+    .eq("id", id)
+    .maybeSingle();
   if (error) throw error;
   return (data as MatePost | null) ?? null;
 }
 
-export async function listApplicationsForPost(postId: string): Promise<MateApplication[]> {
+export async function listApplicationsForPost(
+  postId: string,
+): Promise<MateApplication[]> {
   const supabase = await createClient();
   const { data, error } = await supabase
     .from("mate_applications")
@@ -196,7 +210,9 @@ export async function listApplicationsForPost(postId: string): Promise<MateAppli
   return data as MateApplication[];
 }
 
-export async function getMateApplicationById(id: string): Promise<MateApplication | null> {
+export async function getMateApplicationById(
+  id: string,
+): Promise<MateApplication | null> {
   const supabase = await createClient();
   const { data, error } = await supabase
     .from("mate_applications")
@@ -236,7 +252,11 @@ export async function isProfileAdultVerified(userId: string): Promise<boolean> {
 // 클라이언트가 보여주는 role(RoleGate)을 신뢰하지 않고 항상 이 함수로 다시 조회한다.
 export async function getProfileRole(userId: string): Promise<string> {
   const supabase = await createClient();
-  const { data, error } = await supabase.from("profiles").select("role").eq("id", userId).single();
+  const { data, error } = await supabase
+    .from("profiles")
+    .select("role")
+    .eq("id", userId)
+    .single();
   if (error) throw error;
   return (data as { role: string }).role;
 }
@@ -291,7 +311,10 @@ const createReportSchema = z
 
 export type CreateReportInput = z.infer<typeof createReportSchema>;
 
-export async function createReport(reporterId: string, input: CreateReportInput): Promise<Report> {
+export async function createReport(
+  reporterId: string,
+  input: CreateReportInput,
+): Promise<Report> {
   const parsed = createReportSchema.parse(input);
   const supabase = await createClient();
 
@@ -321,7 +344,10 @@ export async function listReports(
   const parsed = listReportsFiltersSchema.parse(filters);
   const supabase = await createClient();
 
-  let query = supabase.from("reports").select("*").order("created_at", { ascending: false });
+  let query = supabase
+    .from("reports")
+    .select("*")
+    .order("created_at", { ascending: false });
   if (parsed.status) query = query.eq("status", parsed.status);
 
   const { data, error } = await query;
@@ -357,9 +383,13 @@ const ALLOWED_EXTERNAL_LINK_HOSTS = [
   "www.google.com", // Google Flights/Hotels 등, 06번 가이드에서 실제 값으로 교체
 ];
 
-export async function getExternalLinks(): Promise<Record<ExternalLinkKey, string | null>> {
+export async function getExternalLinks(): Promise<
+  Record<ExternalLinkKey, string | null>
+> {
   const supabase = await createClient();
-  const { data, error } = await supabase.from("external_links").select("key, url");
+  const { data, error } = await supabase
+    .from("external_links")
+    .select("key, url");
   if (error) throw error;
 
   const result: Record<ExternalLinkKey, string | null> = {
@@ -380,9 +410,15 @@ const updateExternalLinkSchema = z.object({
     .refine((value) => value.startsWith("https://"), {
       message: "HTTPS URL만 허용된다",
     })
-    .refine((value) => ALLOWED_EXTERNAL_LINK_HOSTS.some((host) => new URL(value).hostname === host), {
-      message: "허용목록에 없는 호스트다",
-    }),
+    .refine(
+      (value) =>
+        ALLOWED_EXTERNAL_LINK_HOSTS.some(
+          (host) => new URL(value).hostname === host,
+        ),
+      {
+        message: "허용목록에 없는 호스트다",
+      },
+    ),
 });
 
 export type UpdateExternalLinkInput = z.infer<typeof updateExternalLinkSchema>;
@@ -396,7 +432,11 @@ export async function updateExternalLink(
 
   const { data, error } = await supabase
     .from("external_links")
-    .update({ url: parsed.url, updated_by: updatedBy, updated_at: new Date().toISOString() })
+    .update({
+      url: parsed.url,
+      updated_by: updatedBy,
+      updated_at: new Date().toISOString(),
+    })
     .eq("key", parsed.key)
     .select("key, url, updated_at")
     .single();

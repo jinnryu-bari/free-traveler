@@ -10,7 +10,12 @@ function countMatches(keyword: string): number {
   const needle = keyword.trim().toLowerCase();
   if (!needle) return destinations.length;
   return destinations.filter((destination) => {
-    const haystack = [destination.country, destination.city, destination.summary, ...destination.themes]
+    const haystack = [
+      destination.country,
+      destination.city,
+      destination.summary,
+      ...destination.themes,
+    ]
       .join(" ")
       .toLowerCase();
     return haystack.includes(needle);
@@ -21,7 +26,9 @@ function HeroSearchForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const paramsString = searchParams.toString();
-  const [keyword, setKeyword] = useState(() => searchParams.get(QUERY_PARAM) ?? "");
+  const [keyword, setKeyword] = useState(
+    () => searchParams.get(QUERY_PARAM) ?? "",
+  );
 
   // URL query가 외부에서 바뀌면(뒤로가기 등) 입력값을 다시 동기화한다 — 렌더 중
   // 상태 조정 패턴을 사용해 effect 안에서의 setState 캐스케이드를 피한다.

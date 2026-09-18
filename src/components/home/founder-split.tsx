@@ -10,7 +10,8 @@ export const FOUNDER_SPLIT_SECTION_ID = "founder-split";
  * 상호작용이 없는 정적 Section이라 Server Component로 유지한다.
  */
 export function FounderSplit() {
-  const { name, gallery, philosophySections, totalTrips, totalCountries } = aboutData;
+  const { name, gallery, philosophySections, totalTrips, totalCountries } =
+    aboutData;
   const photo = gallery[0];
   const intro = philosophySections[0]?.paragraphs.slice(0, 3) ?? [];
 

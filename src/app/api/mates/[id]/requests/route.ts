@@ -22,10 +22,18 @@ import {
 export const UNIQUE_VIOLATION = "23505";
 
 export function hasPgErrorCode(error: unknown, code: string): boolean {
-  return typeof error === "object" && error !== null && "code" in error && (error as { code?: string }).code === code;
+  return (
+    typeof error === "object" &&
+    error !== null &&
+    "code" in error &&
+    (error as { code?: string }).code === code
+  );
 }
 
-export async function GET(_request: Request, { params }: { params: Promise<{ id: string }> }) {
+export async function GET(
+  _request: Request,
+  { params }: { params: Promise<{ id: string }> },
+) {
   const { id } = await params;
   const supabase = await createClient();
   const {
@@ -44,7 +52,10 @@ const createRequestSchema = z.object({
   message: z.string().trim().min(1).max(500),
 });
 
-export async function POST(request: Request, { params }: { params: Promise<{ id: string }> }) {
+export async function POST(
+  request: Request,
+  { params }: { params: Promise<{ id: string }> },
+) {
   const { id } = await params;
   const supabase = await createClient();
   const {
@@ -57,27 +68,42 @@ export async function POST(request: Request, { params }: { params: Promise<{ id:
 
   const post = await getMatePostById(id);
   if (!post) {
-    return NextResponse.json({ error: "동행글을 찾을 수 없다" }, { status: 404 });
+    return NextResponse.json(
+      { error: "동행글을 찾을 수 없다" },
+      { status: 404 },
+    );
   }
   if (post.author_id === user.id) {
-    return NextResponse.json({ error: "자기 글에는 참가 신청을 할 수 없다" }, { status: 400 });
+    return NextResponse.json(
+      { error: "자기 글에는 참가 신청을 할 수 없다" },
+      { status: 400 },
+    );
   }
 
   const body = await request.json().catch(() => null);
   const parsed = createRequestSchema.safeParse(body);
   if (!parsed.success) {
     return NextResponse.json(
-      { error: "입력값이 올바르지 않다", issues: parsed.error.flatten().fieldErrors },
+      {
+        error: "입력값이 올바르지 않다",
+        issues: parsed.error.flatten().fieldErrors,
+      },
       { status: 400 },
     );
   }
 
   try {
-    const application = await createMateApplication(user.id, { postId: id, message: parsed.data.message });
+    const application = await createMateApplication(user.id, {
+      postId: id,
+      message: parsed.data.message,
+    });
     return NextResponse.json({ application }, { status: 201 });
   } catch (error) {
     if (hasPgErrorCode(error, UNIQUE_VIOLATION)) {
-      return NextResponse.json({ error: "이미 신청 중인 동행글이다" }, { status: 409 });
+      return NextResponse.json(
+        { error: "이미 신청 중인 동행글이다" },
+        { status: 409 },
+      );
     }
     throw error;
   }
@@ -88,7 +114,10 @@ const updateRequestSchema = z.object({
   status: z.enum(["ACCEPTED", "REJECTED"]),
 });
 
-export async function PATCH(request: Request, { params }: { params: Promise<{ id: string }> }) {
+export async function PATCH(
+  request: Request,
+  { params }: { params: Promise<{ id: string }> },
+) {
   const { id } = await params;
   const supabase = await createClient();
   const {
@@ -101,26 +130,40 @@ export async function PATCH(request: Request, { params }: { params: Promise<{ id
 
   const post = await getMatePostById(id);
   if (!post) {
-    return NextResponse.json({ error: "동행글을 찾을 수 없다" }, { status: 404 });
+    return NextResponse.json(
+      { error: "동행글을 찾을 수 없다" },
+      { status: 404 },
+    );
   }
   if (post.author_id !== user.id) {
-    return NextResponse.json({ error: "글 작성자만 승인/거절할 수 있다" }, { status: 403 });
+    return NextResponse.json(
+      { error: "글 작성자만 승인/거절할 수 있다" },
+      { status: 403 },
+    );
   }
 
   const body = await request.json().catch(() => null);
   const parsed = updateRequestSchema.safeParse(body);
   if (!parsed.success) {
     return NextResponse.json(
-      { error: "입력값이 올바르지 않다", issues: parsed.error.flatten().fieldErrors },
+      {
+        error: "입력값이 올바르지 않다",
+        issues: parsed.error.flatten().fieldErrors,
+      },
       { status: 400 },
     );
   }
 
   const application = await getMateApplicationById(parsed.data.applicationId);
   if (!application || application.post_id !== id) {
-    return NextResponse.json({ error: "참가 요청을 찾을 수 없다" }, { status: 404 });
+    return NextResponse.json(
+      { error: "참가 요청을 찾을 수 없다" },
+      { status: 404 },
+    );
   }
 
-  const updated = await updateMateApplicationStatus(parsed.data.applicationId, { status: parsed.data.status });
+  const updated = await updateMateApplicationStatus(parsed.data.applicationId, {
+    status: parsed.data.status,
+  });
   return NextResponse.json({ application: updated });
 }

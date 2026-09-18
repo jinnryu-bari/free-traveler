@@ -4,7 +4,14 @@ import { destinations } from "@/data/destinations";
 
 export const COUNTRY_CHIPS_SECTION_ID = "country-chips";
 
-const REGION_ORDER: AboutCountryChip["region"][] = ["아시아", "유럽", "북미", "남미", "오세아니아", "아프리카"];
+const REGION_ORDER: AboutCountryChip["region"][] = [
+  "아시아",
+  "유럽",
+  "북미",
+  "남미",
+  "오세아니아",
+  "아프리카",
+];
 
 /**
  * SCR-002 Section 4 — 방문 국가 Chip(권역별). `src/data/destinations.ts`에 해당
@@ -21,11 +28,15 @@ export function CountryChips() {
   })).filter((group) => group.countries.length > 0);
 
   return (
-    <section id={COUNTRY_CHIPS_SECTION_ID} className="mx-auto max-w-[1240px] px-5 py-16 scroll-mt-20 lg:px-10 lg:py-20">
+    <section
+      id={COUNTRY_CHIPS_SECTION_ID}
+      className="mx-auto max-w-[1240px] px-5 py-16 scroll-mt-20 lg:px-10 lg:py-20"
+    >
       <div>
         <h2 className="text-display-md text-ink">방문 국가</h2>
         <p className="text-body-md text-body mt-1">
-          지금까지 다녀온 {visitedCountries.length}개국이에요. 여행지 정보가 있는 국가는 눌러서 바로 확인할 수 있어요.
+          지금까지 다녀온 {visitedCountries.length}개국이에요. 여행지 정보가
+          있는 국가는 눌러서 바로 확인할 수 있어요.
         </p>
       </div>
 

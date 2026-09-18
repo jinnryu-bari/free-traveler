@@ -24,7 +24,11 @@ interface AccountRoleState {
  * 서버에서 `profiles.role`을 다시 조회해 재검증한다.
  */
 export function useAccountRole(): AccountRoleState {
-  const [state, setState] = useState<AccountRoleState>({ role: "guest", loading: true, userId: null });
+  const [state, setState] = useState<AccountRoleState>({
+    role: "guest",
+    loading: true,
+    userId: null,
+  });
 
   useEffect(() => {
     let active = true;
@@ -35,7 +39,11 @@ export function useAccountRole(): AccountRoleState {
         setState({ role: "guest", loading: false, userId: null });
         return;
       }
-      const { data: row } = await supabase.from("profiles").select("role").eq("id", data.user.id).single();
+      const { data: row } = await supabase
+        .from("profiles")
+        .select("role")
+        .eq("id", data.user.id)
+        .single();
       if (!active) return;
       const role = (row?.role as AccountRole | undefined) ?? "member";
       setState({ role, loading: false, userId: data.user.id });
@@ -52,7 +60,9 @@ export function UnauthorizedNotice() {
   return (
     <div className="border-hairline mx-auto max-w-[1240px] rounded-md border p-8 text-center">
       <p className="text-title-md text-ink">접근 권한이 없어요</p>
-      <p className="text-body-sm text-body mt-1">이 화면은 관리자만 볼 수 있습니다.</p>
+      <p className="text-body-sm text-body mt-1">
+        이 화면은 관리자만 볼 수 있습니다.
+      </p>
       <Link
         href="/"
         className="text-button mt-4 inline-flex h-11 items-center rounded-sm bg-brand-coral px-5 text-on-brand hover:bg-brand-coral-active"

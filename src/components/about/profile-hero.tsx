@@ -18,7 +18,11 @@ export function ProfileHero() {
     >
       <div className="relative aspect-square w-full max-w-[360px] overflow-hidden rounded-md bg-surface-strong lg:w-[360px] lg:shrink-0">
         {/* eslint-disable-next-line @next/next/no-img-element -- 외부 URL 이미지, next/image 도메인 등록 없이도 항상 렌더되도록 유지 */}
-        <img src={photo.url} alt={photo.alt} className="h-full w-full object-cover" />
+        <img
+          src={photo.url}
+          alt={photo.alt}
+          className="h-full w-full object-cover"
+        />
       </div>
 
       <div className="flex flex-col items-center gap-5 text-center lg:items-start lg:text-left">
@@ -32,7 +36,9 @@ export function ProfileHero() {
             <p className="text-display-md text-ink">{totalTrips}+ Trips</p>
           </div>
           <div className="shadow-card flex flex-col items-center gap-1 rounded-md px-6 py-4 lg:items-start">
-            <p className="text-display-md text-ink">{totalCountries}+ Countries</p>
+            <p className="text-display-md text-ink">
+              {totalCountries}+ Countries
+            </p>
           </div>
         </div>
       </div>

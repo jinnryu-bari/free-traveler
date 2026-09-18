@@ -6,9 +6,11 @@
  * 튜플로 강제한다 — 스키마 미충족 시 컴파일 오류가 발생한다.
  */
 
-type BuildTuple<L extends number, T, Acc extends T[] = []> = Acc["length"] extends L
-  ? Acc
-  : BuildTuple<L, T, [...Acc, T]>;
+type BuildTuple<
+  L extends number,
+  T,
+  Acc extends T[] = [],
+> = Acc["length"] extends L ? Acc : BuildTuple<L, T, [...Acc, T]>;
 
 type AtLeast<T, L extends number> = [...BuildTuple<L, T>, ...T[]];
 
@@ -53,7 +55,12 @@ export interface AboutData {
   contactLinks: AboutContactLink[];
 }
 
-function galleryImage(url: string, alt: string, photographer: string, license: string): AboutGalleryImage {
+function galleryImage(
+  url: string,
+  alt: string,
+  photographer: string,
+  license: string,
+): AboutGalleryImage {
   return {
     url,
     alt,
@@ -126,13 +133,41 @@ export const aboutData: AboutData = {
     { country: "남아프리카공화국", region: "아프리카" },
   ],
   timeline: [
-    { year: "2016", place: "도쿄, 일본", summary: "첫 해외 배낭여행 — 혼자 여행하는 즐거움을 처음 알게 됨." },
-    { year: "2017", place: "방콕·치앙마이, 태국", summary: "동남아 3개월 장기 배낭여행." },
-    { year: "2018", place: "파리·로마, 유럽", summary: "첫 유럽 여행 — 미술관과 건축 순례." },
-    { year: "2019", place: "시드니·퀸스타운, 호주·뉴질랜드", summary: "워킹홀리데이로 1년간 오세아니아 체류." },
-    { year: "2022", place: "페루", summary: "마추픽추 트레킹으로 첫 남미 여행." },
-    { year: "2024", place: "모로코", summary: "사하라 사막 투어와 아프리카 첫 여행." },
-    { year: "2025", place: "아이슬란드", summary: "오로라를 보기 위한 겨울 여행." },
+    {
+      year: "2016",
+      place: "도쿄, 일본",
+      summary: "첫 해외 배낭여행 — 혼자 여행하는 즐거움을 처음 알게 됨.",
+    },
+    {
+      year: "2017",
+      place: "방콕·치앙마이, 태국",
+      summary: "동남아 3개월 장기 배낭여행.",
+    },
+    {
+      year: "2018",
+      place: "파리·로마, 유럽",
+      summary: "첫 유럽 여행 — 미술관과 건축 순례.",
+    },
+    {
+      year: "2019",
+      place: "시드니·퀸스타운, 호주·뉴질랜드",
+      summary: "워킹홀리데이로 1년간 오세아니아 체류.",
+    },
+    {
+      year: "2022",
+      place: "페루",
+      summary: "마추픽추 트레킹으로 첫 남미 여행.",
+    },
+    {
+      year: "2024",
+      place: "모로코",
+      summary: "사하라 사막 투어와 아프리카 첫 여행.",
+    },
+    {
+      year: "2025",
+      place: "아이슬란드",
+      summary: "오로라를 보기 위한 겨울 여행.",
+    },
   ],
   gallery: [
     galleryImage(

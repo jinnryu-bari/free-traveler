@@ -11,10 +11,19 @@ const LINK_LABEL: Record<LinkKey, string> = {
   hotel_search_base_url: "숙소 검색 URL",
 };
 
-function LinkField({ linkKey, initialUrl }: { linkKey: LinkKey; initialUrl: string }) {
+function LinkField({
+  linkKey,
+  initialUrl,
+}: {
+  linkKey: LinkKey;
+  initialUrl: string;
+}) {
   const [url, setUrl] = useState(initialUrl);
   const [saving, setSaving] = useState(false);
-  const [message, setMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
+  const [message, setMessage] = useState<{
+    type: "success" | "error";
+    text: string;
+  } | null>(null);
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -28,7 +37,9 @@ function LinkField({ linkKey, initialUrl }: { linkKey: LinkKey; initialUrl: stri
     });
     setSaving(false);
     if (!res.ok) {
-      const body = (await res.json().catch(() => null)) as { error?: string } | null;
+      const body = (await res.json().catch(() => null)) as {
+        error?: string;
+      } | null;
       setMessage({ type: "error", text: body?.error ?? "저장하지 못했다" });
       return;
     }
@@ -37,7 +48,10 @@ function LinkField({ linkKey, initialUrl }: { linkKey: LinkKey; initialUrl: stri
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-2">
-      <label htmlFor={`admin-link-${linkKey}`} className="text-body-sm text-ink">
+      <label
+        htmlFor={`admin-link-${linkKey}`}
+        className="text-body-sm text-ink"
+      >
         {LINK_LABEL[linkKey]}
       </label>
       <div className="flex flex-col gap-2 lg:flex-row">
@@ -59,7 +73,9 @@ function LinkField({ linkKey, initialUrl }: { linkKey: LinkKey; initialUrl: stri
         </button>
       </div>
       {message && (
-        <p className={`text-caption ${message.type === "success" ? "text-info" : "text-danger"}`}>
+        <p
+          className={`text-caption ${message.type === "success" ? "text-info" : "text-danger"}`}
+        >
           {message.text}
         </p>
       )}
@@ -89,8 +105,10 @@ export function AdminExternalLinks() {
         if (!active) return;
         const rows = (data as { key: LinkKey; url: string }[] | null) ?? [];
         setLinks({
-          flight_search_base_url: rows.find((r) => r.key === "flight_search_base_url")?.url ?? "",
-          hotel_search_base_url: rows.find((r) => r.key === "hotel_search_base_url")?.url ?? "",
+          flight_search_base_url:
+            rows.find((r) => r.key === "flight_search_base_url")?.url ?? "",
+          hotel_search_base_url:
+            rows.find((r) => r.key === "hotel_search_base_url")?.url ?? "",
         });
       });
     return () => {
@@ -114,11 +132,19 @@ export function AdminExternalLinks() {
           항공·숙소 이동 링크는 허용된 사이트의 HTTPS 주소만 저장할 수 있습니다.
         </p>
       </div>
-      {links === null && <div className="h-32 animate-pulse rounded-md bg-surface-strong" />}
+      {links === null && (
+        <div className="h-32 animate-pulse rounded-md bg-surface-strong" />
+      )}
       {links !== null && (
         <div className="flex flex-col gap-5">
-          <LinkField linkKey="flight_search_base_url" initialUrl={links.flight_search_base_url} />
-          <LinkField linkKey="hotel_search_base_url" initialUrl={links.hotel_search_base_url} />
+          <LinkField
+            linkKey="flight_search_base_url"
+            initialUrl={links.flight_search_base_url}
+          />
+          <LinkField
+            linkKey="hotel_search_base_url"
+            initialUrl={links.hotel_search_base_url}
+          />
         </div>
       )}
     </div>

@@ -12,7 +12,11 @@ export function validateDateRange(
   end: string,
   opts: { strictAfter?: boolean; startLabel?: string; endLabel?: string } = {},
 ): DateRangeErrors {
-  const { strictAfter = false, startLabel = "시작일", endLabel = "종료일" } = opts;
+  const {
+    strictAfter = false,
+    startLabel = "시작일",
+    endLabel = "종료일",
+  } = opts;
   const errors: DateRangeErrors = {};
   const today = new Date().toISOString().slice(0, 10);
 

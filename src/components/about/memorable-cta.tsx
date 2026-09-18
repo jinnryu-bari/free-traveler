@@ -20,7 +20,9 @@ const PREFERRED_DESTINATION_IDS = [
  * `src/data/destinations.ts`를 교차 참조한다(PAGE-SCR002 Functional AC).
  */
 export function MemorableCta() {
-  const cards = PREFERRED_DESTINATION_IDS.map((id) => destinations.find((d) => d.id === id))
+  const cards = PREFERRED_DESTINATION_IDS.map((id) =>
+    destinations.find((d) => d.id === id),
+  )
     .filter((d): d is NonNullable<typeof d> => d !== undefined)
     .slice(0, 4);
 
@@ -31,7 +33,9 @@ export function MemorableCta() {
     >
       <div>
         <h2 className="text-display-md text-ink">기억에 남는 여행지</h2>
-        <p className="text-body-md text-body mt-1">지금까지의 여행 중 가장 오래 기억에 남는 곳들이에요.</p>
+        <p className="text-body-md text-body mt-1">
+          지금까지의 여행 중 가장 오래 기억에 남는 곳들이에요.
+        </p>
       </div>
 
       <div className="grid grid-cols-1 gap-5 lg:grid-cols-4">
@@ -61,7 +65,9 @@ export function MemorableCta() {
       <div className="shadow-card flex flex-col items-center gap-4 rounded-md p-8 text-center lg:flex-row lg:justify-between lg:text-left">
         <div>
           <p className="text-title-md text-ink">여행을 떠날 준비가 되셨나요?</p>
-          <p className="text-body-sm text-body mt-1">항공·숙소 조건을 정리하거나, 함께할 동행을 찾아보세요.</p>
+          <p className="text-body-sm text-body mt-1">
+            항공·숙소 조건을 정리하거나, 함께할 동행을 찾아보세요.
+          </p>
         </div>
         <div className="flex gap-3">
           <Link

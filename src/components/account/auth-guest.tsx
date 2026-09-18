@@ -20,7 +20,10 @@ function LoginCard() {
     setState("submitting");
     setError(null);
     const supabase = createClient();
-    const { error: signInError } = await supabase.auth.signInWithPassword({ email, password });
+    const { error: signInError } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
     if (signInError) {
       setState("idle");
       setError("이메일 또는 비밀번호가 올바르지 않다");
@@ -32,7 +35,10 @@ function LoginCard() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="shadow-card flex flex-col gap-3 rounded-md p-5">
+    <form
+      onSubmit={handleSubmit}
+      className="shadow-card flex flex-col gap-3 rounded-md p-5"
+    >
       <p className="text-title-md text-ink">로그인</p>
       <div className="flex flex-col gap-1">
         <label htmlFor="login-email" className="text-body-sm text-ink">
@@ -108,14 +114,18 @@ function SignupCard() {
       <div className="shadow-card flex flex-col gap-2 rounded-md p-5">
         <p className="text-title-md text-ink">가입</p>
         <p className="text-body-sm text-body">
-          {email}로 확인 이메일을 보냈습니다. 메일의 링크를 눌러야 로그인할 수 있습니다.
+          {email}로 확인 이메일을 보냈습니다. 메일의 링크를 눌러야 로그인할 수
+          있습니다.
         </p>
       </div>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit} className="shadow-card flex flex-col gap-3 rounded-md p-5">
+    <form
+      onSubmit={handleSubmit}
+      className="shadow-card flex flex-col gap-3 rounded-md p-5"
+    >
       <p className="text-title-md text-ink">가입</p>
       <div className="flex flex-col gap-1">
         <label htmlFor="signup-email" className="text-body-sm text-ink">
@@ -168,9 +178,12 @@ function ResetPasswordCard() {
     setState("submitting");
     setError(null);
     const supabase = createClient();
-    const { error: resetError } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: `${window.location.origin}/auth/callback?next=/account`,
-    });
+    const { error: resetError } = await supabase.auth.resetPasswordForEmail(
+      email,
+      {
+        redirectTo: `${window.location.origin}/auth/callback?next=/account`,
+      },
+    );
     if (resetError) {
       setState("idle");
       setError("재설정 메일을 보내지 못했다");
@@ -184,13 +197,18 @@ function ResetPasswordCard() {
     return (
       <div className="shadow-card flex flex-col gap-2 rounded-md p-5">
         <p className="text-title-md text-ink">비밀번호 재설정</p>
-        <p className="text-body-sm text-body">{email}로 재설정 메일을 보냈습니다.</p>
+        <p className="text-body-sm text-body">
+          {email}로 재설정 메일을 보냈습니다.
+        </p>
       </div>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit} className="shadow-card flex flex-col gap-3 rounded-md p-5">
+    <form
+      onSubmit={handleSubmit}
+      className="shadow-card flex flex-col gap-3 rounded-md p-5"
+    >
       <p className="text-title-md text-ink">비밀번호 재설정</p>
       <div className="flex flex-col gap-1">
         <label htmlFor="reset-email" className="text-body-sm text-ink">
@@ -231,8 +249,8 @@ export function AuthGuest() {
         <ResetPasswordCard />
       </div>
       <p className="text-body-sm text-body">
-        비밀번호는 Supabase Auth가 암호화해 저장하며, 이 프로젝트는 원문을 저장하지 않습니다. 자세한
-        내용은{" "}
+        비밀번호는 Supabase Auth가 암호화해 저장하며, 이 프로젝트는 원문을
+        저장하지 않습니다. 자세한 내용은{" "}
         <Link href="/privacy" className="text-link">
           개인정보처리방침
         </Link>

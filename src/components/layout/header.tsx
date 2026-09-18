@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { primaryNavLinks } from "@/lib/nav";
 
-const FOCUSABLE_SELECTOR = 'a[href], button:not([disabled])';
+const FOCUSABLE_SELECTOR = "a[href], button:not([disabled])";
 
 function NavList({
   pathname,
@@ -19,7 +19,8 @@ function NavList({
   return (
     <ul className={className}>
       {primaryNavLinks.map((link) => {
-        const isActive = link.href === "/" ? pathname === "/" : pathname.startsWith(link.href);
+        const isActive =
+          link.href === "/" ? pathname === "/" : pathname.startsWith(link.href);
         return (
           <li key={link.href}>
             <Link
@@ -60,7 +61,9 @@ export function Header() {
     if (!isMenuOpen) return;
     const sheet = menuSheetRef.current;
     const triggerButton = menuButtonRef.current;
-    const focusable = sheet ? Array.from(sheet.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR)) : [];
+    const focusable = sheet
+      ? Array.from(sheet.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR))
+      : [];
     focusable[0]?.focus();
 
     const onKeyDown = (event: KeyboardEvent) => {
@@ -91,8 +94,14 @@ export function Header() {
   return (
     <header className="border-hairline sticky top-0 z-40 border-b bg-canvas">
       <div className="mx-auto flex h-14 max-w-[1240px] items-center justify-between px-5 lg:h-[72px] lg:px-10">
-        <Link href="/" className="text-title-md flex items-center gap-1.5 text-ink">
-          <span aria-hidden className="inline-block h-2 w-2 rounded-full bg-brand-coral" />
+        <Link
+          href="/"
+          className="text-title-md flex items-center gap-1.5 text-ink"
+        >
+          <span
+            aria-hidden
+            className="inline-block h-2 w-2 rounded-full bg-brand-coral"
+          />
           Free Traveler
         </Link>
 
@@ -120,7 +129,13 @@ export function Header() {
           aria-label={isMenuOpen ? "메뉴 닫기" : "메뉴 열기"}
           onClick={() => setIsMenuOpen((open) => !open)}
         >
-          <svg viewBox="0 0 24 24" width={24} height={24} fill="none" aria-hidden>
+          <svg
+            viewBox="0 0 24 24"
+            width={24}
+            height={24}
+            fill="none"
+            aria-hidden
+          >
             {isMenuOpen ? (
               <path
                 d="M6 6l12 12M18 6L6 18"

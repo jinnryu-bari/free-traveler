@@ -29,13 +29,19 @@ export async function PATCH(request: Request) {
 
   const role = await getProfileRole(user.id);
   if (role !== "admin") {
-    return NextResponse.json({ error: "admin만 접근할 수 있다" }, { status: 403 });
+    return NextResponse.json(
+      { error: "admin만 접근할 수 있다" },
+      { status: 403 },
+    );
   }
 
   const body = await request.json().catch(() => null);
   const parsed = patchSchema.safeParse(body);
   if (!parsed.success) {
-    return NextResponse.json({ error: "입력값이 올바르지 않다" }, { status: 400 });
+    return NextResponse.json(
+      { error: "입력값이 올바르지 않다" },
+      { status: 400 },
+    );
   }
 
   try {

@@ -31,16 +31,33 @@ function AlertIcon({ level }: { level: number }) {
   }
   return (
     <svg viewBox="0 0 16 16" width={14} height={14} fill="none" aria-hidden>
-      <path d="M8 1l7 13H1L8 1z" stroke="currentColor" strokeWidth={1.5} strokeLinejoin="round" />
-      <path d="M8 6v4M8 12h.01" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" />
+      <path
+        d="M8 1l7 13H1L8 1z"
+        stroke="currentColor"
+        strokeWidth={1.5}
+        strokeLinejoin="round"
+      />
+      <path
+        d="M8 6v4M8 12h.01"
+        stroke="currentColor"
+        strokeWidth={1.5}
+        strokeLinecap="round"
+      />
     </svg>
   );
 }
 
 function AlertBadge({ level }: { level: number }) {
-  const style = level >= 3 ? "bg-danger-bg text-danger" : level >= 1 ? "bg-warning-bg text-warning" : "bg-surface-strong text-body";
+  const style =
+    level >= 3
+      ? "bg-danger-bg text-danger"
+      : level >= 1
+        ? "bg-warning-bg text-warning"
+        : "bg-surface-strong text-body";
   return (
-    <span className={`text-caption inline-flex items-center gap-1 rounded-sm px-2 py-1 ${style}`}>
+    <span
+      className={`text-caption inline-flex items-center gap-1 rounded-sm px-2 py-1 ${style}`}
+    >
       <AlertIcon level={level} />
       {ALERT_LABEL[level] ?? "정보 없음"}
     </span>
@@ -51,7 +68,13 @@ function isStale(lastCheckedAt: string): boolean {
   return Date.now() - new Date(lastCheckedAt).getTime() > STALE_MS;
 }
 
-function SafetyCard({ info, onOpen }: { info: CountrySafety; onOpen: (id: string) => void }) {
+function SafetyCard({
+  info,
+  onOpen,
+}: {
+  info: CountrySafety;
+  onOpen: (id: string) => void;
+}) {
   const stale = isStale(info.lastCheckedAt);
   return (
     <button
@@ -68,7 +91,9 @@ function SafetyCard({ info, onOpen }: { info: CountrySafety; onOpen: (id: string
         </div>
         <AlertBadge level={info.alertLevel} />
       </div>
-      <p className="text-body-sm text-body">최종 확인일: {info.lastCheckedAt}</p>
+      <p className="text-body-sm text-body">
+        최종 확인일: {info.lastCheckedAt}
+      </p>
       {stale ? (
         <p className="text-caption bg-warning-bg text-warning inline-flex items-center gap-1 rounded-sm px-2 py-1">
           <AlertIcon level={1} />
@@ -115,7 +140,11 @@ function SafetyGridSection() {
  */
 export function SafetyGrid() {
   return (
-    <Suspense fallback={<div className="h-64 animate-pulse rounded-md bg-surface-strong" />}>
+    <Suspense
+      fallback={
+        <div className="h-64 animate-pulse rounded-md bg-surface-strong" />
+      }
+    >
       <SafetyGridSection />
     </Suspense>
   );

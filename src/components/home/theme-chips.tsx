@@ -23,9 +23,13 @@ function ThemeChipsRow() {
     } else {
       params.delete(THEME_PARAM);
     }
-    router.replace(params.toString() ? `/?${params.toString()}` : "/", { scroll: false });
+    router.replace(params.toString() ? `/?${params.toString()}` : "/", {
+      scroll: false,
+    });
 
-    document.getElementById(DESTINATION_GRIDS_SECTION_ID)?.scrollIntoView({ behavior: "smooth" });
+    document
+      .getElementById(DESTINATION_GRIDS_SECTION_ID)
+      ?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -59,7 +63,11 @@ function ThemeChipsRow() {
  */
 export function ThemeChips() {
   return (
-    <Suspense fallback={<div className="h-11 animate-pulse rounded-full bg-surface-soft" />}>
+    <Suspense
+      fallback={
+        <div className="h-11 animate-pulse rounded-full bg-surface-soft" />
+      }
+    >
       <ThemeChipsRow />
     </Suspense>
   );

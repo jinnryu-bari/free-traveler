@@ -5,7 +5,10 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import { useToast } from "@/components/ui/toast";
-import { validateDateRange, isDateRangeValid } from "@/lib/validation/travel-dates";
+import {
+  validateDateRange,
+  isDateRangeValid,
+} from "@/lib/validation/travel-dates";
 import { containsContactPattern } from "@/lib/validation/contact-detection";
 import { currentTab } from "./intro-tabs";
 
@@ -27,7 +30,11 @@ function useMateComposerAuth(): AuthState {
         setState("guest");
         return;
       }
-      const { data: profile } = await supabase.from("profiles").select("is_adult").eq("id", user.id).single();
+      const { data: profile } = await supabase
+        .from("profiles")
+        .select("is_adult")
+        .eq("id", user.id)
+        .single();
       if (cancelled) return;
       setState(profile?.is_adult ? "ready" : "not-adult");
     }
@@ -99,18 +106,20 @@ function MateComposerReadyForm() {
     endLabel: "종료일",
   });
   const capacityNumber = Number(form.capacity);
-  const contactHit = containsContactPattern(form.title) || containsContactPattern(form.description);
+  const contactHit =
+    containsContactPattern(form.title) ||
+    containsContactPattern(form.description);
 
   const hasRequired = Boolean(
     form.title.trim() &&
-      form.country.trim() &&
-      form.region.trim() &&
-      form.startDate &&
-      form.endDate &&
-      form.capacity &&
-      capacityNumber > 0 &&
-      form.description.trim() &&
-      form.agreedSafety,
+    form.country.trim() &&
+    form.region.trim() &&
+    form.startDate &&
+    form.endDate &&
+    form.capacity &&
+    capacityNumber > 0 &&
+    form.description.trim() &&
+    form.agreedSafety,
   );
   const isValid = hasRequired && isDateRangeValid(dateErrors) && !contactHit;
 
@@ -195,7 +204,9 @@ function MateComposerReadyForm() {
           className="border-hairline text-body-sm rounded-sm border px-3 py-2.5 text-ink"
           maxLength={120}
         />
-        {touched && !form.title.trim() && <p className="text-caption text-danger">제목을 입력하세요</p>}
+        {touched && !form.title.trim() && (
+          <p className="text-caption text-danger">제목을 입력하세요</p>
+        )}
       </div>
 
       <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
@@ -209,7 +220,9 @@ function MateComposerReadyForm() {
             onChange={(e) => set("country", e.target.value)}
             className="border-hairline text-body-sm rounded-sm border px-3 py-2.5 text-ink"
           />
-          {touched && !form.country.trim() && <p className="text-caption text-danger">국가를 입력하세요</p>}
+          {touched && !form.country.trim() && (
+            <p className="text-caption text-danger">국가를 입력하세요</p>
+          )}
         </div>
         <div className="flex flex-col gap-1">
           <label htmlFor="mate-region" className="text-body-sm text-ink">
@@ -221,7 +234,9 @@ function MateComposerReadyForm() {
             onChange={(e) => set("region", e.target.value)}
             className="border-hairline text-body-sm rounded-sm border px-3 py-2.5 text-ink"
           />
-          {touched && !form.region.trim() && <p className="text-caption text-danger">지역을 입력하세요</p>}
+          {touched && !form.region.trim() && (
+            <p className="text-caption text-danger">지역을 입력하세요</p>
+          )}
         </div>
         <div className="flex flex-col gap-1">
           <label htmlFor="mate-start" className="text-body-sm text-ink">
@@ -234,7 +249,9 @@ function MateComposerReadyForm() {
             onChange={(e) => set("startDate", e.target.value)}
             className="border-hairline text-body-sm rounded-sm border px-3 py-2.5 text-ink"
           />
-          {touched && dateErrors.start && <p className="text-caption text-danger">{dateErrors.start}</p>}
+          {touched && dateErrors.start && (
+            <p className="text-caption text-danger">{dateErrors.start}</p>
+          )}
         </div>
         <div className="flex flex-col gap-1">
           <label htmlFor="mate-end" className="text-body-sm text-ink">
@@ -247,7 +264,9 @@ function MateComposerReadyForm() {
             onChange={(e) => set("endDate", e.target.value)}
             className="border-hairline text-body-sm rounded-sm border px-3 py-2.5 text-ink"
           />
-          {touched && dateErrors.end && <p className="text-caption text-danger">{dateErrors.end}</p>}
+          {touched && dateErrors.end && (
+            <p className="text-caption text-danger">{dateErrors.end}</p>
+          )}
         </div>
         <div className="flex flex-col gap-1">
           <label htmlFor="mate-capacity" className="text-body-sm text-ink">
@@ -292,7 +311,9 @@ function MateComposerReadyForm() {
           maxLength={2000}
           className="border-hairline text-body-sm rounded-sm border px-3 py-2.5 text-ink"
         />
-        {touched && !form.description.trim() && <p className="text-caption text-danger">상세 소개를 입력하세요</p>}
+        {touched && !form.description.trim() && (
+          <p className="text-caption text-danger">상세 소개를 입력하세요</p>
+        )}
         {touched && contactHit && (
           <p className="text-caption text-danger">
             전화번호·이메일·메신저 아이디로 보이는 내용은 제거해주세요.
@@ -308,13 +329,18 @@ function MateComposerReadyForm() {
           className="mt-0.5"
         />
         <span>
-          <Link href="/safety-guide" className="text-link text-ink underline underline-offset-2">
+          <Link
+            href="/safety-guide"
+            className="text-link text-ink underline underline-offset-2"
+          >
             동행 안전수칙
           </Link>
           을 확인했으며 이에 동의합니다.
         </span>
       </label>
-      {touched && !form.agreedSafety && <p className="text-caption text-danger">안전수칙 동의가 필요합니다</p>}
+      {touched && !form.agreedSafety && (
+        <p className="text-caption text-danger">안전수칙 동의가 필요합니다</p>
+      )}
 
       {submitError && <p className="text-caption text-danger">{submitError}</p>}
 
@@ -331,12 +357,15 @@ function MateComposerReadyForm() {
 
 function MateComposerPanel() {
   const searchParams = useSearchParams();
-  const isActive = currentTab(new URLSearchParams(searchParams.toString())) === "mate";
+  const isActive =
+    currentTab(new URLSearchParams(searchParams.toString())) === "mate";
   const authState = useMateComposerAuth();
 
   return (
     <div id="mate-composer-panel" className={isActive ? "" : "hidden"}>
-      {authState === "loading" && <div className="h-40 animate-pulse rounded-md bg-surface-strong" />}
+      {authState === "loading" && (
+        <div className="h-40 animate-pulse rounded-md bg-surface-strong" />
+      )}
       {authState === "guest" && (
         <GateBanner
           title="로그인이 필요합니다"
@@ -362,7 +391,11 @@ function MateComposerPanel() {
  */
 export function MateComposerForm() {
   return (
-    <Suspense fallback={<div className="h-64 animate-pulse rounded-md bg-surface-strong" />}>
+    <Suspense
+      fallback={
+        <div className="h-64 animate-pulse rounded-md bg-surface-strong" />
+      }
+    >
       <MateComposerPanel />
     </Suspense>
   );

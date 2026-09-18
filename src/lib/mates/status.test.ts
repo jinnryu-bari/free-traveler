@@ -1,6 +1,9 @@
 import { describe, expect, it } from "vitest";
 import { computeDisplayStatus } from "@/components/mates/filter-summary";
-import { hasPgErrorCode, UNIQUE_VIOLATION } from "@/app/api/mates/[id]/requests/route";
+import {
+  hasPgErrorCode,
+  UNIQUE_VIOLATION,
+} from "@/app/api/mates/[id]/requests/route";
 import type { MatePost } from "@/lib/supabase/queries";
 
 /**
@@ -35,21 +38,34 @@ describe("computeDisplayStatus — 종료일 경과 시 CLOSED 계산", () => {
   };
 
   it("저장값이 OPEN이어도 종료일이 지났으면 CLOSED로 계산한다", () => {
-    expect(computeDisplayStatus({ ...basePost, end_date: "2020-01-05" })).toBe("CLOSED");
+    expect(computeDisplayStatus({ ...basePost, end_date: "2020-01-05" })).toBe(
+      "CLOSED",
+    );
   });
 
   it("저장값이 OPEN이고 종료일이 미래면 OPEN을 유지한다", () => {
-    expect(computeDisplayStatus({ ...basePost, end_date: "2099-01-05" })).toBe("OPEN");
+    expect(computeDisplayStatus({ ...basePost, end_date: "2099-01-05" })).toBe(
+      "OPEN",
+    );
   });
 
   it("저장값이 이미 CLOSED면 종료일과 무관하게 CLOSED를 유지한다(수동 마감)", () => {
-    expect(computeDisplayStatus({ ...basePost, status: "CLOSED", end_date: "2099-01-05" })).toBe("CLOSED");
+    expect(
+      computeDisplayStatus({
+        ...basePost,
+        status: "CLOSED",
+        end_date: "2099-01-05",
+      }),
+    ).toBe("CLOSED");
   });
 });
 
 describe("hasPgErrorCode — 중복 PENDING/ACCEPTED 신청 차단 감지", () => {
   it("Postgres unique_violation(23505) 에러를 감지한다", () => {
-    const pgError = { code: "23505", message: "duplicate key value violates unique constraint" };
+    const pgError = {
+      code: "23505",
+      message: "duplicate key value violates unique constraint",
+    };
     expect(hasPgErrorCode(pgError, UNIQUE_VIOLATION)).toBe(true);
   });
 
@@ -59,7 +75,9 @@ describe("hasPgErrorCode — 중복 PENDING/ACCEPTED 신청 차단 감지", () =
   });
 
   it("code 필드가 없는 값은 중복으로 오인하지 않는다", () => {
-    expect(hasPgErrorCode(new Error("network error"), UNIQUE_VIOLATION)).toBe(false);
+    expect(hasPgErrorCode(new Error("network error"), UNIQUE_VIOLATION)).toBe(
+      false,
+    );
     expect(hasPgErrorCode(null, UNIQUE_VIOLATION)).toBe(false);
   });
 });

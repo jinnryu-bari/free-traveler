@@ -57,19 +57,35 @@ function ToastIcon({ type }: { type: ToastType }) {
     return (
       <svg viewBox="0 0 20 20" width={20} height={20} fill="none" aria-hidden>
         <circle cx={10} cy={10} r={8} stroke="currentColor" strokeWidth={2} />
-        <path d="M10 6v5M10 14h.01" stroke="currentColor" strokeWidth={2} strokeLinecap="round" />
+        <path
+          d="M10 6v5M10 14h.01"
+          stroke="currentColor"
+          strokeWidth={2}
+          strokeLinecap="round"
+        />
       </svg>
     );
   }
   return (
     <svg viewBox="0 0 20 20" width={20} height={20} fill="none" aria-hidden>
       <circle cx={10} cy={10} r={8} stroke="currentColor" strokeWidth={2} />
-      <path d="M10 9v5M10 6h.01" stroke="currentColor" strokeWidth={2} strokeLinecap="round" />
+      <path
+        d="M10 9v5M10 6h.01"
+        stroke="currentColor"
+        strokeWidth={2}
+        strokeLinecap="round"
+      />
     </svg>
   );
 }
 
-function ToastCard({ toast, onDismiss }: { toast: ToastItem; onDismiss: (id: number) => void }) {
+function ToastCard({
+  toast,
+  onDismiss,
+}: {
+  toast: ToastItem;
+  onDismiss: (id: number) => void;
+}) {
   useEffect(() => {
     const timer = window.setTimeout(() => onDismiss(toast.id), AUTO_DISMISS_MS);
     return () => window.clearTimeout(timer);

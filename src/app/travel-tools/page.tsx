@@ -8,7 +8,8 @@ import { NontransmitTips } from "@/components/travel-tools/nontransmit-tips";
 
 export const metadata = buildMetadata({
   title: "여행 조건 정리하기",
-  description: "항공·숙소 조건을 정리해 외부 사이트로 이동하고, 동행을 구해보세요.",
+  description:
+    "항공·숙소 조건을 정리해 외부 사이트로 이동하고, 동행을 구해보세요.",
   path: "/travel-tools",
 });
 

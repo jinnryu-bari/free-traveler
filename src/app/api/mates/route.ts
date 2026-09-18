@@ -30,7 +30,10 @@ export async function GET(request: Request) {
     status: searchParams.get("status") ?? undefined,
   });
   if (!parsedFilters.success) {
-    return NextResponse.json({ error: "잘못된 필터 조건이다" }, { status: 400 });
+    return NextResponse.json(
+      { error: "잘못된 필터 조건이다" },
+      { status: 400 },
+    );
   }
 
   const supabase = await createClient();
@@ -45,7 +48,10 @@ export async function GET(request: Request) {
   }
 
   const blockedIds = await listBlockedUserIds(user.id);
-  const visible = blockedIds.length === 0 ? posts : posts.filter((post) => !blockedIds.includes(post.author_id));
+  const visible =
+    blockedIds.length === 0
+      ? posts
+      : posts.filter((post) => !blockedIds.includes(post.author_id));
   return NextResponse.json({ posts: visible });
 }
 
@@ -97,12 +103,18 @@ export async function POST(request: Request) {
   const parsed = createPostSchema.safeParse(body);
   if (!parsed.success) {
     return NextResponse.json(
-      { error: "입력값이 올바르지 않다", issues: parsed.error.flatten().fieldErrors },
+      {
+        error: "입력값이 올바르지 않다",
+        issues: parsed.error.flatten().fieldErrors,
+      },
       { status: 400 },
     );
   }
 
-  if (containsContactPattern(parsed.data.title) || containsContactPattern(parsed.data.description)) {
+  if (
+    containsContactPattern(parsed.data.title) ||
+    containsContactPattern(parsed.data.description)
+  ) {
     return NextResponse.json(
       {
         error: "연락처·메신저 정보는 포함할 수 없다",

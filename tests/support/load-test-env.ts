@@ -8,7 +8,10 @@ import path from "node:path";
  * 메운다(W13에서 처음 발견, `.env.local`만 대상이던 것을 `.env.test.local`까지 확장).
  * 이미 설정된 값은 덮어쓰지 않는다. 비밀번호 등 값 자체를 로그로 남기지 않는다.
  */
-export function loadEnvFile(filename: string, root: string = process.cwd()): void {
+export function loadEnvFile(
+  filename: string,
+  root: string = process.cwd(),
+): void {
   const envPath = path.resolve(root, filename);
   if (!fs.existsSync(envPath)) return;
   for (const rawLine of fs.readFileSync(envPath, "utf-8").split("\n")) {

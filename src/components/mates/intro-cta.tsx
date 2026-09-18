@@ -38,9 +38,12 @@ export function IntroCta() {
     <section className="mx-auto max-w-[1240px] px-5 py-12 lg:px-10 lg:py-16">
       <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
         <div>
-          <h1 className="text-display-lg text-ink">믿을 수 있는 동행을 찾아보세요</h1>
+          <h1 className="text-display-lg text-ink">
+            믿을 수 있는 동행을 찾아보세요
+          </h1>
           <p className="text-body-md text-body mt-2">
-            같은 여행지, 비슷한 일정의 동행글을 찾아보고 안전한 절차로 참가를 신청해보세요.
+            같은 여행지, 비슷한 일정의 동행글을 찾아보고 안전한 절차로 참가를
+            신청해보세요.
           </p>
         </div>
         <Link

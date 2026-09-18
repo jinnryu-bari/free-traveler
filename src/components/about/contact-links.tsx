@@ -18,23 +18,36 @@ function isAllowedUrl(url: string): boolean {
  * 정적 설정)를 출처로 쓰고, 빈 값이나 mailto/https 외 프로토콜은 렌더링하지 않는다.
  */
 export function ContactLinks() {
-  const links = aboutData.contactLinks.filter((link) => link.url.trim() && isAllowedUrl(link.url));
+  const links = aboutData.contactLinks.filter(
+    (link) => link.url.trim() && isAllowedUrl(link.url),
+  );
 
   if (links.length === 0) {
     return null;
   }
 
   return (
-    <section id={CONTACT_LINKS_SECTION_ID} className="mx-auto max-w-[1240px] px-5 py-10 lg:px-10">
+    <section
+      id={CONTACT_LINKS_SECTION_ID}
+      className="mx-auto max-w-[1240px] px-5 py-10 lg:px-10"
+    >
       <div className="flex flex-wrap justify-center gap-6 lg:justify-start">
         {links.map((link) => (
           <a
             key={link.label}
             href={link.url}
             className="text-body-sm text-body inline-flex items-center gap-2 hover:text-ink"
-            {...(link.url.startsWith("https:") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+            {...(link.url.startsWith("https:")
+              ? { target: "_blank", rel: "noopener noreferrer" }
+              : {})}
           >
-            <svg viewBox="0 0 24 24" width={16} height={16} fill="none" aria-hidden>
+            <svg
+              viewBox="0 0 24 24"
+              width={16}
+              height={16}
+              fill="none"
+              aria-hidden
+            >
               <path
                 d="M7 17 17 7M9 7h8v8"
                 stroke="currentColor"

@@ -10,14 +10,23 @@ import { createReport, getMatePostById } from "@/lib/supabase/queries";
  * 제한하므로, 신고 대상(글 작성자)에게 신고자 식별정보가 노출되는 별도 응답 경로가 없다.
  */
 
-const REASON_CODES = ["SPAM", "SCAM", "INAPPROPRIATE", "HARASSMENT", "OTHER"] as const;
+const REASON_CODES = [
+  "SPAM",
+  "SCAM",
+  "INAPPROPRIATE",
+  "HARASSMENT",
+  "OTHER",
+] as const;
 
 const createReportSchema = z.object({
   reasonCode: z.enum(REASON_CODES),
   description: z.string().trim().min(1).max(1000),
 });
 
-export async function POST(request: Request, { params }: { params: Promise<{ id: string }> }) {
+export async function POST(
+  request: Request,
+  { params }: { params: Promise<{ id: string }> },
+) {
   const { id } = await params;
   const supabase = await createClient();
   const {
@@ -30,14 +39,20 @@ export async function POST(request: Request, { params }: { params: Promise<{ id:
 
   const post = await getMatePostById(id);
   if (!post) {
-    return NextResponse.json({ error: "신고 대상 동행글을 찾을 수 없다" }, { status: 404 });
+    return NextResponse.json(
+      { error: "신고 대상 동행글을 찾을 수 없다" },
+      { status: 404 },
+    );
   }
 
   const body = await request.json().catch(() => null);
   const parsed = createReportSchema.safeParse(body);
   if (!parsed.success) {
     return NextResponse.json(
-      { error: "입력값이 올바르지 않다", issues: parsed.error.flatten().fieldErrors },
+      {
+        error: "입력값이 올바르지 않다",
+        issues: parsed.error.flatten().fieldErrors,
+      },
       { status: 400 },
     );
   }
@@ -48,5 +63,8 @@ export async function POST(request: Request, { params }: { params: Promise<{ id:
     description: parsed.data.description,
   });
 
-  return NextResponse.json({ reportId: report.id, createdAt: report.created_at }, { status: 201 });
+  return NextResponse.json(
+    { reportId: report.id, createdAt: report.created_at },
+    { status: 201 },
+  );
 }

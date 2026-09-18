@@ -21,19 +21,25 @@ export function NontransmitTips() {
     <section className="mx-auto max-w-[1240px] px-5 py-16 lg:px-10 lg:py-20">
       <div className="border-hairline rounded-md border p-5">
         <p className="text-body-md text-ink">
-          <strong>입력값은 외부 사이트로 전달되지 않습니다.</strong> 국가·지역·날짜 등 조건은 이
-          화면 안에서만 정리되며, 외부 사이트로 이동할 때 함께 전달되지 않습니다.
+          <strong>입력값은 외부 사이트로 전달되지 않습니다.</strong>{" "}
+          국가·지역·날짜 등 조건은 이 화면 안에서만 정리되며, 외부 사이트로
+          이동할 때 함께 전달되지 않습니다.
         </p>
       </div>
 
       <div className="mt-6">
         <h2 className="text-display-md text-ink">여행 준비 Tip</h2>
-        <p className="text-body-md text-body mt-1">외부 사이트로 이동하기 전에 참고하세요.</p>
+        <p className="text-body-md text-body mt-1">
+          외부 사이트로 이동하기 전에 참고하세요.
+        </p>
       </div>
 
       <div className="mt-6 grid grid-cols-1 gap-5 lg:grid-cols-3">
         {TIPS.map((tip) => (
-          <div key={tip.title} className="shadow-card flex flex-col gap-2 rounded-md p-5">
+          <div
+            key={tip.title}
+            className="shadow-card flex flex-col gap-2 rounded-md p-5"
+          >
             <p className="text-title-md text-ink">{tip.title}</p>
             <p className="text-body-sm text-body">{tip.body}</p>
           </div>

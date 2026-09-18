@@ -3,7 +3,10 @@
 import { Suspense, useMemo, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { destinations } from "@/data/destinations";
-import { validateDateRange, isDateRangeValid } from "@/lib/validation/travel-dates";
+import {
+  validateDateRange,
+  isDateRangeValid,
+} from "@/lib/validation/travel-dates";
 import { currentTab } from "./intro-tabs";
 
 const ALLOWED_HOST = "www.google.com";
@@ -25,7 +28,8 @@ function isAllowedExternalUrl(url: string): boolean {
 function FlightFormPanel({ flightUrl }: { flightUrl: string | null }) {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const isActive = currentTab(new URLSearchParams(searchParams.toString())) === "flight";
+  const isActive =
+    currentTab(new URLSearchParams(searchParams.toString())) === "flight";
 
   const [country, setCountry] = useState("");
   const [region, setRegion] = useState("");
@@ -33,9 +37,15 @@ function FlightFormPanel({ flightUrl }: { flightUrl: string | null }) {
   const [endDate, setEndDate] = useState("");
   const [touched, setTouched] = useState(false);
 
-  const countries = useMemo(() => uniqueSorted(destinations.map((d) => d.country)), []);
+  const countries = useMemo(
+    () => uniqueSorted(destinations.map((d) => d.country)),
+    [],
+  );
   const regions = useMemo(
-    () => uniqueSorted(destinations.filter((d) => d.country === country).map((d) => d.city)),
+    () =>
+      uniqueSorted(
+        destinations.filter((d) => d.country === country).map((d) => d.city),
+      ),
     [country],
   );
 
@@ -48,7 +58,11 @@ function FlightFormPanel({ flightUrl }: { flightUrl: string | null }) {
 
   // 관리자가 설정한 값이 없으면 안전한 기본 URL을 쓴다. 값은 있는데 허용 호스트가
   // 아니면(관리자 설정 오류) 링크를 만들지 않고 오류+재시도를 보여준다.
-  const resolvedUrl = !flightUrl ? DEFAULT_FLIGHT_URL : isAllowedExternalUrl(flightUrl) ? flightUrl : null;
+  const resolvedUrl = !flightUrl
+    ? DEFAULT_FLIGHT_URL
+    : isAllowedExternalUrl(flightUrl)
+      ? flightUrl
+      : null;
   const misconfigured = Boolean(flightUrl) && resolvedUrl === null;
 
   const handleCountryChange = (value: string) => {
@@ -81,7 +95,9 @@ function FlightFormPanel({ flightUrl }: { flightUrl: string | null }) {
               </option>
             ))}
           </select>
-          {touched && !country && <p className="text-caption text-danger">출발 국가를 선택하세요</p>}
+          {touched && !country && (
+            <p className="text-caption text-danger">출발 국가를 선택하세요</p>
+          )}
         </div>
 
         <div className="flex flex-col gap-1">
@@ -105,7 +121,9 @@ function FlightFormPanel({ flightUrl }: { flightUrl: string | null }) {
               </option>
             ))}
           </select>
-          {touched && country && !region && <p className="text-caption text-danger">출발 지역을 선택하세요</p>}
+          {touched && country && !region && (
+            <p className="text-caption text-danger">출발 지역을 선택하세요</p>
+          )}
         </div>
 
         <div className="flex flex-col gap-1">
@@ -122,7 +140,9 @@ function FlightFormPanel({ flightUrl }: { flightUrl: string | null }) {
             }}
             className="border-hairline text-body-sm rounded-sm border px-3 py-2.5 text-ink"
           />
-          {touched && dateErrors.start && <p className="text-caption text-danger">{dateErrors.start}</p>}
+          {touched && dateErrors.start && (
+            <p className="text-caption text-danger">{dateErrors.start}</p>
+          )}
         </div>
 
         <div className="flex flex-col gap-1">
@@ -139,7 +159,9 @@ function FlightFormPanel({ flightUrl }: { flightUrl: string | null }) {
             }}
             className="border-hairline text-body-sm rounded-sm border px-3 py-2.5 text-ink"
           />
-          {touched && dateErrors.end && <p className="text-caption text-danger">{dateErrors.end}</p>}
+          {touched && dateErrors.end && (
+            <p className="text-caption text-danger">{dateErrors.end}</p>
+          )}
         </div>
       </div>
 
@@ -150,7 +172,9 @@ function FlightFormPanel({ flightUrl }: { flightUrl: string | null }) {
             {country} {region} · {startDate} ~ {endDate}
           </p>
           {misconfigured && (
-            <p className="text-caption text-danger">설정된 링크가 허용된 사이트 목록에 없습니다.</p>
+            <p className="text-caption text-danger">
+              설정된 링크가 허용된 사이트 목록에 없습니다.
+            </p>
           )}
           <div className="flex gap-3">
             {resolvedUrl && (
@@ -187,7 +211,11 @@ function FlightFormPanel({ flightUrl }: { flightUrl: string | null }) {
  */
 export function FlightForm({ flightUrl }: { flightUrl: string | null }) {
   return (
-    <Suspense fallback={<div className="h-64 animate-pulse rounded-md bg-surface-strong" />}>
+    <Suspense
+      fallback={
+        <div className="h-64 animate-pulse rounded-md bg-surface-strong" />
+      }
+    >
       <FlightFormPanel flightUrl={flightUrl} />
     </Suspense>
   );

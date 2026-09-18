@@ -22,11 +22,15 @@ interface ReportModalProps {
 export function ReportModal({ postId }: ReportModalProps) {
   const { showToast } = useToast();
   const [open, setOpen] = useState(false);
-  const [reasonCode, setReasonCode] = useState<(typeof REASON_OPTIONS)[number]["value"]>("SPAM");
+  const [reasonCode, setReasonCode] =
+    useState<(typeof REASON_OPTIONS)[number]["value"]>("SPAM");
   const [description, setDescription] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [receipt, setReceipt] = useState<{ reportId: string; createdAt: string } | null>(null);
+  const [receipt, setReceipt] = useState<{
+    reportId: string;
+    createdAt: string;
+  } | null>(null);
 
   useEffect(() => {
     if (!open) return;
@@ -55,13 +59,18 @@ export function ReportModal({ postId }: ReportModalProps) {
         body: JSON.stringify({ reasonCode, description: description.trim() }),
       });
       if (!res.ok) {
-        const body = (await res.json().catch(() => null)) as { error?: string } | null;
+        const body = (await res.json().catch(() => null)) as {
+          error?: string;
+        } | null;
         const message = body?.error ?? "신고를 접수하지 못했다";
         setError(message);
         showToast("error", message);
         return;
       }
-      const body = (await res.json()) as { reportId: string; createdAt: string };
+      const body = (await res.json()) as {
+        reportId: string;
+        createdAt: string;
+      };
       setReceipt(body);
       showToast("success", "신고를 접수했다");
     } catch {
@@ -83,7 +92,12 @@ export function ReportModal({ postId }: ReportModalProps) {
 
       {open && (
         <div className="fixed inset-0 z-50">
-          <button type="button" aria-label="닫기" onClick={close} className="bg-scrim absolute inset-0" />
+          <button
+            type="button"
+            aria-label="닫기"
+            onClick={close}
+            className="bg-scrim absolute inset-0"
+          />
           <div
             role="dialog"
             aria-modal="true"
@@ -96,7 +110,8 @@ export function ReportModal({ postId }: ReportModalProps) {
                 <p className="text-body-sm text-body mt-2">
                   신고 ID: {receipt.reportId}
                   <br />
-                  접수 시각: {new Date(receipt.createdAt).toLocaleString("ko-KR")}
+                  접수 시각:{" "}
+                  {new Date(receipt.createdAt).toLocaleString("ko-KR")}
                 </p>
                 <button
                   type="button"
@@ -110,13 +125,18 @@ export function ReportModal({ postId }: ReportModalProps) {
               <form onSubmit={handleSubmit} className="flex flex-col gap-3">
                 <p className="text-title-md text-ink">동행글 신고</p>
                 <div className="flex flex-col gap-1">
-                  <label htmlFor="report-reason" className="text-body-sm text-ink">
+                  <label
+                    htmlFor="report-reason"
+                    className="text-body-sm text-ink"
+                  >
                     사유
                   </label>
                   <select
                     id="report-reason"
                     value={reasonCode}
-                    onChange={(e) => setReasonCode(e.target.value as typeof reasonCode)}
+                    onChange={(e) =>
+                      setReasonCode(e.target.value as typeof reasonCode)
+                    }
                     className="border-hairline text-body-sm rounded-sm border px-3 py-2 text-ink"
                   >
                     {REASON_OPTIONS.map((option) => (
@@ -127,7 +147,10 @@ export function ReportModal({ postId }: ReportModalProps) {
                   </select>
                 </div>
                 <div className="flex flex-col gap-1">
-                  <label htmlFor="report-description" className="text-body-sm text-ink">
+                  <label
+                    htmlFor="report-description"
+                    className="text-body-sm text-ink"
+                  >
                     상세 설명
                   </label>
                   <textarea

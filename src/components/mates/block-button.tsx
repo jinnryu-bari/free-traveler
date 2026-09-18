@@ -28,12 +28,17 @@ export function BlockButton({ userId, onBlocked }: BlockButtonProps) {
         body: JSON.stringify({ blockedId: userId }),
       });
       if (!res.ok) {
-        const body = (await res.json().catch(() => null)) as { error?: string } | null;
+        const body = (await res.json().catch(() => null)) as {
+          error?: string;
+        } | null;
         showToast("error", body?.error ?? "차단하지 못했다");
         return;
       }
       setBlocked(true);
-      showToast("success", "이 작성자를 차단했다. 이후 이 작성자의 글은 목록에 보이지 않는다.");
+      showToast(
+        "success",
+        "이 작성자를 차단했다. 이후 이 작성자의 글은 목록에 보이지 않는다.",
+      );
       onBlocked?.();
     } catch {
       showToast("error", "네트워크 오류로 차단하지 못했다");

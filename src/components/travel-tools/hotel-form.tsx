@@ -3,7 +3,10 @@
 import { Suspense, useMemo, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { destinations } from "@/data/destinations";
-import { validateDateRange, isDateRangeValid } from "@/lib/validation/travel-dates";
+import {
+  validateDateRange,
+  isDateRangeValid,
+} from "@/lib/validation/travel-dates";
 import { currentTab } from "./intro-tabs";
 
 const ALLOWED_HOST = "www.google.com";
@@ -25,7 +28,8 @@ function isAllowedExternalUrl(url: string): boolean {
 function HotelFormPanel({ hotelUrl }: { hotelUrl: string | null }) {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const isActive = currentTab(new URLSearchParams(searchParams.toString())) === "hotel";
+  const isActive =
+    currentTab(new URLSearchParams(searchParams.toString())) === "hotel";
 
   const [country, setCountry] = useState("");
   const [region, setRegion] = useState("");
@@ -33,9 +37,15 @@ function HotelFormPanel({ hotelUrl }: { hotelUrl: string | null }) {
   const [checkOut, setCheckOut] = useState("");
   const [touched, setTouched] = useState(false);
 
-  const countries = useMemo(() => uniqueSorted(destinations.map((d) => d.country)), []);
+  const countries = useMemo(
+    () => uniqueSorted(destinations.map((d) => d.country)),
+    [],
+  );
   const regions = useMemo(
-    () => uniqueSorted(destinations.filter((d) => d.country === country).map((d) => d.city)),
+    () =>
+      uniqueSorted(
+        destinations.filter((d) => d.country === country).map((d) => d.city),
+      ),
     [country],
   );
 
@@ -47,7 +57,11 @@ function HotelFormPanel({ hotelUrl }: { hotelUrl: string | null }) {
   const hasRequired = Boolean(country && region && checkIn && checkOut);
   const isValid = hasRequired && isDateRangeValid(dateErrors);
 
-  const resolvedUrl = !hotelUrl ? DEFAULT_HOTEL_URL : isAllowedExternalUrl(hotelUrl) ? hotelUrl : null;
+  const resolvedUrl = !hotelUrl
+    ? DEFAULT_HOTEL_URL
+    : isAllowedExternalUrl(hotelUrl)
+      ? hotelUrl
+      : null;
   const misconfigured = Boolean(hotelUrl) && resolvedUrl === null;
 
   const handleCountryChange = (value: string) => {
@@ -80,7 +94,9 @@ function HotelFormPanel({ hotelUrl }: { hotelUrl: string | null }) {
               </option>
             ))}
           </select>
-          {touched && !country && <p className="text-caption text-danger">숙소 국가를 선택하세요</p>}
+          {touched && !country && (
+            <p className="text-caption text-danger">숙소 국가를 선택하세요</p>
+          )}
         </div>
 
         <div className="flex flex-col gap-1">
@@ -104,7 +120,9 @@ function HotelFormPanel({ hotelUrl }: { hotelUrl: string | null }) {
               </option>
             ))}
           </select>
-          {touched && country && !region && <p className="text-caption text-danger">숙소 지역을 선택하세요</p>}
+          {touched && country && !region && (
+            <p className="text-caption text-danger">숙소 지역을 선택하세요</p>
+          )}
         </div>
 
         <div className="flex flex-col gap-1">
@@ -121,7 +139,9 @@ function HotelFormPanel({ hotelUrl }: { hotelUrl: string | null }) {
             }}
             className="border-hairline text-body-sm rounded-sm border px-3 py-2.5 text-ink"
           />
-          {touched && dateErrors.start && <p className="text-caption text-danger">{dateErrors.start}</p>}
+          {touched && dateErrors.start && (
+            <p className="text-caption text-danger">{dateErrors.start}</p>
+          )}
         </div>
 
         <div className="flex flex-col gap-1">
@@ -138,7 +158,9 @@ function HotelFormPanel({ hotelUrl }: { hotelUrl: string | null }) {
             }}
             className="border-hairline text-body-sm rounded-sm border px-3 py-2.5 text-ink"
           />
-          {touched && dateErrors.end && <p className="text-caption text-danger">{dateErrors.end}</p>}
+          {touched && dateErrors.end && (
+            <p className="text-caption text-danger">{dateErrors.end}</p>
+          )}
         </div>
       </div>
 
@@ -149,7 +171,9 @@ function HotelFormPanel({ hotelUrl }: { hotelUrl: string | null }) {
             {country} {region} · {checkIn} ~ {checkOut}
           </p>
           {misconfigured && (
-            <p className="text-caption text-danger">설정된 링크가 허용된 사이트 목록에 없습니다.</p>
+            <p className="text-caption text-danger">
+              설정된 링크가 허용된 사이트 목록에 없습니다.
+            </p>
           )}
           <div className="flex gap-3">
             {resolvedUrl && (
@@ -185,7 +209,11 @@ function HotelFormPanel({ hotelUrl }: { hotelUrl: string | null }) {
  */
 export function HotelForm({ hotelUrl }: { hotelUrl: string | null }) {
   return (
-    <Suspense fallback={<div className="h-64 animate-pulse rounded-md bg-surface-strong" />}>
+    <Suspense
+      fallback={
+        <div className="h-64 animate-pulse rounded-md bg-surface-strong" />
+      }
+    >
       <HotelFormPanel hotelUrl={hotelUrl} />
     </Suspense>
   );

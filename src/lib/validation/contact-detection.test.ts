@@ -73,6 +73,8 @@ describe("containsContactPattern — REQ-FUNC-032 탐지율/오탐률", () => {
   });
 
   it("동행글에 흔한 정상 문장은 탐지하지 않는다", () => {
-    expect(containsContactPattern("오사카 여행 같이 가실 분 구합니다")).toBe(false);
+    expect(containsContactPattern("오사카 여행 같이 가실 분 구합니다")).toBe(
+      false,
+    );
   });
 });

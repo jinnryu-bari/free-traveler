@@ -40,7 +40,12 @@ export interface Destination {
   image: DestinationImage;
 }
 
-function img(url: string, alt: string, photographer: string, license: string): DestinationImage {
+function img(
+  url: string,
+  alt: string,
+  photographer: string,
+  license: string,
+): DestinationImage {
   return {
     url,
     alt,
@@ -60,7 +65,13 @@ export const destinations: Destination[] = [
     seasons: ["봄", "가을"],
     themes: ["도시", "역사"],
     summary: "고궁과 최신 트렌드가 공존하는 대한민국의 수도.",
-    attractions: ["경복궁", "북촌한옥마을", "명동거리", "남산서울타워", "동대문디자인플라자"],
+    attractions: [
+      "경복궁",
+      "북촌한옥마을",
+      "명동거리",
+      "남산서울타워",
+      "동대문디자인플라자",
+    ],
     bestTimeToVisit: "4월~5월, 9월~11월",
     itineraryOneDay: [
       "오전: 경복궁·북촌한옥마을 산책",
@@ -75,10 +86,16 @@ export const destinations: Destination[] = [
     budget: "1인 1일 8만~15만원(숙박 제외)",
     transport: "지하철·버스(교통카드)",
     food: ["삼겹살", "떡볶이", "설렁탕"],
-    etiquette: "식당에서 신발을 벗어야 하는 좌식 공간이 많으니 양말 상태를 확인하세요.",
+    etiquette:
+      "식당에서 신발을 벗어야 하는 좌식 공간이 많으니 양말 상태를 확인하세요.",
     source: "한국관광공사(visitkorea.or.kr)",
     updatedAt: "2026-01-01",
-    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/%EA%B4%91%ED%99%94%EB%AC%B8_%EC%9B%94%EB%8C%80.jpg?width=1200`, "서울 경복궁 근정전 전경", "서울관광 아카이브", "KOGL Type 1"),
+    image: img(
+      `https://commons.wikimedia.org/wiki/Special:FilePath/%EA%B4%91%ED%99%94%EB%AC%B8_%EC%9B%94%EB%8C%80.jpg?width=1200`,
+      "서울 경복궁 근정전 전경",
+      "서울관광 아카이브",
+      "KOGL Type 1",
+    ),
   },
   {
     id: "dom-busan",
@@ -88,7 +105,13 @@ export const destinations: Destination[] = [
     seasons: ["여름", "가을"],
     themes: ["해변", "도시"],
     summary: "해운대 해변과 활기찬 시장이 어우러진 대한민국 제2의 도시.",
-    attractions: ["해운대해수욕장", "감천문화마을", "자갈치시장", "광안대교", "태종대"],
+    attractions: [
+      "해운대해수욕장",
+      "감천문화마을",
+      "자갈치시장",
+      "광안대교",
+      "태종대",
+    ],
     bestTimeToVisit: "6월~9월",
     itineraryOneDay: [
       "오전: 감천문화마을 골목 산책",
@@ -103,10 +126,16 @@ export const destinations: Destination[] = [
     budget: "1인 1일 7만~13만원(숙박 제외)",
     transport: "지하철·버스, 해안 구간은 택시 추천",
     food: ["돼지국밥", "밀면", "씨앗호떡"],
-    etiquette: "해수욕장 인근 상가는 모래 묻은 발로 들어가지 않도록 발 세척대를 이용하세요.",
+    etiquette:
+      "해수욕장 인근 상가는 모래 묻은 발로 들어가지 않도록 발 세척대를 이용하세요.",
     source: "부산관광공사(bto.or.kr)",
     updatedAt: "2026-01-01",
-    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/Gwangan_Bridge1.jpg?width=1200`, "부산 광안대교와 광안리 해변 야경", "Glabb", "Public domain"),
+    image: img(
+      `https://commons.wikimedia.org/wiki/Special:FilePath/Gwangan_Bridge1.jpg?width=1200`,
+      "부산 광안대교와 광안리 해변 야경",
+      "Glabb",
+      "Public domain",
+    ),
   },
   {
     id: "dom-jeju",
@@ -118,7 +147,11 @@ export const destinations: Destination[] = [
     summary: "화산이 만든 독특한 자연경관을 가진 대한민국 최대의 섬.",
     attractions: ["성산일출봉", "한라산", "우도", "섭지코지", "협재해수욕장"],
     bestTimeToVisit: "4월~6월, 9월~10월",
-    itineraryOneDay: ["오전: 성산일출봉 등반", "오후: 우도 자전거 투어", "저녁: 흑돼지 저녁식사"],
+    itineraryOneDay: [
+      "오전: 성산일출봉 등반",
+      "오후: 우도 자전거 투어",
+      "저녁: 흑돼지 저녁식사",
+    ],
     itineraryThreeDay: [
       "1일차: 성산일출봉·우도",
       "2일차: 한라산 둘레길·섭지코지",
@@ -130,7 +163,12 @@ export const destinations: Destination[] = [
     etiquette: "오름·자연보호구역에서는 지정된 탐방로를 벗어나지 마세요.",
     source: "제주관광공사(ijto.or.kr)",
     updatedAt: "2026-01-01",
-    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/Seongsan_Ilchulbong_from_the_air.jpg?width=1200`, "제주 성산일출봉 전경", "Korea.net / Korean Culture and Information Service", "CC BY-SA 2.0"),
+    image: img(
+      `https://commons.wikimedia.org/wiki/Special:FilePath/Seongsan_Ilchulbong_from_the_air.jpg?width=1200`,
+      "제주 성산일출봉 전경",
+      "Korea.net / Korean Culture and Information Service",
+      "CC BY-SA 2.0",
+    ),
   },
   {
     id: "dom-gyeongju",
@@ -142,7 +180,11 @@ export const destinations: Destination[] = [
     summary: "신라 천년의 역사가 살아 숨 쉬는 야외 박물관 도시.",
     attractions: ["불국사", "석굴암", "첨성대", "동궁과월지", "대릉원"],
     bestTimeToVisit: "4월, 10월~11월",
-    itineraryOneDay: ["오전: 불국사·석굴암", "오후: 대릉원 고분군 산책", "저녁: 동궁과월지 야경"],
+    itineraryOneDay: [
+      "오전: 불국사·석굴암",
+      "오후: 대릉원 고분군 산책",
+      "저녁: 동궁과월지 야경",
+    ],
     itineraryThreeDay: [
       "1일차: 불국사·석굴암",
       "2일차: 대릉원·첨성대·계림",
@@ -154,7 +196,12 @@ export const destinations: Destination[] = [
     etiquette: "문화재 구역 내 촬영 제한 표지판을 반드시 확인하세요.",
     source: "경주시청 문화관광(gyeongju.go.kr)",
     updatedAt: "2026-01-01",
-    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/Water_reflection_of_Donggung_Palace_in_Wolji_Pond_at_blue_hour_in_Gyeongju_South_Korea.jpg?width=1200`, "경주 동궁과월지 야경", "Basile Morin", "CC BY-SA 4.0"),
+    image: img(
+      `https://commons.wikimedia.org/wiki/Special:FilePath/Water_reflection_of_Donggung_Palace_in_Wolji_Pond_at_blue_hour_in_Gyeongju_South_Korea.jpg?width=1200`,
+      "경주 동궁과월지 야경",
+      "Basile Morin",
+      "CC BY-SA 4.0",
+    ),
   },
   {
     id: "dom-jeonju",
@@ -166,7 +213,11 @@ export const destinations: Destination[] = [
     summary: "800여 채의 한옥이 모인 전통 마을과 맛의 고장.",
     attractions: ["전주한옥마을", "경기전", "전동성당", "오목대", "남부시장"],
     bestTimeToVisit: "3월~5월, 10월~11월",
-    itineraryOneDay: ["오전: 경기전·전동성당", "오후: 한옥마을 골목 투어", "저녁: 남부시장 야시장"],
+    itineraryOneDay: [
+      "오전: 경기전·전동성당",
+      "오후: 한옥마을 골목 투어",
+      "저녁: 남부시장 야시장",
+    ],
     itineraryThreeDay: [
       "1일차: 전주한옥마을·경기전",
       "2일차: 오목대·전동성당·남부시장",
@@ -178,7 +229,12 @@ export const destinations: Destination[] = [
     etiquette: "한옥 체험 시설은 실내 신발 착용 규칙을 지켜주세요.",
     source: "전주시청 문화관광(jeonju.go.kr)",
     updatedAt: "2026-01-01",
-    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/Jeonju_Hanok_Maeul_01.jpg?width=1200`, "전주한옥마을 기와지붕 풍경", "Bernard Gagnon", "CC0"),
+    image: img(
+      `https://commons.wikimedia.org/wiki/Special:FilePath/Jeonju_Hanok_Maeul_01.jpg?width=1200`,
+      "전주한옥마을 기와지붕 풍경",
+      "Bernard Gagnon",
+      "CC0",
+    ),
   },
   {
     id: "dom-gangneung",
@@ -188,9 +244,19 @@ export const destinations: Destination[] = [
     seasons: ["여름", "겨울"],
     themes: ["해변", "카페"],
     summary: "동해의 푸른 바다와 커피 문화가 어우러진 도시.",
-    attractions: ["경포해변", "안목해변카페거리", "오죽헌", "정동진", "강릉대도호부관아"],
+    attractions: [
+      "경포해변",
+      "안목해변카페거리",
+      "오죽헌",
+      "정동진",
+      "강릉대도호부관아",
+    ],
     bestTimeToVisit: "6월~8월, 12월~1월(해돋이)",
-    itineraryOneDay: ["오전: 경포해변 산책", "오후: 안목해변카페거리", "저녁: 정동진 일몰"],
+    itineraryOneDay: [
+      "오전: 경포해변 산책",
+      "오후: 안목해변카페거리",
+      "저녁: 정동진 일몰",
+    ],
     itineraryThreeDay: [
       "1일차: 경포해변·오죽헌",
       "2일차: 안목해변카페거리·강릉중앙시장",
@@ -202,7 +268,12 @@ export const destinations: Destination[] = [
     etiquette: "해변 캠핑·취사는 지정 구역에서만 가능합니다.",
     source: "강릉시청 문화관광(gn.go.kr)",
     updatedAt: "2026-01-01",
-    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/Jumunjin_Lighthouse_20220501_026.jpg?width=1200`, "강릉 안목해변 카페거리", "Mobius6", "CC BY-SA 4.0"),
+    image: img(
+      `https://commons.wikimedia.org/wiki/Special:FilePath/Jumunjin_Lighthouse_20220501_026.jpg?width=1200`,
+      "강릉 안목해변 카페거리",
+      "Mobius6",
+      "CC BY-SA 4.0",
+    ),
   },
   {
     id: "dom-yeosu",
@@ -212,9 +283,19 @@ export const destinations: Destination[] = [
     seasons: ["봄", "여름"],
     themes: ["해변", "야경"],
     summary: "밤바다 야경으로 유명한 항구 도시.",
-    attractions: ["여수해상케이블카", "오동도", "여수엑스포해양공원", "향일암", "돌산대교"],
+    attractions: [
+      "여수해상케이블카",
+      "오동도",
+      "여수엑스포해양공원",
+      "향일암",
+      "돌산대교",
+    ],
     bestTimeToVisit: "4월~6월, 9월~10월",
-    itineraryOneDay: ["오전: 오동도 산책", "오후: 해상케이블카", "저녁: 여수밤바다 야경"],
+    itineraryOneDay: [
+      "오전: 오동도 산책",
+      "오후: 해상케이블카",
+      "저녁: 여수밤바다 야경",
+    ],
     itineraryThreeDay: [
       "1일차: 오동도·여수엑스포해양공원",
       "2일차: 해상케이블카·돌산대교",
@@ -226,7 +307,12 @@ export const destinations: Destination[] = [
     etiquette: "케이블카 탑승 시 안내 방송에 따라 순서를 지켜주세요.",
     source: "여수시청 문화관광(yeosu.go.kr)",
     updatedAt: "2026-01-01",
-    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/Dolsan_Bridge1.JPG?width=1200`, "여수 밤바다와 해상케이블카 야경", "Glabb", "Public domain"),
+    image: img(
+      `https://commons.wikimedia.org/wiki/Special:FilePath/Dolsan_Bridge1.JPG?width=1200`,
+      "여수 밤바다와 해상케이블카 야경",
+      "Glabb",
+      "Public domain",
+    ),
   },
   {
     id: "dom-tongyeong",
@@ -236,9 +322,19 @@ export const destinations: Destination[] = [
     seasons: ["봄", "가을"],
     themes: ["해변", "예술"],
     summary: "동양의 나폴리로 불리는 다도해의 예술 도시.",
-    attractions: ["통영케이블카", "동피랑벽화마을", "한산도", "서피랑", "강구안"],
+    attractions: [
+      "통영케이블카",
+      "동피랑벽화마을",
+      "한산도",
+      "서피랑",
+      "강구안",
+    ],
     bestTimeToVisit: "4월~6월, 9월~11월",
-    itineraryOneDay: ["오전: 동피랑벽화마을", "오후: 통영케이블카", "저녁: 강구안 활어시장"],
+    itineraryOneDay: [
+      "오전: 동피랑벽화마을",
+      "오후: 통영케이블카",
+      "저녁: 강구안 활어시장",
+    ],
     itineraryThreeDay: [
       "1일차: 동피랑·강구안",
       "2일차: 통영케이블카·미륵산",
@@ -250,7 +346,12 @@ export const destinations: Destination[] = [
     etiquette: "벽화마을은 실제 주민 거주 공간이므로 정숙을 유지해 주세요.",
     source: "통영시청 문화관광(tongyeong.go.kr)",
     updatedAt: "2026-01-01",
-    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/Korea-Tongyeong-Collage-01.jpg?width=1200`, "통영 동피랑벽화마을 골목", "Jungho Jung and User:Asfreeas Derivative work by User:Caspian blue", "CC BY 3.0"),
+    image: img(
+      `https://commons.wikimedia.org/wiki/Special:FilePath/Korea-Tongyeong-Collage-01.jpg?width=1200`,
+      "통영 동피랑벽화마을 골목",
+      "Jungho Jung and User:Asfreeas Derivative work by User:Caspian blue",
+      "CC BY 3.0",
+    ),
   },
   {
     id: "dom-andong",
@@ -262,7 +363,11 @@ export const destinations: Destination[] = [
     summary: "유교 문화와 전통 마을이 살아있는 대한민국 정신문화의 수도.",
     attractions: ["하회마을", "병산서원", "월영교", "봉정사", "도산서원"],
     bestTimeToVisit: "4월~5월, 9월~10월",
-    itineraryOneDay: ["오전: 하회마을 관람", "오후: 병산서원", "저녁: 월영교 야경"],
+    itineraryOneDay: [
+      "오전: 하회마을 관람",
+      "오후: 병산서원",
+      "저녁: 월영교 야경",
+    ],
     itineraryThreeDay: [
       "1일차: 하회마을·부용대",
       "2일차: 병산서원·도산서원",
@@ -274,7 +379,12 @@ export const destinations: Destination[] = [
     etiquette: "서원·고택 방문 시 문지방을 밟지 않는 것이 전통 예절입니다.",
     source: "안동시청 문화관광(andong.go.kr)",
     updatedAt: "2026-01-01",
-    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/Hahoe_Folk_Village_02.jpg?width=1200`, "안동 하회마을 전통 가옥", "Bernard Gagnon", "CC0"),
+    image: img(
+      `https://commons.wikimedia.org/wiki/Special:FilePath/Hahoe_Folk_Village_02.jpg?width=1200`,
+      "안동 하회마을 전통 가옥",
+      "Bernard Gagnon",
+      "CC0",
+    ),
   },
   {
     id: "dom-sokcho",
@@ -284,9 +394,19 @@ export const destinations: Destination[] = [
     seasons: ["여름", "겨울"],
     themes: ["산", "해변"],
     summary: "설악산과 동해 바다를 함께 즐길 수 있는 관광 도시.",
-    attractions: ["설악산", "속초해수욕장", "아바이마을", "속초중앙시장", "영금정"],
+    attractions: [
+      "설악산",
+      "속초해수욕장",
+      "아바이마을",
+      "속초중앙시장",
+      "영금정",
+    ],
     bestTimeToVisit: "5월~6월, 10월~11월(단풍)",
-    itineraryOneDay: ["오전: 설악산 케이블카", "오후: 속초해수욕장", "저녁: 중앙시장 먹거리"],
+    itineraryOneDay: [
+      "오전: 설악산 케이블카",
+      "오후: 속초해수욕장",
+      "저녁: 중앙시장 먹거리",
+    ],
     itineraryThreeDay: [
       "1일차: 설악산 케이블카·신흥사",
       "2일차: 속초해수욕장·영금정",
@@ -298,7 +418,12 @@ export const destinations: Destination[] = [
     etiquette: "설악산 국립공원 등산로는 지정 시간 내 하산해야 합니다.",
     source: "속초시청 문화관광(sokcho.go.kr)",
     updatedAt: "2026-01-01",
-    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/Dinosaur_Ridge_of_Seoraksan.jpg?width=1200`, "속초 설악산과 케이블카 전경", "Taewangkorea", "CC BY-SA 4.0"),
+    image: img(
+      `https://commons.wikimedia.org/wiki/Special:FilePath/Dinosaur_Ridge_of_Seoraksan.jpg?width=1200`,
+      "속초 설악산과 케이블카 전경",
+      "Taewangkorea",
+      "CC BY-SA 4.0",
+    ),
   },
 
   // ── 해외 15개국 30개 도시 ──────────────────────────────
@@ -310,9 +435,19 @@ export const destinations: Destination[] = [
     seasons: ["봄", "가을"],
     themes: ["도시", "쇼핑"],
     summary: "전통과 첨단이 공존하는 일본의 수도.",
-    attractions: ["센소지", "시부야 스크램블 교차로", "도쿄타워", "메이지신궁", "츠키지 장외시장"],
+    attractions: [
+      "센소지",
+      "시부야 스크램블 교차로",
+      "도쿄타워",
+      "메이지신궁",
+      "츠키지 장외시장",
+    ],
     bestTimeToVisit: "3월~4월(벚꽃), 10월~11월(단풍)",
-    itineraryOneDay: ["오전: 센소지·아사쿠사", "오후: 시부야·하라주쿠", "저녁: 도쿄타워 야경"],
+    itineraryOneDay: [
+      "오전: 센소지·아사쿠사",
+      "오후: 시부야·하라주쿠",
+      "저녁: 도쿄타워 야경",
+    ],
     itineraryThreeDay: [
       "1일차: 아사쿠사·우에노공원",
       "2일차: 시부야·하라주쿠·신주쿠",
@@ -324,7 +459,12 @@ export const destinations: Destination[] = [
     etiquette: "대중교통에서는 통화를 삼가고 조용히 이용하는 것이 예의입니다.",
     source: "일본정부관광국(JNTO, jnto.go.jp)",
     updatedAt: "2026-01-01",
-    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/Sensoji_2023.jpg?width=1200`, "도쿄 센소지와 아사쿠사 거리", "Akonnchiroll", "CC0"),
+    image: img(
+      `https://commons.wikimedia.org/wiki/Special:FilePath/Sensoji_2023.jpg?width=1200`,
+      "도쿄 센소지와 아사쿠사 거리",
+      "Akonnchiroll",
+      "CC0",
+    ),
   },
   {
     id: "intl-osaka",
@@ -334,9 +474,19 @@ export const destinations: Destination[] = [
     seasons: ["봄", "가을"],
     themes: ["음식", "도시"],
     summary: "일본 제2의 도시이자 먹거리의 천국.",
-    attractions: ["오사카성", "도톤보리", "신사이바시", "유니버설 스튜디오 재팬", "구로몬시장"],
+    attractions: [
+      "오사카성",
+      "도톤보리",
+      "신사이바시",
+      "유니버설 스튜디오 재팬",
+      "구로몬시장",
+    ],
     bestTimeToVisit: "3월~5월, 10월~11월",
-    itineraryOneDay: ["오전: 오사카성", "오후: 신사이바시 쇼핑", "저녁: 도톤보리 야경"],
+    itineraryOneDay: [
+      "오전: 오사카성",
+      "오후: 신사이바시 쇼핑",
+      "저녁: 도톤보리 야경",
+    ],
     itineraryThreeDay: [
       "1일차: 오사카성·구로몬시장",
       "2일차: 유니버설 스튜디오 재팬",
@@ -348,7 +498,12 @@ export const destinations: Destination[] = [
     etiquette: "에스컬레이터에서는 한쪽 줄로 서서 이용하세요.",
     source: "일본정부관광국(JNTO, jnto.go.jp)",
     updatedAt: "2026-01-01",
-    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/Osaka_Dotonbori_Ebisu_Bridge.jpg?width=1200`, "오사카 도톤보리 야경", "Type specimen", "CC BY-SA 3.0"),
+    image: img(
+      `https://commons.wikimedia.org/wiki/Special:FilePath/Osaka_Dotonbori_Ebisu_Bridge.jpg?width=1200`,
+      "오사카 도톤보리 야경",
+      "Type specimen",
+      "CC BY-SA 3.0",
+    ),
   },
   {
     id: "intl-bangkok",
@@ -372,7 +527,12 @@ export const destinations: Destination[] = [
     etiquette: "사원 방문 시 어깨와 무릎을 가리는 복장을 갖춰야 합니다.",
     source: "태국관광청(TAT, tourismthailand.org)",
     updatedAt: "2026-01-01",
-    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/%E0%B9%80%E0%B8%88%E0%B8%94%E0%B8%B5%E0%B8%A2%E0%B9%8C%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%98%E0%B8%B2%E0%B8%99%E0%B8%97%E0%B8%A3%E0%B8%87%E0%B8%9B%E0%B8%A3%E0%B8%B2%E0%B8%87%E0%B8%84%E0%B9%8C%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B8%AD%E0%B8%A3%E0%B8%B8%E0%B8%932.jpg?width=1200`, "방콕 왓아룬 사원 전경", "Mastertongapollo", "CC BY-SA 4.0"),
+    image: img(
+      `https://commons.wikimedia.org/wiki/Special:FilePath/%E0%B9%80%E0%B8%88%E0%B8%94%E0%B8%B5%E0%B8%A2%E0%B9%8C%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%98%E0%B8%B2%E0%B8%99%E0%B8%97%E0%B8%A3%E0%B8%87%E0%B8%9B%E0%B8%A3%E0%B8%B2%E0%B8%87%E0%B8%84%E0%B9%8C%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B8%AD%E0%B8%A3%E0%B8%B8%E0%B8%932.jpg?width=1200`,
+      "방콕 왓아룬 사원 전경",
+      "Mastertongapollo",
+      "CC BY-SA 4.0",
+    ),
   },
   {
     id: "intl-chiangmai",
@@ -382,9 +542,19 @@ export const destinations: Destination[] = [
     seasons: ["겨울"],
     themes: ["자연", "사원"],
     summary: "고산 지형과 수백 개의 사원이 있는 태국 북부의 문화 도시.",
-    attractions: ["왓프라싱", "도이수텝", "님만해민", "치앙마이 올드시티", "나이트바자"],
+    attractions: [
+      "왓프라싱",
+      "도이수텝",
+      "님만해민",
+      "치앙마이 올드시티",
+      "나이트바자",
+    ],
     bestTimeToVisit: "11월~2월",
-    itineraryOneDay: ["오전: 도이수텝 사원", "오후: 올드시티 사원 투어", "저녁: 나이트바자"],
+    itineraryOneDay: [
+      "오전: 도이수텝 사원",
+      "오후: 올드시티 사원 투어",
+      "저녁: 나이트바자",
+    ],
     itineraryThreeDay: [
       "1일차: 왓프라싱·올드시티",
       "2일차: 도이수텝·님만해민",
@@ -396,7 +566,12 @@ export const destinations: Destination[] = [
     etiquette: "승려에게 물건을 직접 건네지 않고 내려놓아 전달하세요.",
     source: "태국관광청(TAT, tourismthailand.org)",
     updatedAt: "2026-01-01",
-    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/Wat_Phra_That_Doi_Suthep_-_Chiang_Mai.jpg?width=1200`, "치앙마이 도이수텝 사원", "JJ Harrison (https://www.jjharrison.com.au/)", "CC BY-SA 3.0"),
+    image: img(
+      `https://commons.wikimedia.org/wiki/Special:FilePath/Wat_Phra_That_Doi_Suthep_-_Chiang_Mai.jpg?width=1200`,
+      "치앙마이 도이수텝 사원",
+      "JJ Harrison (https://www.jjharrison.com.au/)",
+      "CC BY-SA 3.0",
+    ),
   },
   {
     id: "intl-danang",
@@ -408,7 +583,11 @@ export const destinations: Destination[] = [
     summary: "긴 해변과 근교 유적을 함께 즐길 수 있는 베트남 중부 도시.",
     attractions: ["미케비치", "바나힐", "다낭대성당", "한강 용다리", "오행산"],
     bestTimeToVisit: "2월~5월, 8월~9월",
-    itineraryOneDay: ["오전: 미케비치", "오후: 오행산", "저녁: 한강 용다리 불쇼"],
+    itineraryOneDay: [
+      "오전: 미케비치",
+      "오후: 오행산",
+      "저녁: 한강 용다리 불쇼",
+    ],
     itineraryThreeDay: [
       "1일차: 미케비치·다낭대성당",
       "2일차: 바나힐·골든브릿지",
@@ -420,7 +599,12 @@ export const destinations: Destination[] = [
     etiquette: "사원·성당 방문 시 짧은 옷차림은 피하는 것이 좋습니다.",
     source: "베트남국가관광청(vietnamtourism.gov.vn)",
     updatedAt: "2026-01-01",
-    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/Dragon_Bridge%2C_Da_Nang_during_day_-_20230819_%28cropped%29.jpg?width=1200`, "다낭 미케비치와 해안선", "Somerset999", "CC BY-SA 4.0"),
+    image: img(
+      `https://commons.wikimedia.org/wiki/Special:FilePath/Dragon_Bridge%2C_Da_Nang_during_day_-_20230819_%28cropped%29.jpg?width=1200`,
+      "다낭 미케비치와 해안선",
+      "Somerset999",
+      "CC BY-SA 4.0",
+    ),
   },
   {
     id: "intl-hanoi",
@@ -430,9 +614,19 @@ export const destinations: Destination[] = [
     seasons: ["봄", "가을"],
     themes: ["역사", "음식"],
     summary: "천년 역사를 간직한 베트남의 수도.",
-    attractions: ["호안끼엠호수", "하노이 구시가지", "호치민 묘", "문묘", "동쑤언시장"],
+    attractions: [
+      "호안끼엠호수",
+      "하노이 구시가지",
+      "호치민 묘",
+      "문묘",
+      "동쑤언시장",
+    ],
     bestTimeToVisit: "3월~4월, 10월~11월",
-    itineraryOneDay: ["오전: 호안끼엠호수·구시가지", "오후: 문묘", "저녁: 구시가지 야시장"],
+    itineraryOneDay: [
+      "오전: 호안끼엠호수·구시가지",
+      "오후: 문묘",
+      "저녁: 구시가지 야시장",
+    ],
     itineraryThreeDay: [
       "1일차: 호안끼엠호수·구시가지",
       "2일차: 호치민 묘·문묘",
@@ -444,7 +638,12 @@ export const destinations: Destination[] = [
     etiquette: "호치민 묘 방문 시 반바지·민소매 착용이 제한됩니다.",
     source: "베트남국가관광청(vietnamtourism.gov.vn)",
     updatedAt: "2026-01-01",
-    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/Thap_Rua.jpg?width=1200`, "하노이 호안끼엠호수와 구시가지", "Cyril Doussin from London, United Kingdom", "CC BY-SA 2.0"),
+    image: img(
+      `https://commons.wikimedia.org/wiki/Special:FilePath/Thap_Rua.jpg?width=1200`,
+      "하노이 호안끼엠호수와 구시가지",
+      "Cyril Doussin from London, United Kingdom",
+      "CC BY-SA 2.0",
+    ),
   },
   {
     id: "intl-paris",
@@ -454,9 +653,19 @@ export const destinations: Destination[] = [
     seasons: ["봄", "가을"],
     themes: ["예술", "역사"],
     summary: "예술과 낭만의 도시, 프랑스의 수도.",
-    attractions: ["에펠탑", "루브르박물관", "노트르담대성당", "몽마르트르", "개선문"],
+    attractions: [
+      "에펠탑",
+      "루브르박물관",
+      "노트르담대성당",
+      "몽마르트르",
+      "개선문",
+    ],
     bestTimeToVisit: "4월~6월, 9월~10월",
-    itineraryOneDay: ["오전: 루브르박물관", "오후: 몽마르트르", "저녁: 에펠탑 야경"],
+    itineraryOneDay: [
+      "오전: 루브르박물관",
+      "오후: 몽마르트르",
+      "저녁: 에펠탑 야경",
+    ],
     itineraryThreeDay: [
       "1일차: 에펠탑·샹젤리제·개선문",
       "2일차: 루브르박물관·노트르담대성당",
@@ -468,7 +677,12 @@ export const destinations: Destination[] = [
     etiquette: "레스토랑 입장 시 직원의 안내를 기다리는 것이 일반적입니다.",
     source: "프랑스관광청(france.fr)",
     updatedAt: "2026-01-01",
-    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/Tour_Eiffel_Wikimedia_Commons.jpg?width=1200`, "파리 에펠탑 전경", "Benh LIEU SONG", "Public domain"),
+    image: img(
+      `https://commons.wikimedia.org/wiki/Special:FilePath/Tour_Eiffel_Wikimedia_Commons.jpg?width=1200`,
+      "파리 에펠탑 전경",
+      "Benh LIEU SONG",
+      "Public domain",
+    ),
   },
   {
     id: "intl-nice",
@@ -478,9 +692,19 @@ export const destinations: Destination[] = [
     seasons: ["여름"],
     themes: ["해변", "휴양"],
     summary: "지중해의 푸른 바다가 펼쳐지는 프랑스 리비에라의 대표 도시.",
-    attractions: ["프롬나드 데 장글레", "니스 구시가지", "콜린 뒤 샤토", "마세나광장", "니스현대미술관"],
+    attractions: [
+      "프롬나드 데 장글레",
+      "니스 구시가지",
+      "콜린 뒤 샤토",
+      "마세나광장",
+      "니스현대미술관",
+    ],
     bestTimeToVisit: "5월~9월",
-    itineraryOneDay: ["오전: 니스 구시가지", "오후: 콜린 뒤 샤토", "저녁: 프롬나드 데 장글레 산책"],
+    itineraryOneDay: [
+      "오전: 니스 구시가지",
+      "오후: 콜린 뒤 샤토",
+      "저녁: 프롬나드 데 장글레 산책",
+    ],
     itineraryThreeDay: [
       "1일차: 프롬나드 데 장글레·마세나광장",
       "2일차: 니스 구시가지·콜린 뒤 샤토",
@@ -489,10 +713,16 @@ export const destinations: Destination[] = [
     budget: "1인 1일 10만~18만원(숙박 제외)",
     transport: "트램·도보",
     food: ["살라드 니수아즈", "소카", "라따뚜이"],
-    etiquette: "해변에서 반라 일광욕이 흔하지만 구시가지에서는 정장에 준하는 복장을 갖추세요.",
+    etiquette:
+      "해변에서 반라 일광욕이 흔하지만 구시가지에서는 정장에 준하는 복장을 갖추세요.",
     source: "프랑스관광청(france.fr)",
     updatedAt: "2026-01-01",
-    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/CollineDuChateau_NiceFrance2022.png?width=1200`, "니스 프롬나드 데 장글레 해안", "3602kiva", "CC0"),
+    image: img(
+      `https://commons.wikimedia.org/wiki/Special:FilePath/CollineDuChateau_NiceFrance2022.png?width=1200`,
+      "니스 프롬나드 데 장글레 해안",
+      "3602kiva",
+      "CC0",
+    ),
   },
   {
     id: "intl-rome",
@@ -502,9 +732,19 @@ export const destinations: Destination[] = [
     seasons: ["봄", "가을"],
     themes: ["역사", "유적"],
     summary: "2000년 역사를 간직한 이탈리아의 수도이자 옛 로마 제국의 중심지.",
-    attractions: ["콜로세움", "트레비분수", "판테온", "바티칸박물관", "스페인광장"],
+    attractions: [
+      "콜로세움",
+      "트레비분수",
+      "판테온",
+      "바티칸박물관",
+      "스페인광장",
+    ],
     bestTimeToVisit: "4월~6월, 9월~10월",
-    itineraryOneDay: ["오전: 콜로세움·포로로마노", "오후: 판테온·트레비분수", "저녁: 스페인광장"],
+    itineraryOneDay: [
+      "오전: 콜로세움·포로로마노",
+      "오후: 판테온·트레비분수",
+      "저녁: 스페인광장",
+    ],
     itineraryThreeDay: [
       "1일차: 콜로세움·포로로마노·팔라티노 언덕",
       "2일차: 바티칸박물관·성베드로대성당",
@@ -516,7 +756,12 @@ export const destinations: Destination[] = [
     etiquette: "성당 방문 시 어깨와 무릎을 가리는 복장이 필요합니다.",
     source: "이탈리아관광청(ENIT, enit.it)",
     updatedAt: "2026-01-01",
-    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/Colosseo_2020.jpg?width=1200`, "로마 콜로세움 전경", "FeaturedPics", "CC BY-SA 4.0"),
+    image: img(
+      `https://commons.wikimedia.org/wiki/Special:FilePath/Colosseo_2020.jpg?width=1200`,
+      "로마 콜로세움 전경",
+      "FeaturedPics",
+      "CC BY-SA 4.0",
+    ),
   },
   {
     id: "intl-florence",
@@ -526,9 +771,19 @@ export const destinations: Destination[] = [
     seasons: ["봄", "가을"],
     themes: ["예술", "역사"],
     summary: "르네상스 예술의 발상지로 불리는 토스카나의 중심 도시.",
-    attractions: ["두오모", "우피치미술관", "베키오다리", "피티궁전", "미켈란젤로광장"],
+    attractions: [
+      "두오모",
+      "우피치미술관",
+      "베키오다리",
+      "피티궁전",
+      "미켈란젤로광장",
+    ],
     bestTimeToVisit: "4월~6월, 9월~10월",
-    itineraryOneDay: ["오전: 두오모·산조반니세례당", "오후: 우피치미술관", "저녁: 미켈란젤로광장 야경"],
+    itineraryOneDay: [
+      "오전: 두오모·산조반니세례당",
+      "오후: 우피치미술관",
+      "저녁: 미켈란젤로광장 야경",
+    ],
     itineraryThreeDay: [
       "1일차: 두오모·베키오다리",
       "2일차: 우피치미술관·피티궁전",
@@ -540,7 +795,12 @@ export const destinations: Destination[] = [
     etiquette: "박물관은 사전 예약 시 대기시간을 크게 줄일 수 있습니다.",
     source: "이탈리아관광청(ENIT, enit.it)",
     updatedAt: "2026-01-01",
-    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/Cattedrale_di_Santa_Maria_del_Fiore_%E2%80%93_Il_Duomo_di_Firenze.jpg?width=1200`, "피렌체 두오모와 붉은 지붕 전경", "Gary Campbell-Hall", "CC BY 2.0"),
+    image: img(
+      `https://commons.wikimedia.org/wiki/Special:FilePath/Cattedrale_di_Santa_Maria_del_Fiore_%E2%80%93_Il_Duomo_di_Firenze.jpg?width=1200`,
+      "피렌체 두오모와 붉은 지붕 전경",
+      "Gary Campbell-Hall",
+      "CC BY 2.0",
+    ),
   },
   {
     id: "intl-barcelona",
@@ -550,9 +810,19 @@ export const destinations: Destination[] = [
     seasons: ["봄", "가을"],
     themes: ["건축", "해변"],
     summary: "가우디의 건축과 지중해 해변이 공존하는 카탈루냐의 중심 도시.",
-    attractions: ["사그라다파밀리아", "구엘공원", "람블라거리", "카사바트요", "고딕지구"],
+    attractions: [
+      "사그라다파밀리아",
+      "구엘공원",
+      "람블라거리",
+      "카사바트요",
+      "고딕지구",
+    ],
     bestTimeToVisit: "5월~6월, 9월~10월",
-    itineraryOneDay: ["오전: 사그라다파밀리아", "오후: 구엘공원", "저녁: 람블라거리·고딕지구"],
+    itineraryOneDay: [
+      "오전: 사그라다파밀리아",
+      "오후: 구엘공원",
+      "저녁: 람블라거리·고딕지구",
+    ],
     itineraryThreeDay: [
       "1일차: 사그라다파밀리아·카사바트요",
       "2일차: 구엘공원·고딕지구",
@@ -564,7 +834,12 @@ export const destinations: Destination[] = [
     etiquette: "사그라다파밀리아 등 인기 명소는 사전 예약이 사실상 필수입니다.",
     source: "스페인관광청(spain.info)",
     updatedAt: "2026-01-01",
-    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/SF_maig_2_cropped.jpg?width=1200`, "바르셀로나 사그라다파밀리아 외관", "Canaan", "CC BY-SA 4.0"),
+    image: img(
+      `https://commons.wikimedia.org/wiki/Special:FilePath/SF_maig_2_cropped.jpg?width=1200`,
+      "바르셀로나 사그라다파밀리아 외관",
+      "Canaan",
+      "CC BY-SA 4.0",
+    ),
   },
   {
     id: "intl-madrid",
@@ -574,9 +849,19 @@ export const destinations: Destination[] = [
     seasons: ["봄", "가을"],
     themes: ["예술", "역사"],
     summary: "스페인 왕실의 유산과 세계적인 미술관이 모인 수도.",
-    attractions: ["프라도미술관", "마요르광장", "레티로공원", "왕궁", "그란비아"],
+    attractions: [
+      "프라도미술관",
+      "마요르광장",
+      "레티로공원",
+      "왕궁",
+      "그란비아",
+    ],
     bestTimeToVisit: "4월~6월, 9월~10월",
-    itineraryOneDay: ["오전: 프라도미술관", "오후: 레티로공원", "저녁: 그란비아·마요르광장"],
+    itineraryOneDay: [
+      "오전: 프라도미술관",
+      "오후: 레티로공원",
+      "저녁: 그란비아·마요르광장",
+    ],
     itineraryThreeDay: [
       "1일차: 프라도미술관·레티로공원",
       "2일차: 왕궁·마요르광장",
@@ -585,10 +870,16 @@ export const destinations: Destination[] = [
     budget: "1인 1일 9만~15만원(숙박 제외)",
     transport: "지하철(메트로 마드리드)",
     food: ["코시도 마드리레뇨", "츄러스", "감바스 알 아히요"],
-    etiquette: "저녁 식사 시간이 늦은 편(21시 이후)이니 사전에 문 여는 시간을 확인하세요.",
+    etiquette:
+      "저녁 식사 시간이 늦은 편(21시 이후)이니 사전에 문 여는 시간을 확인하세요.",
     source: "스페인관광청(spain.info)",
     updatedAt: "2026-01-01",
-    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/Madrid_Plaza_Mayor_%2848733706273%29.jpg?width=1200`, "마드리드 마요르광장 전경", "Jorge Franganillo", "CC BY 2.0"),
+    image: img(
+      `https://commons.wikimedia.org/wiki/Special:FilePath/Madrid_Plaza_Mayor_%2848733706273%29.jpg?width=1200`,
+      "마드리드 마요르광장 전경",
+      "Jorge Franganillo",
+      "CC BY 2.0",
+    ),
   },
   {
     id: "intl-london",
@@ -600,7 +891,11 @@ export const destinations: Destination[] = [
     summary: "고전과 현대가 공존하는 영국의 수도.",
     attractions: ["빅벤", "런던아이", "대영박물관", "타워브리지", "버킹엄궁전"],
     bestTimeToVisit: "5월~9월",
-    itineraryOneDay: ["오전: 대영박물관", "오후: 버킹엄궁전 근위병 교대식", "저녁: 런던아이·타워브리지"],
+    itineraryOneDay: [
+      "오전: 대영박물관",
+      "오후: 버킹엄궁전 근위병 교대식",
+      "저녁: 런던아이·타워브리지",
+    ],
     itineraryThreeDay: [
       "1일차: 빅벤·웨스트민스터·버킹엄궁전",
       "2일차: 대영박물관·코벤트가든",
@@ -609,10 +904,16 @@ export const destinations: Destination[] = [
     budget: "1인 1일 13만~22만원(숙박 제외)",
     transport: "지하철(Oyster 카드)",
     food: ["피시앤칩스", "잉글리시 브렉퍼스트", "애프터눈티"],
-    etiquette: "지하철 에스컬레이터는 왼쪽으로 걷고 오른쪽에 서는 것이 관행입니다.",
+    etiquette:
+      "지하철 에스컬레이터는 왼쪽으로 걷고 오른쪽에 서는 것이 관행입니다.",
     source: "영국관광청(VisitBritain)",
     updatedAt: "2026-01-01",
-    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/Elizabeth_Tower_and_the_north_front_of_the_Palace_of_Westminster%2C_London.jpg?width=1200`, "런던 빅벤과 웨스트민스터 다리", "Christian David", "CC BY-SA 4.0"),
+    image: img(
+      `https://commons.wikimedia.org/wiki/Special:FilePath/Elizabeth_Tower_and_the_north_front_of_the_Palace_of_Westminster%2C_London.jpg?width=1200`,
+      "런던 빅벤과 웨스트민스터 다리",
+      "Christian David",
+      "CC BY-SA 4.0",
+    ),
   },
   {
     id: "intl-edinburgh",
@@ -622,9 +923,19 @@ export const destinations: Destination[] = [
     seasons: ["여름"],
     themes: ["역사", "축제"],
     summary: "중세 성곽과 축제로 유명한 스코틀랜드의 수도.",
-    attractions: ["에든버러성", "로열마일", "아서시트", "홀리루드하우스", "칼튼힐"],
+    attractions: [
+      "에든버러성",
+      "로열마일",
+      "아서시트",
+      "홀리루드하우스",
+      "칼튼힐",
+    ],
     bestTimeToVisit: "6월~8월(에든버러 페스티벌)",
-    itineraryOneDay: ["오전: 에든버러성", "오후: 로열마일", "저녁: 칼튼힐 야경"],
+    itineraryOneDay: [
+      "오전: 에든버러성",
+      "오후: 로열마일",
+      "저녁: 칼튼힐 야경",
+    ],
     itineraryThreeDay: [
       "1일차: 에든버러성·로열마일",
       "2일차: 아서시트 하이킹·홀리루드하우스",
@@ -636,7 +947,12 @@ export const destinations: Destination[] = [
     etiquette: "8월 축제 기간은 숙소·교통이 매우 붐비니 예약을 서두르세요.",
     source: "영국관광청(VisitBritain)",
     updatedAt: "2026-01-01",
-    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/City_of_Edinburgh_-_Edinburgh_Castle_-_20140421004403.jpg?width=1200`, "에든버러성과 로열마일 전경", "Enric", "CC BY-SA 4.0"),
+    image: img(
+      `https://commons.wikimedia.org/wiki/Special:FilePath/City_of_Edinburgh_-_Edinburgh_Castle_-_20140421004403.jpg?width=1200`,
+      "에든버러성과 로열마일 전경",
+      "Enric",
+      "CC BY-SA 4.0",
+    ),
   },
   {
     id: "intl-newyork",
@@ -646,9 +962,19 @@ export const destinations: Destination[] = [
     seasons: ["봄", "가을"],
     themes: ["도시", "문화"],
     summary: "세계 경제·문화의 중심지로 불리는 미국 최대 도시.",
-    attractions: ["타임스퀘어", "센트럴파크", "자유의 여신상", "브루클린브리지", "엠파이어스테이트빌딩"],
+    attractions: [
+      "타임스퀘어",
+      "센트럴파크",
+      "자유의 여신상",
+      "브루클린브리지",
+      "엠파이어스테이트빌딩",
+    ],
     bestTimeToVisit: "4월~6월, 9월~11월",
-    itineraryOneDay: ["오전: 센트럴파크", "오후: 자유의 여신상 페리", "저녁: 타임스퀘어"],
+    itineraryOneDay: [
+      "오전: 센트럴파크",
+      "오후: 자유의 여신상 페리",
+      "저녁: 타임스퀘어",
+    ],
     itineraryThreeDay: [
       "1일차: 타임스퀘어·엠파이어스테이트빌딩",
       "2일차: 센트럴파크·메트로폴리탄미술관",
@@ -660,7 +986,12 @@ export const destinations: Destination[] = [
     etiquette: "레스토랑 이용 시 팁(15~20%)이 관행적으로 요구됩니다.",
     source: "미국관광청(Visit The USA)",
     updatedAt: "2026-01-01",
-    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/New_york_times_square-terabass.jpg?width=1200`, "뉴욕 타임스퀘어 야경", "Terabass", "CC BY-SA 3.0"),
+    image: img(
+      `https://commons.wikimedia.org/wiki/Special:FilePath/New_york_times_square-terabass.jpg?width=1200`,
+      "뉴욕 타임스퀘어 야경",
+      "Terabass",
+      "CC BY-SA 3.0",
+    ),
   },
   {
     id: "intl-losangeles",
@@ -670,9 +1001,19 @@ export const destinations: Destination[] = [
     seasons: ["봄", "가을"],
     themes: ["해변", "엔터테인먼트"],
     summary: "할리우드와 해변 라이프스타일이 공존하는 미국 서부 도시.",
-    attractions: ["할리우드 사인", "산타모니카비치", "그리피스천문대", "유니버설 스튜디오 할리우드", "게티센터"],
+    attractions: [
+      "할리우드 사인",
+      "산타모니카비치",
+      "그리피스천문대",
+      "유니버설 스튜디오 할리우드",
+      "게티센터",
+    ],
     bestTimeToVisit: "3월~5월, 9월~11월",
-    itineraryOneDay: ["오전: 그리피스천문대", "오후: 할리우드 거리", "저녁: 산타모니카비치 일몰"],
+    itineraryOneDay: [
+      "오전: 그리피스천문대",
+      "오후: 할리우드 거리",
+      "저녁: 산타모니카비치 일몰",
+    ],
     itineraryThreeDay: [
       "1일차: 할리우드·그리피스천문대",
       "2일차: 유니버설 스튜디오 할리우드",
@@ -684,7 +1025,12 @@ export const destinations: Destination[] = [
     etiquette: "도시 규모가 넓어 이동시간을 넉넉히 계획하세요.",
     source: "미국관광청(Visit The USA)",
     updatedAt: "2026-01-01",
-    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/Santa_monica_pier_entrance_evening.jpg?width=1200`, "로스앤젤레스 산타모니카비치 부두", "web4camguy", "CC BY-SA 2.0"),
+    image: img(
+      `https://commons.wikimedia.org/wiki/Special:FilePath/Santa_monica_pier_entrance_evening.jpg?width=1200`,
+      "로스앤젤레스 산타모니카비치 부두",
+      "web4camguy",
+      "CC BY-SA 2.0",
+    ),
   },
   {
     id: "intl-sydney",
@@ -694,9 +1040,19 @@ export const destinations: Destination[] = [
     seasons: ["봄", "여름"],
     themes: ["해변", "도시"],
     summary: "오페라하우스와 아름다운 항구가 있는 호주 최대 도시.",
-    attractions: ["오페라하우스", "하버브리지", "본다이비치", "달링하버", "더록스"],
+    attractions: [
+      "오페라하우스",
+      "하버브리지",
+      "본다이비치",
+      "달링하버",
+      "더록스",
+    ],
     bestTimeToVisit: "9월~11월, 3월~5월",
-    itineraryOneDay: ["오전: 오페라하우스·더록스", "오후: 본다이비치", "저녁: 달링하버 야경"],
+    itineraryOneDay: [
+      "오전: 오페라하우스·더록스",
+      "오후: 본다이비치",
+      "저녁: 달링하버 야경",
+    ],
     itineraryThreeDay: [
       "1일차: 오페라하우스·하버브리지·더록스",
       "2일차: 본다이비치·코스트워크",
@@ -708,7 +1064,12 @@ export const destinations: Destination[] = [
     etiquette: "해변에서는 깃발로 표시된 안전 구역 안에서만 수영하세요.",
     source: "호주관광청(Tourism Australia)",
     updatedAt: "2026-01-01",
-    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/Sydney_Australia._%2821339175489%29.jpg?width=1200`, "시드니 오페라하우스와 하버브리지", "Bernard Spragg. NZ from Christchurch, New Zealand", "CC0"),
+    image: img(
+      `https://commons.wikimedia.org/wiki/Special:FilePath/Sydney_Australia._%2821339175489%29.jpg?width=1200`,
+      "시드니 오페라하우스와 하버브리지",
+      "Bernard Spragg. NZ from Christchurch, New Zealand",
+      "CC0",
+    ),
   },
   {
     id: "intl-melbourne",
@@ -718,9 +1079,19 @@ export const destinations: Destination[] = [
     seasons: ["봄", "가을"],
     themes: ["예술", "커피"],
     summary: "골목 예술과 커피 문화로 유명한 호주 문화 수도.",
-    attractions: ["플린더스스트리트역", "그레이트오션로드", "퀸빅토리아마켓", "세인트킬다비치", "유레카타워"],
+    attractions: [
+      "플린더스스트리트역",
+      "그레이트오션로드",
+      "퀸빅토리아마켓",
+      "세인트킬다비치",
+      "유레카타워",
+    ],
     bestTimeToVisit: "3월~5월, 9월~11월",
-    itineraryOneDay: ["오전: 플린더스스트리트역·골목 예술", "오후: 퀸빅토리아마켓", "저녁: 유레카타워 전망대"],
+    itineraryOneDay: [
+      "오전: 플린더스스트리트역·골목 예술",
+      "오후: 퀸빅토리아마켓",
+      "저녁: 유레카타워 전망대",
+    ],
     itineraryThreeDay: [
       "1일차: 시내 골목 예술·퀸빅토리아마켓",
       "2일차: 그레이트오션로드 당일 투어",
@@ -732,7 +1103,12 @@ export const destinations: Destination[] = [
     etiquette: "무료 트램존 밖에서는 반드시 요금을 태그해야 합니다.",
     source: "호주관광청(Tourism Australia)",
     updatedAt: "2026-01-01",
-    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/Melbourne_skyline_sor.jpg?width=1200`, "멜버른 시내 골목 예술 거리", "Melbpal", "CC BY-SA 4.0"),
+    image: img(
+      `https://commons.wikimedia.org/wiki/Special:FilePath/Melbourne_skyline_sor.jpg?width=1200`,
+      "멜버른 시내 골목 예술 거리",
+      "Melbpal",
+      "CC BY-SA 4.0",
+    ),
   },
   {
     id: "intl-auckland",
@@ -742,9 +1118,19 @@ export const destinations: Destination[] = [
     seasons: ["여름"],
     themes: ["자연", "도시"],
     summary: "화산 언덕과 항구가 어우러진 뉴질랜드 최대 도시.",
-    attractions: ["스카이타워", "랑기토토섬", "데본포트", "미션베이", "오클랜드박물관"],
+    attractions: [
+      "스카이타워",
+      "랑기토토섬",
+      "데본포트",
+      "미션베이",
+      "오클랜드박물관",
+    ],
     bestTimeToVisit: "12월~2월",
-    itineraryOneDay: ["오전: 스카이타워", "오후: 데본포트", "저녁: 미션베이 해변 산책"],
+    itineraryOneDay: [
+      "오전: 스카이타워",
+      "오후: 데본포트",
+      "저녁: 미션베이 해변 산책",
+    ],
     itineraryThreeDay: [
       "1일차: 스카이타워·오클랜드박물관",
       "2일차: 랑기토토섬 트레킹",
@@ -756,7 +1142,12 @@ export const destinations: Destination[] = [
     etiquette: "마오리 문화 시설 방문 시 안내자의 설명을 존중해 주세요.",
     source: "뉴질랜드관광청(newzealand.com)",
     updatedAt: "2026-01-01",
-    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/01_Auckland_New_Zealand-1000137.jpg?width=1200`, "오클랜드 스카이타워와 항구 전경", "QFSE Media", "CC BY-SA 3.0 nz"),
+    image: img(
+      `https://commons.wikimedia.org/wiki/Special:FilePath/01_Auckland_New_Zealand-1000137.jpg?width=1200`,
+      "오클랜드 스카이타워와 항구 전경",
+      "QFSE Media",
+      "CC BY-SA 3.0 nz",
+    ),
   },
   {
     id: "intl-queenstown",
@@ -766,9 +1157,19 @@ export const destinations: Destination[] = [
     seasons: ["여름", "겨울"],
     themes: ["자연", "액티비티"],
     summary: "익스트림 스포츠의 발상지로 불리는 남섬의 관광 중심지.",
-    attractions: ["스카이라인 퀸스타운", "밀포드사운드", "카와라우 번지점프", "퀸스타운가든", "아로타운"],
+    attractions: [
+      "스카이라인 퀸스타운",
+      "밀포드사운드",
+      "카와라우 번지점프",
+      "퀸스타운가든",
+      "아로타운",
+    ],
     bestTimeToVisit: "12월~2월(여름), 6월~8월(스키)",
-    itineraryOneDay: ["오전: 스카이라인 곤돌라", "오후: 퀸스타운가든 산책", "저녁: 호숫가 레스토랑"],
+    itineraryOneDay: [
+      "오전: 스카이라인 곤돌라",
+      "오후: 퀸스타운가든 산책",
+      "저녁: 호숫가 레스토랑",
+    ],
     itineraryThreeDay: [
       "1일차: 스카이라인·퀸스타운가든",
       "2일차: 밀포드사운드 당일 투어",
@@ -780,7 +1181,12 @@ export const destinations: Destination[] = [
     etiquette: "액티비티 예약 시 취소·환불 규정을 사전에 확인하세요.",
     source: "뉴질랜드관광청(newzealand.com)",
     updatedAt: "2026-01-01",
-    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/Queenstown_1_%288168013172%29.jpg?width=1200`, "퀸스타운 호수와 산악 전경", "Bernard Spragg. NZ from Christchurch, New Zealand", "CC0"),
+    image: img(
+      `https://commons.wikimedia.org/wiki/Special:FilePath/Queenstown_1_%288168013172%29.jpg?width=1200`,
+      "퀸스타운 호수와 산악 전경",
+      "Bernard Spragg. NZ from Christchurch, New Zealand",
+      "CC0",
+    ),
   },
   {
     id: "intl-zurich",
@@ -790,9 +1196,19 @@ export const destinations: Destination[] = [
     seasons: ["여름"],
     themes: ["자연", "도시"],
     summary: "알프스와 호수를 배경으로 한 스위스 금융·문화의 중심지.",
-    attractions: ["취리히호수", "반호프거리", "그로스뮌스터", "린덴호프", "취리히서역"],
+    attractions: [
+      "취리히호수",
+      "반호프거리",
+      "그로스뮌스터",
+      "린덴호프",
+      "취리히서역",
+    ],
     bestTimeToVisit: "6월~9월",
-    itineraryOneDay: ["오전: 그로스뮌스터·린덴호프", "오후: 취리히호수 유람선", "저녁: 반호프거리"],
+    itineraryOneDay: [
+      "오전: 그로스뮌스터·린덴호프",
+      "오후: 취리히호수 유람선",
+      "저녁: 반호프거리",
+    ],
     itineraryThreeDay: [
       "1일차: 구시가지·그로스뮌스터",
       "2일차: 취리히호수 유람선·우토리베르크",
@@ -804,7 +1220,12 @@ export const destinations: Destination[] = [
     etiquette: "대중교통 요금은 반드시 사전 검표기에 태그해야 합니다.",
     source: "스위스관광청(MySwitzerland.com)",
     updatedAt: "2026-01-01",
-    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/Altstadt_Z%C3%BCrich_2015.jpg?width=1200`, "취리히호수와 구시가지 전경", "Thomas Wolf, www.foto-tw.de", "CC BY-SA 3.0 de"),
+    image: img(
+      `https://commons.wikimedia.org/wiki/Special:FilePath/Altstadt_Z%C3%BCrich_2015.jpg?width=1200`,
+      "취리히호수와 구시가지 전경",
+      "Thomas Wolf, www.foto-tw.de",
+      "CC BY-SA 3.0 de",
+    ),
   },
   {
     id: "intl-lucerne",
@@ -816,7 +1237,11 @@ export const destinations: Destination[] = [
     summary: "중세 다리와 알프스 호수가 어우러진 스위스 대표 관광지.",
     attractions: ["카펠교", "리기산", "루체른호수", "사자기념비", "무제크성벽"],
     bestTimeToVisit: "6월~9월",
-    itineraryOneDay: ["오전: 카펠교·구시가지", "오후: 리기산 등정", "저녁: 루체른호수 유람선"],
+    itineraryOneDay: [
+      "오전: 카펠교·구시가지",
+      "오후: 리기산 등정",
+      "저녁: 루체른호수 유람선",
+    ],
     itineraryThreeDay: [
       "1일차: 카펠교·사자기념비·무제크성벽",
       "2일차: 리기산 당일 트레킹",
@@ -828,7 +1253,12 @@ export const destinations: Destination[] = [
     etiquette: "산악열차·케이블카는 사전 예약 시 대기 시간을 줄일 수 있습니다.",
     source: "스위스관광청(MySwitzerland.com)",
     updatedAt: "2026-01-01",
-    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/Kapellbruecke.JPG?width=1200`, "루체른 카펠교와 호수 전경", "Simon Koopmann", "CC BY-SA 2.5"),
+    image: img(
+      `https://commons.wikimedia.org/wiki/Special:FilePath/Kapellbruecke.JPG?width=1200`,
+      "루체른 카펠교와 호수 전경",
+      "Simon Koopmann",
+      "CC BY-SA 2.5",
+    ),
   },
   {
     id: "intl-berlin",
@@ -838,9 +1268,19 @@ export const destinations: Destination[] = [
     seasons: ["봄", "가을"],
     themes: ["역사", "예술"],
     summary: "냉전의 역사와 현대 예술이 공존하는 독일의 수도.",
-    attractions: ["브란덴부르크문", "이스트사이드갤러리", "박물관섬", "체크포인트찰리", "티어가르텐"],
+    attractions: [
+      "브란덴부르크문",
+      "이스트사이드갤러리",
+      "박물관섬",
+      "체크포인트찰리",
+      "티어가르텐",
+    ],
     bestTimeToVisit: "5월~9월",
-    itineraryOneDay: ["오전: 브란덴부르크문·박물관섬", "오후: 이스트사이드갤러리", "저녁: 티어가르텐 산책"],
+    itineraryOneDay: [
+      "오전: 브란덴부르크문·박물관섬",
+      "오후: 이스트사이드갤러리",
+      "저녁: 티어가르텐 산책",
+    ],
     itineraryThreeDay: [
       "1일차: 브란덴부르크문·체크포인트찰리",
       "2일차: 박물관섬·이스트사이드갤러리",
@@ -852,7 +1292,12 @@ export const destinations: Destination[] = [
     etiquette: "무단 횡단은 벌금 대상이니 신호를 반드시 지키세요.",
     source: "독일관광청(germany.travel)",
     updatedAt: "2026-01-01",
-    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/Brandenburger_Tor_abends.jpg?width=1200`, "베를린 브란덴부르크문 전경", "Thomas Wolf, www.foto-tw.de", "CC BY-SA 3.0"),
+    image: img(
+      `https://commons.wikimedia.org/wiki/Special:FilePath/Brandenburger_Tor_abends.jpg?width=1200`,
+      "베를린 브란덴부르크문 전경",
+      "Thomas Wolf, www.foto-tw.de",
+      "CC BY-SA 3.0",
+    ),
   },
   {
     id: "intl-munich",
@@ -862,9 +1307,19 @@ export const destinations: Destination[] = [
     seasons: ["가을"],
     themes: ["역사", "축제"],
     summary: "옥토버페스트로 유명한 바이에른 왕국의 옛 수도.",
-    attractions: ["마리엔광장", "님펜부르크궁전", "영국정원", "프라우엔교회", "테레지엔비제"],
+    attractions: [
+      "마리엔광장",
+      "님펜부르크궁전",
+      "영국정원",
+      "프라우엔교회",
+      "테레지엔비제",
+    ],
     bestTimeToVisit: "9월 말~10월(옥토버페스트), 5월~6월",
-    itineraryOneDay: ["오전: 마리엔광장·프라우엔교회", "오후: 영국정원 산책", "저녁: 비어가든"],
+    itineraryOneDay: [
+      "오전: 마리엔광장·프라우엔교회",
+      "오후: 영국정원 산책",
+      "저녁: 비어가든",
+    ],
     itineraryThreeDay: [
       "1일차: 마리엔광장·프라우엔교회",
       "2일차: 님펜부르크궁전·영국정원",
@@ -876,7 +1331,12 @@ export const destinations: Destination[] = [
     etiquette: "비어가든에서는 남는 좌석에 합석하는 문화가 일반적입니다.",
     source: "독일관광청(germany.travel)",
     updatedAt: "2026-01-01",
-    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/Rathaus_and_Marienplatz_from_Peterskirche_-_August_2006.jpg?width=1200`, "뮌헨 마리엔광장과 신청사", "Diliff", "CC BY-SA 3.0"),
+    image: img(
+      `https://commons.wikimedia.org/wiki/Special:FilePath/Rathaus_and_Marienplatz_from_Peterskirche_-_August_2006.jpg?width=1200`,
+      "뮌헨 마리엔광장과 신청사",
+      "Diliff",
+      "CC BY-SA 3.0",
+    ),
   },
   {
     id: "intl-athens",
@@ -886,9 +1346,19 @@ export const destinations: Destination[] = [
     seasons: ["봄", "가을"],
     themes: ["역사", "유적"],
     summary: "서양 문명의 발상지로 불리는 고대 유적의 도시.",
-    attractions: ["아크로폴리스", "파르테논신전", "플라카지구", "아테네고고학박물관", "리카비토스언덕"],
+    attractions: [
+      "아크로폴리스",
+      "파르테논신전",
+      "플라카지구",
+      "아테네고고학박물관",
+      "리카비토스언덕",
+    ],
     bestTimeToVisit: "4월~6월, 9월~10월",
-    itineraryOneDay: ["오전: 아크로폴리스·파르테논신전", "오후: 아테네고고학박물관", "저녁: 플라카지구"],
+    itineraryOneDay: [
+      "오전: 아크로폴리스·파르테논신전",
+      "오후: 아테네고고학박물관",
+      "저녁: 플라카지구",
+    ],
     itineraryThreeDay: [
       "1일차: 아크로폴리스·파르테논신전",
       "2일차: 아테네고고학박물관·리카비토스언덕",
@@ -897,10 +1367,16 @@ export const destinations: Destination[] = [
     budget: "1인 1일 9만~16만원(숙박 제외)",
     transport: "지하철·도보",
     food: ["수블라키", "무사카", "그릭샐러드"],
-    etiquette: "여름철 한낮에는 유적지 그늘이 적으니 오전·늦은 오후 방문을 권장합니다.",
+    etiquette:
+      "여름철 한낮에는 유적지 그늘이 적으니 오전·늦은 오후 방문을 권장합니다.",
     source: "그리스관광청(visitgreece.gr)",
     updatedAt: "2026-01-01",
-    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/The_Parthenon_in_Athens.jpg?width=1200`, "아테네 파르테논신전 전경", "Steve Swayne", "CC BY 2.0"),
+    image: img(
+      `https://commons.wikimedia.org/wiki/Special:FilePath/The_Parthenon_in_Athens.jpg?width=1200`,
+      "아테네 파르테논신전 전경",
+      "Steve Swayne",
+      "CC BY 2.0",
+    ),
   },
   {
     id: "intl-santorini",
@@ -910,9 +1386,19 @@ export const destinations: Destination[] = [
     seasons: ["여름"],
     themes: ["해변", "휴양"],
     summary: "하얀 건물과 푸른 지붕, 붉은 노을로 유명한 에게해의 섬.",
-    attractions: ["이아마을", "피라", "붉은해변", "아크로티리유적", "칼데라 전망대"],
+    attractions: [
+      "이아마을",
+      "피라",
+      "붉은해변",
+      "아크로티리유적",
+      "칼데라 전망대",
+    ],
     bestTimeToVisit: "5월~9월",
-    itineraryOneDay: ["오전: 피라 시내", "오후: 붉은해변", "저녁: 이아마을 일몰"],
+    itineraryOneDay: [
+      "오전: 피라 시내",
+      "오후: 붉은해변",
+      "저녁: 이아마을 일몰",
+    ],
     itineraryThreeDay: [
       "1일차: 피라·칼데라 전망대",
       "2일차: 이아마을·붉은해변",
@@ -924,7 +1410,12 @@ export const destinations: Destination[] = [
     etiquette: "이아마을 일몰 명당은 해지기 1~2시간 전부터 자리가 찹니다.",
     source: "그리스관광청(visitgreece.gr)",
     updatedAt: "2026-01-01",
-    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/Oia_sunset_-_panoramio_%282%29.jpg?width=1200`, "산토리니 이아마을 하얀 건물과 바다", "TomasEE", "CC BY 3.0"),
+    image: img(
+      `https://commons.wikimedia.org/wiki/Special:FilePath/Oia_sunset_-_panoramio_%282%29.jpg?width=1200`,
+      "산토리니 이아마을 하얀 건물과 바다",
+      "TomasEE",
+      "CC BY 3.0",
+    ),
   },
   {
     id: "intl-lisbon",
@@ -934,9 +1425,19 @@ export const destinations: Destination[] = [
     seasons: ["봄", "가을"],
     themes: ["역사", "해안"],
     summary: "노란 트램과 파스텔톤 건물이 인상적인 포르투갈의 수도.",
-    attractions: ["벨렘탑", "제로니무스수도원", "알파마지구", "상조르제성", "28번 트램"],
+    attractions: [
+      "벨렘탑",
+      "제로니무스수도원",
+      "알파마지구",
+      "상조르제성",
+      "28번 트램",
+    ],
     bestTimeToVisit: "3월~5월, 9월~10월",
-    itineraryOneDay: ["오전: 벨렘탑·제로니무스수도원", "오후: 상조르제성", "저녁: 알파마지구 파두 공연"],
+    itineraryOneDay: [
+      "오전: 벨렘탑·제로니무스수도원",
+      "오후: 상조르제성",
+      "저녁: 알파마지구 파두 공연",
+    ],
     itineraryThreeDay: [
       "1일차: 벨렘탑·제로니무스수도원",
       "2일차: 상조르제성·알파마지구",
@@ -945,10 +1446,16 @@ export const destinations: Destination[] = [
     budget: "1인 1일 9만~15만원(숙박 제외)",
     transport: "트램·지하철",
     food: ["파스텔 드 나타", "바칼랴우", "정어리구이"],
-    etiquette: "파두 공연 중에는 대화를 자제하고 조용히 감상하는 것이 예의입니다.",
+    etiquette:
+      "파두 공연 중에는 대화를 자제하고 조용히 감상하는 것이 예의입니다.",
     source: "포르투갈관광청(visitportugal.com)",
     updatedAt: "2026-01-01",
-    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/Lisbon_alfalma.jpg?width=1200`, "리스본 알파마지구와 노란 트램", "Arne Müseler", "CC BY-SA 3.0 de"),
+    image: img(
+      `https://commons.wikimedia.org/wiki/Special:FilePath/Lisbon_alfalma.jpg?width=1200`,
+      "리스본 알파마지구와 노란 트램",
+      "Arne Müseler",
+      "CC BY-SA 3.0 de",
+    ),
   },
   {
     id: "intl-porto",
@@ -958,9 +1465,19 @@ export const destinations: Destination[] = [
     seasons: ["봄", "가을"],
     themes: ["와인", "역사"],
     summary: "포트와인의 본고장이자 두오루강이 흐르는 낭만적인 도시.",
-    attractions: ["동루이스1세다리", "포르투대성당", "리베이라지구", "포트와인 셀러", "렐루서점"],
+    attractions: [
+      "동루이스1세다리",
+      "포르투대성당",
+      "리베이라지구",
+      "포트와인 셀러",
+      "렐루서점",
+    ],
     bestTimeToVisit: "4월~6월, 9월~10월",
-    itineraryOneDay: ["오전: 포르투대성당·리베이라지구", "오후: 포트와인 셀러 투어", "저녁: 동루이스1세다리 야경"],
+    itineraryOneDay: [
+      "오전: 포르투대성당·리베이라지구",
+      "오후: 포트와인 셀러 투어",
+      "저녁: 동루이스1세다리 야경",
+    ],
     itineraryThreeDay: [
       "1일차: 리베이라지구·동루이스1세다리",
       "2일차: 포트와인 셀러 투어(빌라노바드가이아)",
@@ -969,10 +1486,16 @@ export const destinations: Destination[] = [
     budget: "1인 1일 8만~14만원(숙박 제외)",
     transport: "도보·트램",
     food: ["프란세지냐", "포트와인", "바칼랴우"],
-    etiquette: "렐루서점은 입장료가 있으며 성수기에는 줄이 길어 예약을 권장합니다.",
+    etiquette:
+      "렐루서점은 입장료가 있으며 성수기에는 줄이 길어 예약을 권장합니다.",
     source: "포르투갈관광청(visitportugal.com)",
     updatedAt: "2026-01-01",
-    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/Puente_Don_Luis_I%2C_Oporto%2C_Portugal%2C_2012-05-09%2C_DD_13.JPG?width=1200`, "포르투 리베이라지구와 두오루강", "Diego Delso", "CC BY-SA 3.0"),
+    image: img(
+      `https://commons.wikimedia.org/wiki/Special:FilePath/Puente_Don_Luis_I%2C_Oporto%2C_Portugal%2C_2012-05-09%2C_DD_13.JPG?width=1200`,
+      "포르투 리베이라지구와 두오루강",
+      "Diego Delso",
+      "CC BY-SA 3.0",
+    ),
   },
   {
     id: "intl-prague",
@@ -981,10 +1504,21 @@ export const destinations: Destination[] = [
     city: "프라하",
     seasons: ["봄", "가을"],
     themes: ["역사", "건축"],
-    summary: "중세 건축이 고스란히 남아있는 유럽에서 가장 아름다운 도시 중 하나.",
-    attractions: ["프라하성", "카를교", "구시가지광장", "천문시계", "유대인지구"],
+    summary:
+      "중세 건축이 고스란히 남아있는 유럽에서 가장 아름다운 도시 중 하나.",
+    attractions: [
+      "프라하성",
+      "카를교",
+      "구시가지광장",
+      "천문시계",
+      "유대인지구",
+    ],
     bestTimeToVisit: "4월~6월, 9월~10월",
-    itineraryOneDay: ["오전: 프라하성", "오후: 카를교·구시가지광장", "저녁: 천문시계 공연"],
+    itineraryOneDay: [
+      "오전: 프라하성",
+      "오후: 카를교·구시가지광장",
+      "저녁: 천문시계 공연",
+    ],
     itineraryThreeDay: [
       "1일차: 프라하성·황금소로",
       "2일차: 카를교·구시가지광장·천문시계",
@@ -993,10 +1527,16 @@ export const destinations: Destination[] = [
     budget: "1인 1일 8만~14만원(숙박 제외)",
     transport: "트램·도보",
     food: ["꼴레뇨", "굴라시", "트르들로"],
-    etiquette: "구시가지 레스토랑은 관광객 대상 바가지 메뉴판이 있을 수 있어 가격을 미리 확인하세요.",
+    etiquette:
+      "구시가지 레스토랑은 관광객 대상 바가지 메뉴판이 있을 수 있어 가격을 미리 확인하세요.",
     source: "체코관광청(czechtourism.com)",
     updatedAt: "2026-01-01",
-    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/Karl%C5%AFv_most_Praha%2C_Star%C3%A9_M%C4%9Bsto_20170810_007.jpg?width=1200`, "프라하성과 카를교 전경", "Tilman2007", "CC BY-SA 4.0"),
+    image: img(
+      `https://commons.wikimedia.org/wiki/Special:FilePath/Karl%C5%AFv_most_Praha%2C_Star%C3%A9_M%C4%9Bsto_20170810_007.jpg?width=1200`,
+      "프라하성과 카를교 전경",
+      "Tilman2007",
+      "CC BY-SA 4.0",
+    ),
   },
   {
     id: "intl-ceskykrumlov",
@@ -1006,9 +1546,19 @@ export const destinations: Destination[] = [
     seasons: ["봄", "가을"],
     themes: ["역사", "소도시"],
     summary: "블타바강이 휘감아 도는 동화 같은 중세 소도시.",
-    attractions: ["체스키크룸로프성", "구시가지", "스보르노스티광장", "성벽정원", "블타바강"],
+    attractions: [
+      "체스키크룸로프성",
+      "구시가지",
+      "스보르노스티광장",
+      "성벽정원",
+      "블타바강",
+    ],
     bestTimeToVisit: "5월~9월",
-    itineraryOneDay: ["오전: 체스키크룸로프성", "오후: 구시가지 골목 산책", "저녁: 성벽정원 전망"],
+    itineraryOneDay: [
+      "오전: 체스키크룸로프성",
+      "오후: 구시가지 골목 산책",
+      "저녁: 성벽정원 전망",
+    ],
     itineraryThreeDay: [
       "1일차: 체스키크룸로프성·성벽정원",
       "2일차: 구시가지·스보르노스티광장",
@@ -1020,6 +1570,11 @@ export const destinations: Destination[] = [
     etiquette: "구시가지는 도보 전용 구간이 많아 차량 진입이 제한됩니다.",
     source: "체코관광청(czechtourism.com)",
     updatedAt: "2026-01-01",
-    image: img(`https://commons.wikimedia.org/wiki/Special:FilePath/%C4%8Cesk%C3%BD_Krumlov%2C_z%C3%A1mek_cel%C3%BD_z_vyhl%C3%ADdky.jpg?width=1200`, "체스키크룸로프성과 블타바강", "VitVit", "CC BY-SA 4.0"),
+    image: img(
+      `https://commons.wikimedia.org/wiki/Special:FilePath/%C4%8Cesk%C3%BD_Krumlov%2C_z%C3%A1mek_cel%C3%BD_z_vyhl%C3%ADdky.jpg?width=1200`,
+      "체스키크룸로프성과 블타바강",
+      "VitVit",
+      "CC BY-SA 4.0",
+    ),
   },
 ];

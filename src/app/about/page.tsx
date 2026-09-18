@@ -9,7 +9,8 @@ import { ContactLinks } from "@/components/about/contact-links";
 
 export const metadata = buildMetadata({
   title: "대표 소개",
-  description: "free_traveler를 만든 이야기와 여행 철학, 지금까지의 여행 기록을 소개합니다.",
+  description:
+    "free_traveler를 만든 이야기와 여행 철학, 지금까지의 여행 기록을 소개합니다.",
   path: "/about",
 });
 

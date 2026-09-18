@@ -7,7 +7,8 @@ import { StepsSafetyBanner } from "@/components/mates/steps-safety-banner";
 
 export const metadata = buildMetadata({
   title: "동행 구하기",
-  description: "국가·지역·기간·모집 상태로 동행글을 찾아보고 참가를 신청해보세요.",
+  description:
+    "국가·지역·기간·모집 상태로 동행글을 찾아보고 참가를 신청해보세요.",
   path: "/mates",
 });
 

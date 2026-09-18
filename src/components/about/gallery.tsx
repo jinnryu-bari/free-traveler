@@ -5,7 +5,13 @@ import { aboutData, type AboutGalleryImage } from "@/data/about";
 
 export const GALLERY_SECTION_ID = "gallery";
 
-function GalleryPhoto({ photo, eager }: { photo: AboutGalleryImage; eager: boolean }) {
+function GalleryPhoto({
+  photo,
+  eager,
+}: {
+  photo: AboutGalleryImage;
+  eager: boolean;
+}) {
   const imgRef = useRef<HTMLImageElement>(null);
 
   // 로딩 실패 판정은 <img onError>와, 그것이 놓치는 경우를 대비한 독립적인
@@ -52,7 +58,14 @@ function GalleryPhoto({ photo, eager }: { photo: AboutGalleryImage; eager: boole
         aria-label={`${photo.alt} — 이미지를 불러오지 못했습니다`}
         className="hidden absolute inset-0 h-full w-full flex-col items-center justify-center gap-2 px-4 text-center"
       >
-        <svg viewBox="0 0 24 24" width={28} height={28} fill="none" aria-hidden className="text-muted-soft">
+        <svg
+          viewBox="0 0 24 24"
+          width={28}
+          height={28}
+          fill="none"
+          aria-hidden
+          className="text-muted-soft"
+        >
           <path
             d="M4 5h16v14H4zM4 17l5-5 3 3 5-6 3 4"
             stroke="currentColor"
@@ -60,7 +73,12 @@ function GalleryPhoto({ photo, eager }: { photo: AboutGalleryImage; eager: boole
             strokeLinecap="round"
             strokeLinejoin="round"
           />
-          <path d="M2 2l20 20" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" />
+          <path
+            d="M2 2l20 20"
+            stroke="currentColor"
+            strokeWidth={1.5}
+            strokeLinecap="round"
+          />
         </svg>
         <p className="text-caption text-muted-soft">사진을 불러오지 못했어요</p>
       </div>
@@ -80,10 +98,15 @@ export function Gallery() {
   const { gallery } = aboutData;
 
   return (
-    <section id={GALLERY_SECTION_ID} className="mx-auto max-w-[1240px] px-5 py-16 scroll-mt-20 lg:px-10 lg:py-20">
+    <section
+      id={GALLERY_SECTION_ID}
+      className="mx-auto max-w-[1240px] px-5 py-16 scroll-mt-20 lg:px-10 lg:py-20"
+    >
       <div>
         <h2 className="text-display-md text-ink">여행 Gallery</h2>
-        <p className="text-body-md text-body mt-1">다녀온 여행지에서 남긴 순간들이에요.</p>
+        <p className="text-body-md text-body mt-1">
+          다녀온 여행지에서 남긴 순간들이에요.
+        </p>
       </div>
 
       <div className="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-3 lg:gap-5">

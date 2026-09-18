@@ -5,7 +5,8 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { countrySafetyInfo, type SafetyCategories } from "@/data/safety";
 
 const SAFETY_PARAM = "safety";
-const CONSULAR_CALL_CENTER = "영사콜센터: +82-2-3210-0404 (해외 무료 접속번호는 재외공관 홈페이지에서 확인)";
+const CONSULAR_CALL_CENTER =
+  "영사콜센터: +82-2-3210-0404 (해외 무료 접속번호는 재외공관 홈페이지에서 확인)";
 
 const CATEGORY_LABELS: { key: keyof SafetyCategories; label: string }[] = [
   { key: "security", label: "치안" },
@@ -22,12 +23,16 @@ function SafetyDetailDrawerContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const id = searchParams.get(SAFETY_PARAM);
-  const info = id ? countrySafetyInfo.find((item) => item.id === id) : undefined;
+  const info = id
+    ? countrySafetyInfo.find((item) => item.id === id)
+    : undefined;
 
   const close = () => {
     const params = new URLSearchParams(searchParams.toString());
     params.delete(SAFETY_PARAM);
-    router.replace(params.toString() ? `/?${params.toString()}` : "/", { scroll: false });
+    router.replace(params.toString() ? `/?${params.toString()}` : "/", {
+      scroll: false,
+    });
   };
 
   useEffect(() => {
@@ -66,27 +71,40 @@ function SafetyDetailDrawerContent() {
           aria-label="닫기"
           className="self-end p-2 text-muted hover:text-ink"
         >
-          <svg viewBox="0 0 20 20" width={20} height={20} fill="none" aria-hidden>
-            <path d="M5 5l10 10M15 5L5 15" stroke="currentColor" strokeWidth={2} strokeLinecap="round" />
+          <svg
+            viewBox="0 0 20 20"
+            width={20}
+            height={20}
+            fill="none"
+            aria-hidden
+          >
+            <path
+              d="M5 5l10 10M15 5L5 15"
+              stroke="currentColor"
+              strokeWidth={2}
+              strokeLinecap="round"
+            />
           </svg>
         </button>
 
         <p className="bg-info-bg text-info text-body-sm mb-4 rounded-sm px-3 py-2">
-          이 정보는 참고용이며 공식 판단을 대체할 수 없습니다. 출국 전 외교부 원문에서 최신
-          정보를 반드시 재확인하세요.
+          이 정보는 참고용이며 공식 판단을 대체할 수 없습니다. 출국 전 외교부
+          원문에서 최신 정보를 반드시 재확인하세요.
         </p>
 
         <h2 className="text-display-md text-ink">{info.country}</h2>
         <p className="text-caption text-muted mt-1">
-          {info.scopeType === "country" ? "국가 전역" : info.scopeText} · 최종 확인일{" "}
-          {info.lastCheckedAt} · 편집자 {info.editor}
+          {info.scopeType === "country" ? "국가 전역" : info.scopeText} · 최종
+          확인일 {info.lastCheckedAt} · 편집자 {info.editor}
         </p>
 
         <dl className="mt-5 flex flex-col gap-4">
           {CATEGORY_LABELS.map(({ key, label }) => (
             <div key={key}>
               <dt className="text-title-sm text-ink">{label}</dt>
-              <dd className="text-body-sm text-body mt-1">{info.categories[key]}</dd>
+              <dd className="text-body-sm text-body mt-1">
+                {info.categories[key]}
+              </dd>
             </div>
           ))}
         </dl>

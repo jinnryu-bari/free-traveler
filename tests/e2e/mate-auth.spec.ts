@@ -30,7 +30,12 @@ const HAS_ACCOUNTS_CONFIGURED = Boolean(
 
 let sharedPostTitle = "";
 
-async function login(page: Page, email: string, password: string, label: string) {
+async function login(
+  page: Page,
+  email: string,
+  password: string,
+  label: string,
+) {
   await page.goto("/account");
   await page.locator("#login-email").fill(email);
   await page.locator("#login-password").fill(password);
@@ -61,9 +66,14 @@ async function logout(page: Page) {
 }
 
 test.describe.serial("E2E-MATE-AUTH", () => {
-  test.skip(!HAS_ACCOUNTS_CONFIGURED, "테스트 계정 미준비 — .env.test.local에 E2E_TEST_MEMBER_*/E2E_TEST_MODERATOR_* 설정 필요");
+  test.skip(
+    !HAS_ACCOUNTS_CONFIGURED,
+    "테스트 계정 미준비 — .env.test.local에 E2E_TEST_MEMBER_*/E2E_TEST_MODERATOR_* 설정 필요",
+  );
 
-  test("① 로그인 후 성인확인 상태에서 동행글을 작성할 수 있다", async ({ page }) => {
+  test("① 로그인 후 성인확인 상태에서 동행글을 작성할 수 있다", async ({
+    page,
+  }) => {
     await login(page, MEMBER_EMAIL!, MEMBER_PASSWORD!, "E2E_TEST_MEMBER");
 
     await page.goto("/travel-tools?tab=mate");
@@ -79,25 +89,40 @@ test.describe.serial("E2E-MATE-AUTH", () => {
     await page.locator("#mate-start").fill("2026-12-01");
     await page.locator("#mate-end").fill("2026-12-05");
     await page.locator("#mate-capacity").fill("2");
-    await page.locator("#mate-description").fill("E2E 스모크 테스트로 등록한 동행글입니다.");
+    await page
+      .locator("#mate-description")
+      .fill("E2E 스모크 테스트로 등록한 동행글입니다.");
     await page.getByRole("checkbox").first().check();
     await page.getByRole("button", { name: "동행글 등록" }).click();
     await page.waitForLoadState("networkidle").catch(() => {});
 
     await page.goto("/mates");
-    await expect(page.getByText(sharedPostTitle)).toBeVisible({ timeout: 10000 });
+    await expect(page.getByText(sharedPostTitle)).toBeVisible({
+      timeout: 10000,
+    });
   });
 
-  test("② 다른 계정의 참가 요청을 작성자가 승인할 수 있다", async ({ page }) => {
-    expect(sharedPostTitle, "①이 먼저 성공해 글 제목을 만들어야 한다").not.toBe("");
+  test("② 다른 계정의 참가 요청을 작성자가 승인할 수 있다", async ({
+    page,
+  }) => {
+    expect(sharedPostTitle, "①이 먼저 성공해 글 제목을 만들어야 한다").not.toBe(
+      "",
+    );
 
-    await login(page, MODERATOR_EMAIL!, MODERATOR_PASSWORD!, "E2E_TEST_MODERATOR");
+    await login(
+      page,
+      MODERATOR_EMAIL!,
+      MODERATOR_PASSWORD!,
+      "E2E_TEST_MODERATOR",
+    );
     await page.goto("/mates");
     await page.getByText(sharedPostTitle).first().click();
 
     await page.getByLabel(/참가 메시지/).fill(`E2E 참가 신청 ${Date.now()}`);
     await page.getByRole("button", { name: "참가 신청 보내기" }).click();
-    await expect(page.getByText("참가 신청을 보냈습니다")).toBeVisible({ timeout: 5000 });
+    await expect(page.getByText("참가 신청을 보냈습니다")).toBeVisible({
+      timeout: 5000,
+    });
 
     await logout(page);
     await login(page, MEMBER_EMAIL!, MEMBER_PASSWORD!, "E2E_TEST_MEMBER");
@@ -107,28 +132,45 @@ test.describe.serial("E2E-MATE-AUTH", () => {
     const approveButton = page.getByRole("button", { name: "승인" }).first();
     await expect(approveButton).toBeVisible({ timeout: 10000 });
     await approveButton.click();
-    await expect(page.getByText("참가 요청을 승인했다")).toBeVisible({ timeout: 5000 });
+    await expect(page.getByText("참가 요청을 승인했다")).toBeVisible({
+      timeout: 5000,
+    });
   });
 
-  test("③ 다른 계정이 동행글을 신고하고 작성자를 차단할 수 있다", async ({ page }) => {
-    expect(sharedPostTitle, "①이 먼저 성공해 글 제목을 만들어야 한다").not.toBe("");
+  test("③ 다른 계정이 동행글을 신고하고 작성자를 차단할 수 있다", async ({
+    page,
+  }) => {
+    expect(sharedPostTitle, "①이 먼저 성공해 글 제목을 만들어야 한다").not.toBe(
+      "",
+    );
 
-    await login(page, MODERATOR_EMAIL!, MODERATOR_PASSWORD!, "E2E_TEST_MODERATOR");
+    await login(
+      page,
+      MODERATOR_EMAIL!,
+      MODERATOR_PASSWORD!,
+      "E2E_TEST_MODERATOR",
+    );
     await page.goto("/mates");
     await page.getByText(sharedPostTitle).first().click();
 
     await page.getByRole("button", { name: "신고하기" }).click();
     await page.getByLabel("상세 설명").fill("E2E 스모크 신고 테스트입니다.");
     await page.getByRole("button", { name: "신고 접수" }).click();
-    await expect(page.getByText("신고가 접수됐습니다")).toBeVisible({ timeout: 5000 });
+    await expect(page.getByText("신고가 접수됐습니다")).toBeVisible({
+      timeout: 5000,
+    });
     await page.getByRole("button", { name: "닫기" }).click();
 
     await page.getByRole("button", { name: "작성자 차단하기" }).click();
-    await expect(page.getByText("차단했습니다.")).toBeVisible({ timeout: 5000 });
+    await expect(page.getByText("차단했습니다.")).toBeVisible({
+      timeout: 5000,
+    });
   });
 });
 
-test("비인증 상태에서는 쓰기 액션이 전부 차단된다(회귀 확인, E2E-005와 동일 취지)", async ({ page }) => {
+test("비인증 상태에서는 쓰기 액션이 전부 차단된다(회귀 확인, E2E-005와 동일 취지)", async ({
+  page,
+}) => {
   await page.goto("/travel-tools?tab=mate");
   await expect(page.getByText("로그인이 필요합니다")).toBeVisible();
 

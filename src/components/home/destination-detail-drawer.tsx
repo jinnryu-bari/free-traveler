@@ -29,7 +29,10 @@ function writeFavorites(ids: string[]) {
 function relatedDestinations(current: Destination): Destination[] {
   return destinations
     .filter(
-      (d) => d.id !== current.id && (d.country === current.country || d.themes.some((t) => current.themes.includes(t))),
+      (d) =>
+        d.id !== current.id &&
+        (d.country === current.country ||
+          d.themes.some((t) => current.themes.includes(t))),
     )
     .slice(0, 6);
 }
@@ -52,7 +55,9 @@ function DestinationDetailDrawerContent() {
   const close = () => {
     const params = new URLSearchParams(searchParams.toString());
     params.delete(DESTINATION_PARAM);
-    router.replace(params.toString() ? `/?${params.toString()}` : "/", { scroll: false });
+    router.replace(params.toString() ? `/?${params.toString()}` : "/", {
+      scroll: false,
+    });
   };
 
   const openRelated = (relatedId: string) => {
@@ -117,14 +122,22 @@ function DestinationDetailDrawerContent() {
 
   return (
     <div className="fixed inset-0 z-50">
-      <button type="button" aria-label="닫기" onClick={close} className="bg-scrim absolute inset-0" />
+      <button
+        type="button"
+        aria-label="닫기"
+        onClick={close}
+        className="bg-scrim absolute inset-0"
+      />
       <div
         role="dialog"
         aria-modal="true"
         aria-label={`${destination.city} 상세정보`}
         className="shadow-overlay fixed inset-x-0 bottom-0 top-[20%] z-10 flex flex-col overflow-y-auto rounded-t-lg bg-canvas p-6 lg:inset-y-0 lg:left-auto lg:right-0 lg:top-0 lg:h-full lg:w-[520px] lg:rounded-none lg:rounded-l-lg"
       >
-        <div aria-hidden className="mx-auto mb-2 h-1 w-10 rounded-full bg-hairline lg:hidden" />
+        <div
+          aria-hidden
+          className="mx-auto mb-2 h-1 w-10 rounded-full bg-hairline lg:hidden"
+        />
 
         <div className="flex items-start justify-between gap-2">
           <div>
@@ -139,7 +152,13 @@ function DestinationDetailDrawerContent() {
               aria-label={isFavorite ? "즐겨찾기 해제" : "즐겨찾기 추가"}
               className={`rounded-sm p-2 ${isFavorite ? "text-brand-coral" : "text-muted hover:text-ink"}`}
             >
-              <svg viewBox="0 0 20 20" width={20} height={20} fill={isFavorite ? "currentColor" : "none"} aria-hidden>
+              <svg
+                viewBox="0 0 20 20"
+                width={20}
+                height={20}
+                fill={isFavorite ? "currentColor" : "none"}
+                aria-hidden
+              >
                 <path
                   d="M10 17s-6.5-4-6.5-9A3.5 3.5 0 0110 5.5 3.5 3.5 0 0116.5 8c0 5-6.5 9-6.5 9z"
                   stroke="currentColor"
@@ -154,8 +173,19 @@ function DestinationDetailDrawerContent() {
               aria-label="닫기"
               className="p-2 text-muted hover:text-ink"
             >
-              <svg viewBox="0 0 20 20" width={20} height={20} fill="none" aria-hidden>
-                <path d="M5 5l10 10M15 5L5 15" stroke="currentColor" strokeWidth={2} strokeLinecap="round" />
+              <svg
+                viewBox="0 0 20 20"
+                width={20}
+                height={20}
+                fill="none"
+                aria-hidden
+              >
+                <path
+                  d="M5 5l10 10M15 5L5 15"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                  strokeLinecap="round"
+                />
               </svg>
             </button>
           </div>
@@ -174,7 +204,9 @@ function DestinationDetailDrawerContent() {
 
         <section className="mt-4">
           <h3 className="text-title-sm text-ink">추천 시기</h3>
-          <p className="text-body-sm text-body mt-1">{destination.bestTimeToVisit}</p>
+          <p className="text-body-sm text-body mt-1">
+            {destination.bestTimeToVisit}
+          </p>
         </section>
 
         <section className="mt-4">
@@ -202,13 +234,17 @@ function DestinationDetailDrawerContent() {
           </div>
           <div>
             <h3 className="text-title-sm text-ink">교통</h3>
-            <p className="text-body-sm text-body mt-1">{destination.transport}</p>
+            <p className="text-body-sm text-body mt-1">
+              {destination.transport}
+            </p>
           </div>
         </section>
 
         <section className="mt-4">
           <h3 className="text-title-sm text-ink">음식</h3>
-          <p className="text-body-sm text-body mt-1">{destination.food.join(", ")}</p>
+          <p className="text-body-sm text-body mt-1">
+            {destination.food.join(", ")}
+          </p>
         </section>
 
         <section className="mt-4">

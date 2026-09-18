@@ -14,7 +14,12 @@ import { createBlock, deleteBlock } from "@/lib/supabase/queries";
 const UNIQUE_VIOLATION = "23505";
 
 function hasPgErrorCode(error: unknown, code: string): boolean {
-  return typeof error === "object" && error !== null && "code" in error && (error as { code?: string }).code === code;
+  return (
+    typeof error === "object" &&
+    error !== null &&
+    "code" in error &&
+    (error as { code?: string }).code === code
+  );
 }
 
 const blockTargetSchema = z.object({
@@ -35,13 +40,19 @@ export async function POST(request: Request) {
   const parsed = blockTargetSchema.safeParse(body);
   if (!parsed.success) {
     return NextResponse.json(
-      { error: "입력값이 올바르지 않다", issues: parsed.error.flatten().fieldErrors },
+      {
+        error: "입력값이 올바르지 않다",
+        issues: parsed.error.flatten().fieldErrors,
+      },
       { status: 400 },
     );
   }
 
   if (parsed.data.blockedId === user.id) {
-    return NextResponse.json({ error: "자기 자신을 차단할 수 없다" }, { status: 400 });
+    return NextResponse.json(
+      { error: "자기 자신을 차단할 수 없다" },
+      { status: 400 },
+    );
   }
 
   try {
@@ -65,9 +76,14 @@ export async function DELETE(request: Request) {
   }
 
   const { searchParams } = new URL(request.url);
-  const parsed = blockTargetSchema.safeParse({ blockedId: searchParams.get("blockedId") ?? undefined });
+  const parsed = blockTargetSchema.safeParse({
+    blockedId: searchParams.get("blockedId") ?? undefined,
+  });
   if (!parsed.success) {
-    return NextResponse.json({ error: "입력값이 올바르지 않다" }, { status: 400 });
+    return NextResponse.json(
+      { error: "입력값이 올바르지 않다" },
+      { status: 400 },
+    );
   }
 
   await deleteBlock(user.id, parsed.data);

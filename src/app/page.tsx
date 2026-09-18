@@ -18,10 +18,12 @@ export default function Home() {
   return (
     <>
       <section className="mx-auto flex min-h-[560px] max-w-[1240px] flex-col justify-center gap-6 px-5 py-12 lg:px-10 lg:py-20">
-        <h1 className="text-display-xl max-w-xl text-ink">어디로 떠나고 싶으신가요?</h1>
+        <h1 className="text-display-xl max-w-xl text-ink">
+          어디로 떠나고 싶으신가요?
+        </h1>
         <p className="text-body-md max-w-md text-body">
-          여행지를 발견하고, 항공·숙소 조건을 정리해 외부 사이트로 이동하고, 믿을 수 있는 동행을
-          찾아보세요.
+          여행지를 발견하고, 항공·숙소 조건을 정리해 외부 사이트로 이동하고,
+          믿을 수 있는 동행을 찾아보세요.
         </p>
         <HeroSearch />
         <Link
