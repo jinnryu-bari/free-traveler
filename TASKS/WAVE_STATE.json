@@ -649,18 +649,24 @@
       "status": "blocked_input",
       "checkpoint_required": true,
       "checkpoint_result": null,
+      "practice_deploy": {
+        "url": "https://free-traveler-six.vercel.app",
+        "confirmed_by": "user",
+        "confirmed_at": "2026-09-19",
+        "scope": "실습용 배포 완료 — 사이트 접속과 기존 계정 로그인만 사용자가 직접 확인했다. RELEASE-VERCEL-DEPLOY-CHECK/RELEASE-SUPABASE-CHECK의 정식 Functional AC(TLS 확인, 비밀키 클라이언트 노출 0건, 6개 테이블 RLS 활성 확인, CSRF/SameSite 쿠키 확인, 개발/운영 키 분리 확인)는 확인하지 않았다 — 전체 기능 통과로 기록하지 않는다."
+      },
       "tasks": {
         "RELEASE-VERCEL-DEPLOY-CHECK": {
           "status": "blocked_input",
           "commit": "1881ec1",
-          "updated": "2026-09-18",
-          "notes": "GitHub main에 push 완료(8f90f78..1881ec1, https://github.com/jinnryu-bari/free-traveler). 이 세션에는 Vercel 로그인 세션·CLI 링크가 없어 실제 배포 트리거·URL 확인은 불가 — 사용자가 Vercel 대시보드에서 확인/연결해야 한다. docs/preview-checks/W15.md 참고."
+          "updated": "2026-09-19",
+          "notes": "실습 배포 URL 확보 및 접속 확인(https://free-traveler-six.vercel.app, 사용자 확인 2026-09-19). 정식 AC(TLS 1.2+, 비밀키 클라이언트 미포함 빌드 산출물 검사, 요금 티어 확인)는 미확인 — done으로 표시하지 않는다. docs/preview-checks/W15.md 참고."
         },
         "RELEASE-SUPABASE-CHECK": {
           "status": "blocked_input",
           "commit": null,
-          "updated": "2026-09-18",
-          "notes": "미착수 — Vercel 배포 URL 확보 후 진행 가능."
+          "updated": "2026-09-19",
+          "notes": "기존 계정 로그인 성공으로 배포 환경의 Supabase Auth 연결 자체는 동작함을 간접 확인. 정식 AC(6개 테이블 RLS 활성 상태, CSRF/SameSite 쿠키 설정, 개발/운영 키 분리)는 미확인 — done으로 표시하지 않는다. docs/preview-checks/W15.md 참고."
         }
       }
     }
