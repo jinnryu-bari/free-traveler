@@ -20,7 +20,13 @@ function formatPeriod(startDate: string, endDate: string): string {
  * 범위 자체를 좁혀서 지킨다.
  */
 export async function MatesPreview() {
-  const posts = await listMatePosts();
+  let posts: Awaited<ReturnType<typeof listMatePosts>> = [];
+  try {
+    posts = await listMatePosts();
+  } catch {
+    // Supabase 연결 실패 등으로 동행글을 불러오지 못해도 메인 페이지 전체가
+    // 깨지지 않도록 빈 상태로 대체한다 — 나머지 Section은 정상 렌더링된다.
+  }
   const preview = posts.slice(0, 3);
 
   return (
